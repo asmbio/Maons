@@ -1,0 +1,11 @@
+.vs
+bin
+Debug
+Release
+TestResults
+*.user
+obj
+node_modules
+dist
+packages
+.output

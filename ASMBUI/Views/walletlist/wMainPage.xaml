@@ -1,0 +1,37 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:ASMBUI.Views.walletlist"
+            x:Class="ASMBUI.Views.walletlist.wMainPage"
+            Title="manage">
+    <!--<VerticalStackLayout>
+        --><!--<CollectionView x:Name="collectionView2" 
+                    x:FieldModifier="public"
+                    SelectionMode="Single" SelectionChanged="collectionView2_SelectionChanged_1">
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type local:FlyoutPageItem}">
+                    <local:FlyoutPageItem Title="ASMB" 
+                                      IconSource="contacts.png" 
+                                      TargetType="{x:Type local:asmb}" />
+                </x:Array>
+            </CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="25"/>
+                        </Grid.ColumnDefinitions>
+                        --><!--<Image Source="{Binding IconSource}" />--><!--
+                        <Label Grid.Column="1"
+                           Margin="20,0"
+                           Text="{Binding Title}"                     
+                           VerticalOptions="Center" />
+                        <Image Grid.Column="2" Source="xiayiyeqianjinchakangengduo.png"></Image>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>--><!--
+        <Button Margin="0,40,0,0" Text="Ìí¼Ó" BackgroundColor="White" TextColor="Black"></Button>
+    </VerticalStackLayout>-->
+</ContentPage>

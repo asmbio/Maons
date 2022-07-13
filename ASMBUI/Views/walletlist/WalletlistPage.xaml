@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ASMBUI.Views.walletlist"
+             x:Class="ASMBUI.Views.walletlist.WalletlistPage"
+             Title="钱包管理">
+    <VerticalStackLayout>
+        <CollectionView x:Name="collectionView2" Margin="0,10,0,0"
+                    x:FieldModifier="public"
+                    SelectionMode="Single" SelectionChanged="collectionView2_SelectionChanged">
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type local:FlyoutPageItem}">
+                    <local:FlyoutPageItem Title="eslmm999888xxxxx" 
+                                      IconSource="contacts.png" 
+                                      TargetType="{x:Type local:asmb}" />
+                </x:Array>
+            </CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate>
+                <DataTemplate >
+                    <Grid Padding="5,10">
+                        <!--<Grid.GestureRecognizers>
+                            <SwipeGestureRecognizer Direction="Left,Right" Swiped="SwipeGestureRecognizer_Swiped"/>
+                        </Grid.GestureRecognizers>-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="25"/>
+                        </Grid.ColumnDefinitions>
+                        
+        <!--<Image Source="{Binding IconSource}" />-->
+        
+                        <Label Grid.Column="1"
+                           Margin="20,0"
+                           Text="{Binding Title}"                     
+                           VerticalOptions="Center" />
+                        <Image Grid.Column="2" Source="xiayiyeqianjinchakangengduo.png"></Image>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Margin="0,40,0,0" Text="导入" BackgroundColor="White" TextColor="Black" BorderWidth="0"></Button>
+        <Button Margin="0,0,0,0" Text="导出" BackgroundColor="White" TextColor="Black" BorderWidth="0"></Button>
+        <Button Margin="0,0,0,0" Text="添加" BackgroundColor="White" TextColor="Black" BorderWidth="0"></Button>
+        <!--<Button Margin="0,40,0,0" Text="删除" BackgroundColor="White" TextColor="Black"></Button>-->
+        <Label 
+            Text="Welcome to ASMB!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

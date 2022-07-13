@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASMBUI.wallet"
+        IconImageSource="wallet_line.png"
+             Title="ASMB">
+    <VerticalStackLayout HorizontalOptions="Center">
+
+
+        <Button  ImageSource="xialaanniulvse.png" Text="fanhai123" Clicked="Button_Clicked" BackgroundColor="White" TextColor="Black"></Button>
+
+
+        <Label FontSize="Title" TextColor="Black" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="0.0"></Label>
+       
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" ImageSource="yishoukuan.png" Text="收款" HorizontalOptions="Center"  BackgroundColor="White" TextColor="Black"></Button>
+            <Button Grid.Column="1" ImageSource="zhuanzhang.png" Text="转账" HorizontalOptions="Center"  BackgroundColor="White" TextColor="Black"></Button>
+        </Grid>
+
+
+        <Label 
+            Text="Welcome to asmb 33333！"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+
+</ContentPage>
