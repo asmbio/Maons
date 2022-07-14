@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASMBUI", "ASMBUI\ASMBUI.csproj", "{4EB1FEAF-241D-40A0-A337-07104FBDC322}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASMBApp", "ASMBApp\ASMBApp.csproj", "{2EE3FF32-E769-4515-B57D-60F4BB1B0571}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,18 @@ Global
 		{4EB1FEAF-241D-40A0-A337-07104FBDC322}.Release|ARM64.ActiveCfg = Release|ARM64
 		{4EB1FEAF-241D-40A0-A337-07104FBDC322}.Release|ARM64.Build.0 = Release|ARM64
 		{4EB1FEAF-241D-40A0-A337-07104FBDC322}.Release|ARM64.Deploy.0 = Release|ARM64
+		{2EE3FF32-E769-4515-B57D-60F4BB1B0571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE3FF32-E769-4515-B57D-60F4BB1B0571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE3FF32-E769-4515-B57D-60F4BB1B0571}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2EE3FF32-E769-4515-B57D-60F4BB1B0571}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{2EE3FF32-E769-4515-B57D-60F4BB1B0571}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{2EE3FF32-E769-4515-B57D-60F4BB1B0571}.Debug|ARM64.Deploy.0 = Debug|Any CPU
+		{2EE3FF32-E769-4515-B57D-60F4BB1B0571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE3FF32-E769-4515-B57D-60F4BB1B0571}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE3FF32-E769-4515-B57D-60F4BB1B0571}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2EE3FF32-E769-4515-B57D-60F4BB1B0571}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{2EE3FF32-E769-4515-B57D-60F4BB1B0571}.Release|ARM64.Build.0 = Release|Any CPU
+		{2EE3FF32-E769-4515-B57D-60F4BB1B0571}.Release|ARM64.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ASMBApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ASMBUI"   
+    Shell.FlyoutBehavior="Disabled">
+    <FlyoutItem>
+        <!--<NavigationPage Title="钱包" IconImageSource="wallet_line.png">
+            <x:Arguments>
+                <local:wallet />
+            </x:Arguments>
+        </NavigationPage>
+        <local:Discovery />
+        <local:MePage />-->
+        <ShellContent
+            Title="钱包"
+            Icon="wallet_line.png"
+        ContentTemplate="{DataTemplate local:wallet}"
+        Route="wallet" />
+
+        <ShellContent
+            Title="探索"
+            Icon="compassdiscoverline.png"
+        ContentTemplate="{DataTemplate local:Discovery}"
+        Route="Discovery" />
+        <ShellContent
+            Title="我的"
+            Icon="user_line.png"
+        ContentTemplate="{DataTemplate local:MePage}"
+        Route="MePage" />
+    </FlyoutItem>
+
+</Shell>
