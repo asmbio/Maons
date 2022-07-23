@@ -1,4 +1,4 @@
-﻿namespace ASMBUI
+﻿namespace ASMBApp
 {
     public partial class MePage : ContentPage
     {

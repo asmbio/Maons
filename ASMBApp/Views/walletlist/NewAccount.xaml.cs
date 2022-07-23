@@ -1,8 +1,8 @@
 namespace ASMBApp.Views.walletlist;
 
-public partial class asmb : ContentPage
+public partial class NewAccount : ContentPage
 {
-	public asmb()
+	public NewAccount()
 	{
 		InitializeComponent();
 	}

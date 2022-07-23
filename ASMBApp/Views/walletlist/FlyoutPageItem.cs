@@ -1,4 +1,4 @@
-﻿namespace ASMBUI.Views.walletlist
+﻿namespace ASMBApp.Views.walletlist
 {
 	public class FlyoutPageItem
 	{

@@ -1,6 +1,6 @@
 
 
-namespace ASMBUI.Views;
+namespace ASMBApp.Views;
 
 public partial class shoukuan : ContentPage
 {

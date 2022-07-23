@@ -72,11 +72,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Maui" Version="1.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\NASMB\NASMB.Wallet\NASMB.Wallet.csproj" />
+	  <ProjectReference Include="..\..\NASMB\NASMB\NASMB.csproj" />
+	  <ProjectReference Include="..\Magic.MAUI\Magic.MAUI.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Views\Discovery.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\Me.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Pwd.xaml.cs">
+	    <DependentUpon>Pwd.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\shoukuan.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
@@ -99,10 +112,16 @@
 	  <MauiXaml Update="Views\Discovery.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="login.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Me.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="NewPage1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Pwd.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\shoukuan.xaml">
@@ -112,6 +131,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\walletlist\asmb.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\walletlist\NewAccount.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\walletlist\WalletlistPage.xaml">

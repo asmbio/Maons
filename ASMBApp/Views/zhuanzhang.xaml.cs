@@ -1,6 +1,6 @@
 using ASMBApp;
 
-namespace ASMBUI.Views;
+namespace ASMBApp.Views;
 
 public partial class zhuanzhang : ContentPage
 {

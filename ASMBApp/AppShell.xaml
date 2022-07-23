@@ -3,17 +3,27 @@
     x:Class="ASMBApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ASMBUI"   
-    Shell.FlyoutBehavior="Disabled">
-    <FlyoutItem>
-        <!--<NavigationPage Title="钱包" IconImageSource="wallet_line.png">
-            <x:Arguments>
-                <local:wallet />
-            </x:Arguments>
-        </NavigationPage>
-        <local:Discovery />
-        <local:MePage />-->
-        <ShellContent
+    xmlns:local="clr-namespace:ASMBApp"   
+    Shell.FlyoutBehavior="Disabled" >
+    
+    <!--<ContentPage>
+      
+    </ContentPage>-->
+    <!--<ShellContent x:Name="login"  FlyoutItemIsVisible="True">
+        <ContentPage>
+            <VerticalStackLayout VerticalOptions="Center">
+                <Label Text="请输入钱包密码!" Margin="0,20,0,0"  VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+                <Entry x:Name="epwd" Margin="0,20,0,0" VerticalOptions="Center" WidthRequest="200"
+            HorizontalOptions="Center" IsPassword="True" ></Entry>
+                <Button Text="OK" Margin="0,20,0,0" VerticalOptions="Center"  WidthRequest="80"
+            HorizontalOptions="Center"
+                Clicked="OnOKButtonClicked" />
+            </VerticalStackLayout>
+        </ContentPage>
+    </ShellContent>-->
+    <FlyoutItem x:Name="flyout" >
+        <ShellContent 
             Title="钱包"
             Icon="wallet_line.png"
         ContentTemplate="{DataTemplate local:wallet}"
@@ -30,5 +40,4 @@
         ContentTemplate="{DataTemplate local:MePage}"
         Route="MePage" />
     </FlyoutItem>
-
 </Shell>

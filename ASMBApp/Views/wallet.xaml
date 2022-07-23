@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ASMBUI.wallet"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="ASMBApp.wallet"
              IconImageSource="wallet_line.png"
-             Title="ASMB">
+             Title="ASMB" BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}">
     <VerticalStackLayout HorizontalOptions="Center">
 
 
-        <Button  ImageSource="xialaanniulvse16.png" Text="fanhai123" Clicked="Button_Clicked" BackgroundColor="White" TextColor="Black" HorizontalOptions="Start"></Button>
+        <Button  ImageSource="xialaanniulvse16.png" Text="{Binding Path=Model.Address}" Clicked="Button_Clicked" BackgroundColor="White" TextColor="Black" HorizontalOptions="Start"></Button>
 
 
-        <Label FontSize="60" TextColor="Black" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="0.0"></Label>
+        <Label FontSize="60" TextColor="Black" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="{Binding Model.Balance, Converter={StaticResource NihilConverter}}" ></Label>
        
         <Grid>
             <Grid.ColumnDefinitions>
@@ -25,7 +26,12 @@
             Text="Welcome to asmb！测试网络，所有代币用于测试"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <!--<Line HeightRequest="2"></Line>-->
+        <Label 
+            Text="秘钥都在本地加密管理，如果本地设备损坏或者丢失，秘钥也会丢失无法找回"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+       <!--// <Button Clicked="Button_Clicked_3"></Button>-->
+        <!--<Lin e HeightRequest="2"></Line>-->
         
 
     </VerticalStackLayout>

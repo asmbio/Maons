@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1.7</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Enumerable.cs" />
+    <Compile Remove="UILog4netAppend.cs" />
+    <Compile Remove="ViewController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="nugetpush.bat" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+    <PackageReference Include="log4net" Version="2.0.14" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+</Project>
