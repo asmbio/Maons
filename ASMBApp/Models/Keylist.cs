@@ -78,10 +78,9 @@ namespace ASMBApp.Models
 
         [ObservableProperty]
         private byte[] receipts;//确认消息列表trie k
-
-
+        [ObservableProperty]
+        private NASMB.TYPES.Messagebs[] messagebs;
         // public event PropertyChangedEventHandler PropertyChanged;
-
         // public void OnPropertyChanged([CallerMemberName] string name = "") =>
         //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }

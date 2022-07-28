@@ -23,7 +23,7 @@ public partial class login : ContentPage
         }
         var avm = VMlc.ServiceProvider.GetService<ASMBApp.ViewModels.AccountViewModels>();
         avm.GetList();
-        avm.Model = avm.List.First(p => p.Address.SequenceEqual(w.Keys.Defaultkey.Address));
+        avm.Model = avm.List.First(p => p.Address == w.Keys.Defaultkey.Address.Address );
         
         App.Current.MainPage = new AppShell();
 

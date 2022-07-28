@@ -29,7 +29,7 @@ namespace ASMBApp.DataPravider
             var alist = new List<Account>();
             foreach (var item in ASMBApp.ViewModels.MyWallet.GetWallet().Keys.Keylist)
             {
-                alist.Add(new Account() { Address = item.Address });
+                alist.Add(new Account() { Address = item.Address.Address });
             }
             return ( alist.Count, alist, null );
         }
@@ -52,8 +52,9 @@ namespace ASMBApp.DataPravider
         public Task<Account> Insert(Account oItem)
         {
             var addr= ASMBApp.ViewModels.MyWallet.GetWallet().New();
-            //Account account = new Account();
+            // oItem  = new Account();
             oItem.Address = SimpleBase.Base58.Bitcoin.Encode(addr);
+            
             return Task.FromResult(oItem);
             //return ASMBApp.ViewModels.MyWallet.GetWallet().Keys.Defaultkey
         }

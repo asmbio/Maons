@@ -5,20 +5,33 @@
              IconImageSource="compassdiscoverline.png" 
              Title="探索">
 
-        <HorizontalStackLayout>
-            
-         
-            <ImageButton Source="reminders.png"></ImageButton>
-            <ImageButton Source="reminders.png"></ImageButton>
-            <ImageButton Source="reminders.png"></ImageButton>
-            <ImageButton Source="reminders.png"></ImageButton>
-            <ImageButton Source="reminders.png"></ImageButton>
-            <ImageButton Source="reminders.png"></ImageButton>
-            <ImageButton Source="reminders.png"></ImageButton>
-            <ImageButton Source="reminders.png"></ImageButton>
-            <ImageButton Source="reminders.png"></ImageButton>
-  
-        </HorizontalStackLayout>
+        <FlexLayout Wrap="Wrap" AlignContent="Start" Margin="20,20">
+
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="10">
+            <ImageButton Source="qukuailian.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked"></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">区块链</Label>
+        </VerticalStackLayout>
+     
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="10">
+            <ImageButton Source="a_zu17613.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="Button_Clicked"></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">代币</Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="10">
+            <ImageButton Source="caidan2x.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="ImageButton_Clicked_1"></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">彩蛋1</Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="10">
+            <ImageButton Source="caidan2x.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="ImageButton_Clicked_1" ></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">彩蛋2</Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="10">
+            <ImageButton Source="caidan2x.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">彩蛋3</Label>
+        </VerticalStackLayout>
+
+    </FlexLayout>
+
+
     <!--<ScrollView>
     </ScrollView>-->
 </ContentPage>

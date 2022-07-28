@@ -14,6 +14,7 @@ namespace ASMBApp.ViewModels
             Services = serviceDescriptors;
 
             Services.AddSingleton<ViewModels.AccountViewModels>();
+            Services.AddSingleton<ViewModels.BlocksViewModels>();
             ServiceProvider = Services.BuildServiceProvider();
         }
 
@@ -22,6 +23,14 @@ namespace ASMBApp.ViewModels
             get
             {
                 return ServiceProvider.GetService<AccountViewModels>();
+            }
+        }
+
+        public BlocksViewModels BlocksViewModels
+        {
+            get
+            {
+                return ServiceProvider.GetService<BlocksViewModels>();
             }
         }
     }

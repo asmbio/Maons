@@ -2,8 +2,21 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ASMBApp.Views.zhuanzhang"
-             Title="转账">
+             Title="转账" BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}">
     <VerticalStackLayout Margin="10,0,0,0">
+        <Label Margin="0,20,0,0"
+            Text="付款地址"
+            HorizontalOptions="Start" />
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="32"></ColumnDefinition>
+                <ColumnDefinition Width="32"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Entry Grid.Column="0" x:Name="addr" Placeholder="付款地址" IsReadOnly="True" Text="{Binding Model.Address}"></Entry>
+            <!--<ImageButton x:Name="saomiao" Grid.Column="1" Source="saomiao.png" Clicked="ImageButton_Clicked"></ImageButton>
+            <ImageButton x:Name="lianxiren" Grid.Column="2"  Source="ic_lianxiren.png"></ImageButton>-->           
+        </Grid>
         <Label Margin="0,20,0,0"
             Text="收款地址"
             HorizontalOptions="Start" />
@@ -13,10 +26,10 @@
                 <ColumnDefinition Width="32"></ColumnDefinition>
                 <ColumnDefinition Width="32"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Entry Grid.Column="0" x:Name="addr" Placeholder="收款地址"></Entry>
+            <Entry Grid.Column="0" x:Name="addrto" Placeholder="收款地址" Text="{Binding Transmsg.To,Converter={StaticResource AddressConverter}, Mode=OneWayToSource}"></Entry>
             <ImageButton x:Name="saomiao" Grid.Column="1" Source="saomiao.png" Clicked="ImageButton_Clicked"></ImageButton>
             <ImageButton x:Name="lianxiren" Grid.Column="2"  Source="ic_lianxiren.png"></ImageButton>
-           
+
         </Grid>
         <!--<Line Grid.Column="3" X1="0" Y1="0" X2="{Binding TargetNullValue=addr}" Stroke="black"></Line>-->
         <Label Margin="0,20,0,0"
@@ -28,8 +41,8 @@
                 <ColumnDefinition Width="50"></ColumnDefinition>
          
             </Grid.ColumnDefinitions>
-            <Entry Grid.Column="0" x:Name="jine" Placeholder="余额 0 NIhil"></Entry>
-            <Button Grid.Column="1" Text="全部" HeightRequest="28" FontSize="Small" Padding="0"></Button>
+            <Entry Grid.Column="0" x:Name="jine" Placeholder="{Binding Model.Balance, Converter={StaticResource NihilConverter}, Mode=OneWay}" Text="{Binding Transmsg.Balance, Converter={StaticResource NihilConverter}, Mode=OneWayToSource}" ></Entry>
+            <Button x:Name="btnall" Grid.Column="1" Text="全部" HeightRequest="28" FontSize="Small" Padding="0" Clicked="btnall_Clicked"></Button>
 
         </Grid>
         <Label Margin="0,20,0,0"
@@ -41,7 +54,7 @@
                 <ColumnDefinition Width="50"></ColumnDefinition>
 
             </Grid.ColumnDefinitions>
-            <Entry Grid.Column="0" x:Name="mark" Placeholder="空的备注可以减少费用"></Entry>
+            <Entry Grid.Column="0" x:Name="mark" Placeholder="空的备注可以减少费用" Text="{Binding Transmsg.Marks, Mode=TwoWay}"></Entry>
             <!--<Button Grid.Column="1" Text="建议" HeightRequest="28" FontSize="Small" Padding="0"></Button>-->
 
         </Grid>
@@ -54,8 +67,8 @@
                 <ColumnDefinition Width="50"></ColumnDefinition>
 
             </Grid.ColumnDefinitions>
-            <Entry Grid.Column="0" x:Name="feilv" Placeholder="0.001 NIhil"></Entry>
-            <Button Grid.Column="1" Text="建议" HeightRequest="28" FontSize="Small" Padding="0"></Button>
+            <Entry Grid.Column="0" x:Name="feilv" Placeholder="0.0001 Nihil" Text="{Binding Transmsg.Feesrate, Converter={StaticResource NihilConverter}, Mode=OneWayToSource}"></Entry>
+            <Button Grid.Column="1" Text="建议" HeightRequest="28" FontSize="Small" Padding="0" Clicked="Button_Clicked"></Button>
 
         </Grid>
 
@@ -63,6 +76,6 @@
             Text="总费用"
             HorizontalOptions="Start" />
         <Entry Grid.Column="0" x:Name="allgas" IsReadOnly="True"></Entry>
-        <Button  Margin="0,20,0,0" Text="确认转账"></Button>
+        <Button  Margin="0,20,0,0" Text="确认转账"  Clicked="Button_Clicked_1"></Button>
     </VerticalStackLayout>
 </ContentPage>

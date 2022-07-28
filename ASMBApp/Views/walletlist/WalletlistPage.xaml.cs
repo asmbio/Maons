@@ -12,11 +12,20 @@ public partial class WalletlistPage : ContentPage
 
 	private async void collectionView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
+		try
+        {
+            var avm = VMlc.ServiceProvider.GetService<ASMBApp.ViewModels.AccountViewModels>();
+            avm.GetAccount();
 
-        var avm = VMlc.ServiceProvider.GetService<ASMBApp.ViewModels.AccountViewModels>();
-		avm.GetAccount();
+            await Navigation.PopAsync();
 
-        await Navigation.PopAsync();
+
+        }
+        catch (Exception ex)
+		{
+
+			await this.DisplayAlert("ÍøÂç´íÎó", ex.Message, "¹Ø±Õ");
+		}
 
     }
 

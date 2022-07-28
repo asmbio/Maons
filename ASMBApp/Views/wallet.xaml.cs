@@ -61,9 +61,9 @@ public partial class wallet : ContentPage
     //    base.OnAppearing();
     //  //  login();
     //}
-    internal async  Task login()
+    internal async  Task<bool> login()
     {
-        ASMBApp.Views.Pwd pwd = new ASMBApp.Views.Pwd(true);
+        ASMBApp.Views.Pwd pwd = new ASMBApp.Views.Pwd();
         //pwd.ac
         string paswd=  ( string)( await this.ShowPopupAsync(pwd));
 
@@ -71,25 +71,31 @@ public partial class wallet : ContentPage
         if (ASMBApp.ViewModels.MyWallet.GetWallet(paswd) == null)
         {
             await DisplayAlert("", "钱包密码错误", "确定");
+            return false;
         }
 
+        return true;
 
     }
-	private async void Button_Clicked(object sender, EventArgs e)
-	{
-		//var page = new Views.walletlist.MainPage();
-		
+    private async void Button_Clicked(object sender, EventArgs e)
+    {
+        //var page = new Views.walletlist.MainPage();
+
         if (MyWallet.GetWallet() == null)
         {
-           await login();
+            var ret = await login();
+            if (!ret)
+            {
+                return;
+            }
         }
-       // var service = VMlc.Services.BuildServiceProvider();
+        // var service = VMlc.Services.BuildServiceProvider();
 
         var avm = VMlc.ServiceProvider.GetService<ASMBApp.ViewModels.AccountViewModels>();
         avm.GetList();
         //ASMBApp. MauiProgram.Services
         //ASMBApp.MauiProgram.Services.ge
-        await Navigation.PushAsync(new  Views.walletlist.WalletlistPage());
+        await Navigation.PushAsync(new Views.walletlist.WalletlistPage());
     }
 
 	private async void Button_Clicked_1(object sender, EventArgs e)
@@ -112,8 +118,9 @@ public partial class wallet : ContentPage
         await Navigation.PushAsync(new Views.zhuanzhang());
     }
 
-    private void Button_Clicked_3(object sender, EventArgs e)
+    private void collectionView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        login();
+        var item = e.CurrentSelection[0] as NASMB.TYPES.Messagebs;
+        this.DisplayAlert("原始数据", Newtonsoft.Json.JsonConvert.SerializeObject(item.Body), "关闭");
     }
 }

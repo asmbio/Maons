@@ -2,13 +2,17 @@
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                xmlns:local="clr-namespace:ASMBApp.Views"   
-               x:Class="ASMBApp.Views.Pwd">
+               x:Class="ASMBApp.Views.Pwd" Color="White" VerticalOptions="End" >
 
-    <VerticalStackLayout>
-        <Label Text="请输入钱包密码!" Margin="0,20,0,0"  VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Entry x:Name="epwd" Margin="0,20,0,0" VerticalOptions="Center" WidthRequest="200"
-            HorizontalOptions="Center" IsPassword="True" ></Entry>
+    <VerticalStackLayout Margin="0,0,0,0" VerticalOptions="Center" >
+        <!--<Label Text="请输入钱包密码!" FontSize="Title" Margin="0,40,0,0"  VerticalOptions="Center" 
+            HorizontalOptions="Center" />-->
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Margin="0,20,0,0" Text="密码：" VerticalOptions="Center"></Label>
+            <Entry x:Name="epwd" Margin="0,20,0,0" VerticalOptions="Center" MinimumWidthRequest="200"
+            IsPassword="True" Placeholder="请输入钱包管理密码" ></Entry>
+        </HorizontalStackLayout>
+    
         <Button Text="OK" Margin="0,20,0,0" VerticalOptions="Center"  WidthRequest="80"
             HorizontalOptions="Center"
                 Clicked="OnOKButtonClicked" />

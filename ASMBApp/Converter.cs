@@ -1,25 +1,79 @@
 ﻿namespace ASMBApp
 {
 
-    public class NihilConverter : IValueConverter
+    public class AddressConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value is System.Numerics.BigInteger)
-            {
-                return NASMB.TYPES.Nihil.FromNil((System.Numerics.BigInteger)value);
-
-            }
-            return "Error";
+    
+            return value;
 
 
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            throw new Exception("The method or operation is not implemented.");
+            var ret = new NASMB.TYPES.AsmbAddress();
+            ret.Address = (string)value;
+            return ret;
         }
     }
+
+    public class NihilConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            try
+            {
+                if (value is System.Numerics.BigInteger)
+                {
+                    return NASMB.TYPES.Nihil.FromNil((System.Numerics.BigInteger)value);
+
+                }
+                return "Error";
+            }
+            catch (Exception e)
+            {
+
+                return e.Message;
+            }
+        
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            try
+            {
+                if (value == null)
+                {
+                    return new System.Numerics.BigInteger(0);
+                }
+
+                return NASMB.TYPES.Nihil.ToNil((string)value);
+            }
+            catch (Exception)
+            {
+                return new System.Numerics.BigInteger(0);
+            }     
+        }
+    }
+    //public class NihiltoUintConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    //    {
+    //        throw new Exception("The method or operation is not implemented.");
+    //    }
+
+    //    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    //    {
+    //        if (value == null)
+    //        {
+    //            return (ulong)0;
+    //        }
+
+    //        return ((ulong)NASMB.TYPES.Nihil.ToNil((string)value));
+    //    }
+    //}
 
     public class EventTypeColorConverter : IValueConverter
     {

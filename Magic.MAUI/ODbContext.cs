@@ -249,7 +249,7 @@ namespace Magic.MAUI
                 {
                     lock (_lock)
                     {
-                        List.Add(oItem);
+                        List.Add(oItem.Copy() as T);
                     }
              
                 }

@@ -11,7 +11,7 @@ public partial class shoukuan : ContentPage
 
 	private async void ImageButton_Clicked(object sender, EventArgs e)
 	{
-        await Clipboard.Default.SetTextAsync("ssss");
+        await Clipboard.Default.SetTextAsync(shoukuandiz.Text);
 
         //      await Clipboard.SetTextAsync("asmb test");
         //if (!Clipboard.Default.HasText)

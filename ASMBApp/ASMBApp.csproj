@@ -49,12 +49,26 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Views\新文件夹\**" />
+	  <Compile Remove="Views\新文件夹\**" />
+	  <EmbeddedResource Remove="Views\新文件夹\**" />
+	  <MauiCss Remove="Views\新文件夹\**" />
+	  <MauiXaml Remove="Views\新文件夹\**" />
+	  <None Remove="Views\新文件夹\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\a-xialaanniulvse.png" />
+	  <None Remove="Resources\Images\a-zu17613.png" />
+	  <None Remove="Resources\Images\caidan2x.png" />
 	  <None Remove="Resources\Images\compassdiscoverline.png" />
 	  <None Remove="Resources\Images\contacts.png" />
 	  <None Remove="Resources\Images\fuzhi.png" />
+	  <None Remove="Resources\Images\gengduo.png" />
 	  <None Remove="Resources\Images\hamburger.png" />
 	  <None Remove="Resources\Images\ic_lianxiren.png" />
+	  <None Remove="Resources\Images\qukuailian.png" />
+	  <None Remove="Resources\Images\raw.png" />
 	  <None Remove="Resources\Images\reminders.png" />
 	  <None Remove="Resources\Images\saomiao.png" />
 	  <None Remove="Resources\Images\schedule.png" />
@@ -63,8 +77,11 @@
 	  <None Remove="Resources\Images\today.png" />
 	  <None Remove="Resources\Images\todo.png" />
 	  <None Remove="Resources\Images\user_line.png" />
+	  <None Remove="Resources\Images\vynil.png" />
 	  <None Remove="Resources\Images\wallet_line.png" />
 	  <None Remove="Resources\Images\xialaanniulvse.png" />
+	  <None Remove="Resources\Images\xianghou.png" />
+	  <None Remove="Resources\Images\xiangqian.png" />
 	  <None Remove="Resources\Images\xiayiyeqianjinchakangengduo.png" />
 	  <None Remove="Resources\Images\yishoukuan.png" />
 	  <None Remove="Resources\Images\zengjia.png" />
@@ -72,7 +89,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Maui" Version="1.1.0" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -109,6 +126,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\AskNill\AskNil.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Blocks\BlockDetils.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Blocks\Blocks.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Discovery.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -122,6 +148,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pwd.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Recipts.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\shoukuan.xaml">
