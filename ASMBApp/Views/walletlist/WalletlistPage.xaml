@@ -4,8 +4,13 @@
              xmlns:local="clr-namespace:ASMBApp.Views.walletlist"
              x:Class="ASMBApp.Views.walletlist.WalletlistPage"
              Title="钱包管理" BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}">
-    <VerticalStackLayout >
-        <CollectionView x:Name="collectionView2" Margin="0,10,0,0"
+    <VerticalStackLayout>
+        <Grid HeightRequest="{Binding Source={Static Application.Current}, Path=MainPage.CurrentPage.Height}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="200"></RowDefinition>
+            </Grid.RowDefinitions>
+            <CollectionView Grid.Row="0" x:Name="collectionView2" Margin="0,10,0,0" 
                     x:FieldModifier="public"
                     SelectionMode="Single" SelectionChanged="collectionView2_SelectionChanged" 
                         ItemsSource="{Binding Path=List,  Mode=OneWay} "  SelectedItem="{Binding Model, Mode=OneWayToSource}"  >
@@ -39,13 +44,18 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Margin="0,40,0,0" Text="导入" BackgroundColor="White" TextColor="Black" BorderWidth="0"></Button>
-        <Button Margin="0,0,0,0" Text="导出" BackgroundColor="White" TextColor="Black" BorderWidth="0"></Button>
-        <Button Margin="0,0,0,0" Text="添加" BackgroundColor="White" TextColor="Black" BorderWidth="0" Clicked="Button_Clicked_1"></Button>
+            <VerticalStackLayout Grid.Row="1">
+                <Button Margin="0,40,0,0" Text="导入" BackgroundColor="White" TextColor="Black" BorderWidth="0"></Button>
+                <Button Margin="0,0,0,0" Text="导出" BackgroundColor="White" TextColor="Black" BorderWidth="0"></Button>
+                <Button Margin="0,0,0,0" Text="添加" BackgroundColor="White" TextColor="Black" BorderWidth="0" Clicked="Button_Clicked_1"></Button>
+            </VerticalStackLayout>
+       
+        </Grid>
         <!--<Button Margin="0,40,0,0" Text="删除" BackgroundColor="White" TextColor="Black"></Button>-->
         <Label 
             Text="Welcome to ASMB!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>
+        
 </ContentPage>

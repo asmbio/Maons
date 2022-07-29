@@ -57,23 +57,23 @@
             }     
         }
     }
-    //public class NihiltoUintConverter : IValueConverter
-    //{
-    //    public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-    //    {
-    //        throw new Exception("The method or operation is not implemented.");
-    //    }
+    public class NihiltoUintConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
 
-    //    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-    //    {
-    //        if (value == null)
-    //        {
-    //            return (ulong)0;
-    //        }
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null)
+            {
+                return (ulong)0;
+            }
 
-    //        return ((ulong)NASMB.TYPES.Nihil.ToNil((string)value));
-    //    }
-    //}
+            return ((ulong)NASMB.TYPES.Nihil.ToNil((string)value));
+        }
+    }
 
     public class EventTypeColorConverter : IValueConverter
     {

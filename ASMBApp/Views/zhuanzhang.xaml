@@ -54,7 +54,7 @@
                 <ColumnDefinition Width="50"></ColumnDefinition>
 
             </Grid.ColumnDefinitions>
-            <Entry Grid.Column="0" x:Name="mark" Placeholder="空的备注可以减少费用" Text="{Binding Transmsg.Marks, Mode=TwoWay}"></Entry>
+            <Entry Grid.Column="0" x:Name="mark" Placeholder="空的备注可以减少费用" Text="{Binding Transmsg.Marks, Mode=OneWayToSource}"></Entry>
             <!--<Button Grid.Column="1" Text="建议" HeightRequest="28" FontSize="Small" Padding="0"></Button>-->
 
         </Grid>
@@ -67,15 +67,18 @@
                 <ColumnDefinition Width="50"></ColumnDefinition>
 
             </Grid.ColumnDefinitions>
-            <Entry Grid.Column="0" x:Name="feilv" Placeholder="0.0001 Nihil" Text="{Binding Transmsg.Feesrate, Converter={StaticResource NihilConverter}, Mode=OneWayToSource}"></Entry>
+            <Entry Grid.Column="0" x:Name="feilv" Placeholder="0.0001 Nihil" Text="{Binding Transmsg.Feesrate, Converter={StaticResource  NihiltoUintConverter}, Mode=OneWayToSource}"></Entry>
             <Button Grid.Column="1" Text="建议" HeightRequest="28" FontSize="Small" Padding="0" Clicked="Button_Clicked"></Button>
 
         </Grid>
 
-        <Label Margin="0,20,0,0"
+        <Label Margin="0,20,0,0" 
             Text="总费用"
             HorizontalOptions="Start" />
-        <Entry Grid.Column="0" x:Name="allgas" IsReadOnly="True"></Entry>
+        <Entry Grid.Column="0" x:Name="allgas" IsReadOnly="True" Placeholder="=费率*消息的总字节数（256左右）"></Entry>
         <Button  Margin="0,20,0,0" Text="确认转账"  Clicked="Button_Clicked_1"></Button>
+        <Label FontSize="Caption" TextColor="Gray" Text="1) 总费用=费率*消息的总字节数（256左右）"></Label>
+        <Label FontSize="Caption" TextColor="Gray" Text="2) 费率过低生产者会拒绝记账"></Label>
+        <Label FontSize="Caption" TextColor="Red" Text="3) 主网和测试网络不要使用同一个秘钥，防止测试网络签名转账被人恶意发送到主网并被执行，造成损失"></Label>
     </VerticalStackLayout>
 </ContentPage>

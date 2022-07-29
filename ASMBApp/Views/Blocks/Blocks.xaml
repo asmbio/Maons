@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ASMBApp.Views.Blocks.Blocks"
-             Title="Blocks"  BindingContext="{Binding Source={StaticResource VMlc},Path=BlocksViewModels}">
+             Title="区块浏览"  BindingContext="{Binding Source={StaticResource VMlc},Path=BlocksViewModels}">
     <VerticalStackLayout>
         <HorizontalStackLayout HorizontalOptions="Center">
             <ImageButton Source="xiangqian.png" HeightRequest="24" Command="{Binding ForwardSliceCmd}"></ImageButton>
-            <Entry Margin="20,0" Text="{Binding Slice}" VerticalOptions="Center"></Entry>
+            <Entry Margin="20,0" Text="{Binding Slice, Converter={StaticResource AddressConverter}}" VerticalOptions="Center"></Entry>
             <ImageButton Source="xianghou.png" HeightRequest="24" Command="{Binding NextSliceCmd}"></ImageButton>
             <ImageButton Source="shuaxin.png" HeightRequest="24"  Command="{Binding GetBlocksCmd}"></ImageButton>
         </HorizontalStackLayout>

@@ -24,7 +24,7 @@ namespace ASMBApp.Models
         [ObservableProperty]
         private UInt64 feesrate;
         [ObservableProperty]
-        private string marks = "";
+        private string marks="";
         [ObservableProperty]
         private UInt64 time;
 

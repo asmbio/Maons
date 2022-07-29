@@ -28,7 +28,10 @@
             <ImageButton Source="caidan2x.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
             <Label VerticalOptions="Center" HorizontalOptions="Center">彩蛋3</Label>
         </VerticalStackLayout>
-
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="10">
+            <ImageButton Source="gengduo.png" HeightRequest="70"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
+           <!--// <Label VerticalOptions="Center" HorizontalOptions="Center"></Label>-->
+        </VerticalStackLayout>
     </FlexLayout>
 
 

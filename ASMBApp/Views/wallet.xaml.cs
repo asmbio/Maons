@@ -6,6 +6,7 @@ namespace ASMBApp;
 using ASMBApp.ViewModels;
 using CommunityToolkit.Maui.Views;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 public partial class wallet : ContentPage
 {
@@ -121,6 +122,13 @@ public partial class wallet : ContentPage
     private void collectionView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var item = e.CurrentSelection[0] as NASMB.TYPES.Messagebs;
-        this.DisplayAlert("原始数据", Newtonsoft.Json.JsonConvert.SerializeObject(item.Body), "关闭");
+        //StringWriter textWriter = new StringWriter();
+        //JsonTextWriter jsonWriter = new JsonTextWriter(textWriter)
+        //{
+        //    Formatting = Formatting.Indented,
+        //    Indentation = 4,//缩进字符数
+        //    IndentChar = ' '//缩进字符
+        //};
+        this.DisplayAlert("原始数据", Newtonsoft.Json.JsonConvert.SerializeObject(item.Body,Formatting.Indented), "关闭");
     }
 }

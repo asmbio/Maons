@@ -139,8 +139,9 @@ namespace ASMBApp.ViewModels
                 signTransmsg.Transmsg.To = transmsg.To;
                 signTransmsg.Transmsg.Feesrate = transmsg.Feesrate;
                 signTransmsg.Transmsg.Balance = transmsg.Balance;
+                signTransmsg.Transmsg.Marks = transmsg.Marks;
                 //signTransmsg.Transmsg.Time = 637944439095943909;
-                signTransmsg.Transmsg.Time = (UInt64)System.DateTime.Now.Ticks *100 + 621355968000000000;
+                signTransmsg.Transmsg.Time = (UInt64)(System.DateTime.Now.Ticks  - 621355968000000000)*100;
 
                 var rlpb = signTransmsg.Transmsg.RlpEncode();
                 // var rlphex = Convert.ToHexString(rlpb);
