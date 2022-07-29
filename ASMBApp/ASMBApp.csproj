@@ -15,7 +15,7 @@
 		<ApplicationTitle>ASMBApp</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.asmbapp</ApplicationId>
+		<ApplicationId>com.asmb.asmbapp</ApplicationId>
 		<ApplicationIdGuid>589000D3-42E6-48E1-A72A-FB92C57B4E32</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -28,11 +28,185 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<Platforms>AnyCPU;ARM32;ARM64</Platforms>
+		<PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|ARM32'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|ARM64'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|ARM32'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|ARM64'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|ARM32'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|ARM32'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|ARM64'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|ARM64'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-maccatalyst|AnyCPU'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|AnyCPU'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-maccatalyst|ARM32'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|ARM32'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-maccatalyst|ARM64'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|ARM64'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.19041.0|AnyCPU'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows10.0.19041.0|AnyCPU'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.19041.0|ARM32'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows10.0.19041.0|ARM32'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.19041.0|ARM64'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows10.0.19041.0|ARM64'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidSigningStorePass>mountainfa</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>asmb</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>mountainfa</AndroidSigningKeyPass>
+	</PropertyGroup>
+
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\asmbico.svg" ForegroundFile="Resources\AppIcon\asmbico.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />

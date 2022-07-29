@@ -98,7 +98,7 @@ namespace ASMBApp.ViewModels
         //GetBlocks(ctx context.Context, h uint64, hash, s[]byte, n int) ([]* SignBlockHeader, error)                                               //perm:sign
         public async void GetBlocks()
         {
-            IsRefreshing = true;
+        //    IsRefreshing = true;
             try
             {
                 var add = slice.GetAddressbyte();

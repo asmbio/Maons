@@ -20,6 +20,8 @@ namespace ASMBApp.ViewModels
         //[ObservableProperty]
         //private string password;
 
+        [ObservableProperty]
+        public bool isRefreshing = false;
 
         private RelayCommand getAccountCmd;
         public RelayCommand GetAccountCmd
@@ -54,7 +56,7 @@ namespace ASMBApp.ViewModels
                 Magic.MAUI.LogHelper.DefaultLogger.Error(e);
                 await App.Current.MainPage.DisplayAlert("网络错误", e.Message, "关闭");
             }
-
+            IsRefreshing = false;
 
         }
         private RelayCommand getReciptsCmd;
@@ -65,12 +67,14 @@ namespace ASMBApp.ViewModels
                 return getReciptsCmd ?? (getReciptsCmd = new RelayCommand(GetRecipts));
             }
         }
-
+     
 
         public async void GetRecipts()
         {
+  
             try
             {
+
                 if (Model.Address == null) return;
                // if (Model.Messagebs == null) return;
              
