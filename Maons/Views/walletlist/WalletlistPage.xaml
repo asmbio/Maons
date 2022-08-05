@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ASMB.Views.walletlist"
+             x:Class="ASMB.Views.walletlist.WalletlistPage"
+             Title="钱包管理" BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}">
+    <VerticalStackLayout>
+
+        <!--HeightRequest="{Binding Source={Static Application.Current}, Path=MainPage.CurrentPage.Height}"-->
+        <Grid x:Name="gridcontent" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="200"></RowDefinition>
+            </Grid.RowDefinitions>
+            <CollectionView Grid.Row="0" x:Name="collectionView2" Margin="0,10,0,0" 
+                    x:FieldModifier="public"
+                    SelectionMode="Single" SelectionChanged="collectionView2_SelectionChanged" 
+                        ItemsSource="{Binding Path=List,  Mode=OneWay} "  SelectedItem="{Binding Model, Mode=OneWayToSource}"  >
+            <!--<CollectionView.ItemsSource>
+                <x:Array Type="{x:Type local:FlyoutPageItem}">
+                    <local:FlyoutPageItem Title="eslmm999888xxxxx" 
+                                      IconSource="contacts.png" 
+                                      TargetType="{x:Type local:asmb}" />
+                </x:Array>
+            </CollectionView.ItemsSource>-->
+            <CollectionView.ItemTemplate>
+                <DataTemplate >
+                    <Grid Padding="5,10">
+                        <!--<Grid.GestureRecognizers>
+                            <SwipeGestureRecognizer Direction="Left,Right" Swiped="SwipeGestureRecognizer_Swiped"/>
+                        </Grid.GestureRecognizers>-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="25"/>
+                        </Grid.ColumnDefinitions>
+                        
+        <!--<Image Source="{Binding IconSource}" />-->
+        
+                        <Label Grid.Column="1"
+                           Margin="20,0"
+                           Text="{Binding Address}"                     
+                           VerticalOptions="Center" />
+                        <Image Grid.Column="2" Source="xiayiyeqianjinchakangengduo.png"></Image>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+            <VerticalStackLayout Grid.Row="1">
+                <Button Margin="0,40,0,0" x:Name="daoru" Text="导入" BackgroundColor="White" TextColor="Black" BorderWidth="0" Clicked="daoru_Clicked"></Button>
+                <Button Margin="0,0,0,0" x:Name="daochu" Text="导出" BackgroundColor="White" TextColor="Black" BorderWidth="0" Clicked="daochu_Clicked"></Button>
+                <Button Margin="0,0,0,0" Text="添加" BackgroundColor="White" TextColor="Black" BorderWidth="0" Clicked="Button_Clicked_1"></Button>
+            </VerticalStackLayout>
+       
+        </Grid>
+        <!--<Button Margin="0,40,0,0" Text="删除" BackgroundColor="White" TextColor="Black"></Button>-->
+        <Label 
+            Text="Welcome to ASMB!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+        
+</ContentPage>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASMB.Views.zzDetils"
+             Title="交易详情">
+    <!--<Border WidthRequest="300">
+        <Border-->
+    <VerticalStackLayout>
+
+        <Label Text="转账成功" HorizontalOptions="Center" ></Label>
+        <Label Margin="0,10,0,0" FontSize="32" TextColor="Black" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="{Binding Balance}" ></Label>
+        <VerticalStackLayout   HorizontalOptions="Center">
+            <Label TextColor="Grey" Margin="0,0,0,0" Text="发款方"   WidthRequest="280"></Label>
+            <Label Text="{Binding Body.Transmsg.From}"></Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout   HorizontalOptions="Center" Margin="0,20,0,0" WidthRequest="280">
+            <Label TextColor="Grey" Margin="0,0,0,0" Text="收款方"  ></Label>
+            <Label Text="{Binding Body.Transmsg.To}"></Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout   HorizontalOptions="Center" Margin="0,20,0,0" WidthRequest="280">
+            <Label TextColor="Grey"  Margin="0,0,0,0" Text="总费用"  ></Label>
+            <Label Text="{Binding  AllRate} "></Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout   HorizontalOptions="Center" Margin="0,20,0,0" WidthRequest="280">
+            <Label TextColor="Grey"  Margin="0,0,0,0" Text="备注" ></Label>
+            <Label Margin="0,0,0,10" Text="{Binding Body.Transmsg.Marks}" ></Label>
+            <Line  X2="280" Stroke="Gray"></Line>
+        </VerticalStackLayout>
+        <VerticalStackLayout   HorizontalOptions="Center" Margin="0,20,0,0" WidthRequest="280">
+            <Label TextColor="Grey"  Margin="0,0,0,0" Text="哈希值"  ></Label>
+            <Label Text="{Binding Shakey} "></Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout   HorizontalOptions="Center" Margin="0,20,0,0" WidthRequest="280">
+            <Label TextColor="Grey"  Margin="0,0,0,0" Text="交易时间"  ></Label>
+            <Label Text="{Binding Time} "></Label>
+        </VerticalStackLayout>
+
+    </VerticalStackLayout>
+
+</ContentPage>

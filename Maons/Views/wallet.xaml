@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="ASMB.wallet"
+             IconImageSource="wallet_line.png"
+             Title="Maons" BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}">
+    <ContentPage.Resources>
+        
+    </ContentPage.Resources>
+    <VerticalStackLayout HorizontalOptions="Center">
+        <Button  ImageSource="xialaanniulvse16.png" Text="{Binding Path=Model.Address, Mode=OneWay}" Clicked="Button_Clicked" BackgroundColor="White" TextColor="Black" HorizontalOptions="Start"></Button>
+        <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand" >
+            <Label FontSize="48" TextColor="Black" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="{Binding Model.Balance, Converter={StaticResource MaonsConverter}}" ></Label>
+            <ImageButton Source="shuaxin.png" HeightRequest="24" BackgroundColor="White" Margin="10,20,0,0" Command="{Binding GetAccountCmd , ConverterParameter={Binding Model}}"></ImageButton>
+        </HorizontalStackLayout>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" ImageSource="yishoukuan.png" Text="收款" HorizontalOptions="Center"  BackgroundColor="White" TextColor="Black" Clicked="shoukuan_Clicked"></Button>
+            <Button Grid.Column="1" ImageSource="zhuanzhang.png" Text="转账" HorizontalOptions="Center"  BackgroundColor="White" TextColor="Black" Clicked="zhuanzhang_Clicked"></Button>
+        </Grid>
+        
+        <Label 
+            Text="Welcome to asmb！测试网络，所有代币用于测试"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" TextColor="Green"/>
+        <Label 
+            Text="秘钥都在本地加密管理，如果本地设备损坏或者丢失，秘钥也会丢失无法找回"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" TextColor="Green"/>
+       <!--// <Button Clicked="Button_Clicked_3"></Button>-->
+        <!--<Lin e HeightRequest="2"></Line>-->
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding GetAccountCmd}" CommandParameter="{Binding Model}">
+        <CollectionView x:Name="collectionView2" Margin="0,10,0,0"
+                    x:FieldModifier="public"
+                    SelectionMode="Single" SelectionChanged="collectionView2_SelectionChanged" 
+                        ItemsSource="{Binding Path=Model.Messagebs,  Mode=OneWay} "  >
+            <!--<CollectionView.ItemsSource>
+                <x:Array Type="{x:Type local:FlyoutPageItem}">
+                    <local:FlyoutPageItem Title="eslmm999888xxxxx" 
+                                      IconSource="contacts.png" 
+                                      TargetType="{x:Type local:asmb}" />
+                </x:Array>
+            </CollectionView.ItemsSource>-->
+            <CollectionView.ItemTemplate>
+                <DataTemplate >
+                    <Grid Padding="5,10">
+                        <!--<Grid.GestureRecognizers>
+                            <SwipeGestureRecognizer Direction="Left,Right" Swiped="SwipeGestureRecognizer_Swiped"/>
+                        </Grid.GestureRecognizers>-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                      
+                        </Grid.ColumnDefinitions>
+
+                        <Label  Text="{Binding Mtype}" VerticalOptions="Center" />
+
+                        <Label Grid.Column="1"
+                           Margin="10,0"
+                           Text="{Binding Slice}"                     
+                           VerticalOptions="Center" HorizontalOptions="Center" />
+                            <Label Grid.Column="2"
+                           Margin="5,0"
+                           Text="{Binding Rate}"                     
+                           VerticalOptions="Center" />
+                         
+                        <Label Grid.Column="3"
+                           Margin="5,0"
+                           Text="{Binding Time}"                     
+                           VerticalOptions="Center" HorizontalOptions="Center" />
+                            <Label Grid.Column="4"
+                           Margin="5,0"
+                           Text="{Binding Balance}"                     
+                           VerticalOptions="Center" />
+                            <!--<Image Grid.Column="3" Source="xiayiyeqianjinchakangengduo.png"></Image>-->
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+    </VerticalStackLayout>
+
+</ContentPage>

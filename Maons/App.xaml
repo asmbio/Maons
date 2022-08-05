@@ -1,0 +1,28 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ASMB"
+             xmlns:localvm="clr-namespace:ASMB.ViewModels"
+             x:Class="ASMB.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--<localvm:MyWallet x:Key="Mywallet"></localvm:MyWallet>-->
+            <localvm:VMlc x:Key="VMlc"></localvm:VMlc>
+            <local:MaonsConverter x:Key="MaonsConverter"></local:MaonsConverter>
+            <local:MaonstoUintConverter x:Key="MaonstoUintConverter"></local:MaonstoUintConverter>
+            <local:AddressConverter x:Key="AddressConverter"></local:AddressConverter>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+
+<!--<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>myapp.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass></AndroidSigningKeyPass>
+    <AndroidSigningStorePass></AndroidSigningStorePass>
+</PropertyGroup>-->

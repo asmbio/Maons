@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASMB.Views.egg1.egg1"
+             Title="彩蛋1" BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}">
+    <VerticalStackLayout Margin="10,0">
+        <Label 
+            Text="Welcome to ASMB!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <HorizontalStackLayout Margin="0,20,0,0">
+            <CheckBox x:Name="isauto" VerticalOptions="Center" IsChecked="{Binding Isauto}"></CheckBox>
+            <Label VerticalOptions="Center">自动挖矿</Label>
+
+            <Image Source="wakuang.gif" HeightRequest="60" IsAnimationPlaying="{Binding Source={Reference isauto}, Path=IsChecked}"></Image>
+            <Label x:Name="choujiang" VerticalOptions="Center" Margin="20,0,0,0" TextColor="Red" Text="{Binding Egg1str}"></Label>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label  Text="接收地址 ："></Label>
+            <Label x:Name="rcvaddr" Text="{Binding Path=Model.Address}"></Label>
+        </HorizontalStackLayout>
+
+        
+        
+        <!--<Label Margin="0,20,0,0"  TextColor="Green"
+            Text="1. 完矿时间间隔过短的消息将被服务器丢弃"             
+             />-->
+        <Label  TextColor="Green"
+            Text="2. 客户端版本过旧的消息将被服务器丢弃"             
+             />
+
+        <RefreshView x:Name="isfresh" IsRefreshing="{Binding IsRefreshing}" Command="{Binding GetReciptsCmd }" CommandParameter="{Binding Account}"  >
+        <CollectionView x:Name="collectionView2" Margin="0,10,0,0"
+                        BindingContext="{ Binding Account}"
+                    x:FieldModifier="public"
+                        ItemsSource="{Binding Messagebs, Mode=OneWay}"
+                    SelectionMode="Single" SelectionChanged="collectionView2_SelectionChanged"  >  
+                    
+                        <!--ItemsSource="{Binding Path=Messagebs,  Mode=OneWay} "-->  
+            <!--<CollectionView.ItemsSource>
+                <x:Array Type="{x:Type local:FlyoutPageItem}">
+                    <local:FlyoutPageItem Title="eslmm999888xxxxx" 
+                                      IconSource="contacts.png" 
+                                      TargetType="{x:Type local:asmb}" />
+                </x:Array>
+            </CollectionView.ItemsSource>-->
+            <CollectionView.ItemTemplate>
+                <DataTemplate >
+                    <Grid Padding="5,10">
+                        <!--<Grid.GestureRecognizers>
+                            <SwipeGestureRecognizer Direction="Left,Right" Swiped="SwipeGestureRecognizer_Swiped"/>
+                        </Grid.GestureRecognizers>-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Label  Text="{Binding Mtype}" VerticalOptions="Center" />
+
+                        <Label Grid.Column="1"
+                           Margin="10,0"
+                           Text="{Binding Slice}"                     
+                           VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Grid.Column="2"
+                           Margin="5,0"
+                           Text="{Binding Rate}"                     
+                           VerticalOptions="Center" />
+
+                        <Label Grid.Column="3"
+                           Margin="5,0"
+                           Text="{Binding Time}"                     
+                           VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Grid.Column="4"
+                           Margin="5,0"
+                           Text="{Binding Balance}"                     
+                           VerticalOptions="Center" />
+                        <!--<Image Grid.Column="3" Source="xiayiyeqianjinchakangengduo.png"></Image>-->
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        </RefreshView>
+    </VerticalStackLayout>
+</ContentPage>

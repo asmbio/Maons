@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASMB.Views.walletlist.NewAccount"
+             Title="添加" BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}" >
+    <VerticalStackLayout  Margin="20,0,0,0" >
+        <Label 
+            Text="Welcome to ASMB!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <!--<HorizontalStackLayout Margin="0,20,0,0">
+            <Label Text="地址："></Label>
+            <Label  Text="{Binding Path=Model.Address}"></Label>
+        </HorizontalStackLayout>-->
+
+        <Button Margin="0,20,0,0" Text="随机生成秘钥" Clicked="Button_Clicked" Command="{Binding Source= {StaticResource VMlc}, Path=AccountViewModels.InsertCmd}" CommandParameter="{Binding Source= {StaticResource VMlc}, Path=AccountViewModels.Model}"></Button>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ASMB"
+             x:Class="ASMB.NewPage1"
+             Title="NewPage1">
+
+
+            <NavigationPage Title="钱包" IconImageSource="wallet_line.png">
+                <x:Arguments>
+                    <local:wallet />
+                </x:Arguments>
+            </NavigationPage>
+            <local:Discovery />
+            <local:MePage />
+
+
+</TabbedPage>

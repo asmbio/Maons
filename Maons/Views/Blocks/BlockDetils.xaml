@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASMB.Views.Blocks.BlockDetils" Title="区块详情">
+    <VerticalStackLayout Margin="15,15">
+        <VerticalStackLayout >
+            <HorizontalStackLayout>
+                <Label Margin="0,15" FontSize="Title">区块头</Label>
+
+                <ImageButton  Margin="20,0,0,0" Source="gengduo.png" Clicked="ImageButton_Clicked"></ImageButton>
+                <Label VerticalOptions="Center">raw</Label>
+            </HorizontalStackLayout>
+           
+            <HorizontalStackLayout>
+                <Label  WidthRequest="100"  VerticalTextAlignment="End">高度：</Label>
+                <Label  Text="{Binding Bh.Height}"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label WidthRequest="100"  VerticalTextAlignment="End">生产者：</Label>
+                <Label Text="{Binding Bh.Miner}"                     
+                           VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label WidthRequest="100"  VerticalTextAlignment="End">奖励：</Label>
+                <Label Text="{Binding Coinbase}"                     
+                           VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label WidthRequest="100"  VerticalTextAlignment="End">时间：</Label>
+                <Label Text="{Binding Time}"                     
+                           VerticalOptions="Center" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+        <Label FontSize="Title" Margin="0,20">消息列表</Label>
+        <RefreshView>
+            <CollectionView x:Name="collectionView2" Margin="0,10,0,0"
+                    x:FieldModifier="public"
+                    SelectionMode="Single" SelectionChanged="collectionView2_SelectionChanged" 
+                        ItemsSource="{Binding Path=Bh.Cfmmessages,  Mode=OneWay} "  >
+                <!--<CollectionView.ItemsSource>
+                <x:Array Type="{x:Type local:FlyoutPageItem}">
+                    <local:FlyoutPageItem Title="eslmm999888xxxxx" 
+                                      IconSource="contacts.png" 
+                                      TargetType="{x:Type local:asmb}" />
+                </x:Array>
+            </CollectionView.ItemsSource>-->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
+                        <Grid Padding="5,10">
+                            <!--<Grid.GestureRecognizers>
+                            <SwipeGestureRecognizer Direction="Left,Right" Swiped="SwipeGestureRecognizer_Swiped"/>
+                        </Grid.GestureRecognizers>-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                 
+                            </Grid.ColumnDefinitions>
+
+                            <Label  Text="{Binding Mtype}" VerticalOptions="Center" />
+
+                            <Label Grid.Column="1"
+                           Margin="10,0"
+                           Text="{Binding Slice}"                     
+                           VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode ="HeadTruncation"/>
+                            <Label Grid.Column="2"
+                           Margin="5,0"
+                           Text="{Binding Rate}"                     
+                           VerticalOptions="Center" />
+                           
+                            <Label Grid.Column="3"
+                           Margin="5,0"
+                           Text="{Binding Time}"                     
+                           VerticalOptions="Center" HorizontalOptions="Center" LineBreakMode ="HeadTruncation"/>
+                            <Label Grid.Column="4"
+                           Margin="5,0"
+                           Text="{Binding Balance}"                     
+                           VerticalOptions="Center" />
+                            <!--<Image Grid.Column="3" Source="xiayiyeqianjinchakangengduo.png"></Image>-->
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </VerticalStackLayout>
+</ContentPage>
