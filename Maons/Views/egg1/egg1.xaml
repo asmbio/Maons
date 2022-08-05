@@ -8,13 +8,21 @@
             Text="Welcome to ASMB!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <HorizontalStackLayout Margin="0,20,0,0">
-            <CheckBox x:Name="isauto" VerticalOptions="Center" IsChecked="{Binding Isauto}"></CheckBox>
-            <Label VerticalOptions="Center">自动挖矿</Label>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <HorizontalStackLayout Margin="0,20,0,0">
+                <CheckBox x:Name="isauto" VerticalOptions="Center" IsChecked="{Binding Isauto}"></CheckBox>
+                <Label VerticalOptions="Center">自动挖矿</Label>
+                <Image Source="wakuang.gif" HeightRequest="60" IsAnimationPlaying="{Binding Source={Reference isauto}, Path=IsChecked}"></Image>
+                <Label x:Name="choujiang" VerticalOptions="Center" Margin="20,0,0,0" TextColor="Red" Text="{Binding Egg1str}"></Label>
+                
+            </HorizontalStackLayout>
+            <ImageButton Grid.Column="1" HorizontalOptions="EndAndExpand" Source="shuaxin.png" HeightRequest="24"  Command="{Binding GetReciptsCmd }" CommandParameter="{Binding Account}"></ImageButton>
+        </Grid>
 
-            <Image Source="wakuang.gif" HeightRequest="60" IsAnimationPlaying="{Binding Source={Reference isauto}, Path=IsChecked}"></Image>
-            <Label x:Name="choujiang" VerticalOptions="Center" Margin="20,0,0,0" TextColor="Red" Text="{Binding Egg1str}"></Label>
-        </HorizontalStackLayout>
         <HorizontalStackLayout>
             <Label  Text="接收地址 ："></Label>
             <Label x:Name="rcvaddr" Text="{Binding Path=Model.Address}"></Label>
