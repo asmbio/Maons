@@ -1,4 +1,5 @@
-﻿using ASMB.Models;
+﻿
+using ASMB.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using NASMB;
@@ -270,23 +271,36 @@ namespace ASMB.ViewModels
         //    Console.WriteLine("Terminating the application...");
         //}
 
-        public void SetTimer()
+        public async void SetTimer()
         {
-            if (aTimer == null)
+            try
             {
-                // Create a timer with a two second interval.
-                aTimer = new System.Timers.Timer(16000);
-                // Hook up the Elapsed event for the timer. 
-                aTimer.Elapsed += OnTimedEvent;
-                aTimer.AutoReset = true;
-                aTimer.Enabled = true;
-               var code2 = new byte[32];
-                var t = NASMB.GO.Egg1.EnEgg1Code(code2, 32);
-                var code22 = new byte[20];
-                NASMB.GO.Egg1.DeEgg1Code(code2, 32, t, code22, 20);
+                if (aTimer == null)
+                {
+                    // Create a timer with a two second interval.
+                    aTimer = new System.Timers.Timer(16000);
+                    // Hook up the Elapsed event for the timer. 
+                    aTimer.Elapsed += OnTimedEvent;
+                    aTimer.AutoReset = true;
+                    aTimer.Enabled = true;
+                    var From = new AsmbAddress(Model.Address);
+                    var aRpcClient = Fullapi.FindSliceApiService(From.GetAddressbyte());
+                    // SignEgg1msg signEgg1Msg = new SignEgg1msg() { Egg1msg = new Egg1msg() { From = new AsmbAddress(Model.Address) } };
+                    var sEgg1Msg = await aRpcClient.SendRequestAsync<Egg1msg>("EnEgg1Code", null);
 
-                Account.Address = SimpleBase.Base58.Bitcoin.Encode(code22);
+                    var code22 = await aRpcClient.SendRequestAsync<byte[]>("DeEgg1Code", null,sEgg1Msg.Randomcode,sEgg1Msg.Time);
+
+
+
+                    Account.Address = SimpleBase.Base58.Bitcoin.Encode(code22);
+                }
             }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("错误", ex.Message, "关闭");
+
+            }
+
         }
         // private byte[] code2 { get; set; }
         [ObservableProperty]
@@ -318,14 +332,17 @@ namespace ASMB.ViewModels
                     await App.Current.MainPage.DisplayAlert("提醒", "清先登录选择默认地址", "关闭");
                     return;
                 }
+                var From = new AsmbAddress(Model.Address);
+                var aRpcClient = Fullapi.FindSliceApiService(From.GetAddressbyte());
+               // SignEgg1msg signEgg1Msg = new SignEgg1msg() { Egg1msg = new Egg1msg() { From = new AsmbAddress(Model.Address) } };
+                var sEgg1Msg = await aRpcClient.SendRequestAsync<Egg1msg>("EnEgg1Code", null);
 
-                SignEgg1msg signEgg1Msg = new SignEgg1msg() { Egg1msg = new Egg1msg() { From = new AsmbAddress(Model.Address) } };
+                sEgg1Msg.From = From;
+                SignEgg1msg signEgg1Msg = new SignEgg1msg() { };
+                signEgg1Msg.Egg1msg = sEgg1Msg;
+                //    signEgg1Msg.Egg1msg.From.Address =;
 
-            //    signEgg1Msg.Egg1msg.From.Address =;
-
-                signEgg1Msg.Egg1msg.Randomcode = new byte[32];
-                signEgg1Msg.Egg1msg.Time = NASMB.GO.Egg1.EnEgg1Code(signEgg1Msg.Egg1msg.Randomcode, 32);
-
+            
 
                 var rlpb = signEgg1Msg.Egg1msg.RlpEncode();
                 //var rlphex = Convert.ToHexString(rlpb);
@@ -336,7 +353,7 @@ namespace ASMB.ViewModels
                 messagebs.Msgtype = signEgg1Msg.Egg1msg.Msgtype;
 
                 var msg = Newtonsoft.Json.JsonConvert.SerializeObject(messagebs);
-                var aRpcClient = Fullapi.FindSliceApiService(signEgg1Msg.Egg1msg.From.GetAddressbyte());
+              
                 var ret = await aRpcClient.SendRequestAsync<object>("Pubmsg", null, messagebs);
                 //Thread.Sleep(3000);
 

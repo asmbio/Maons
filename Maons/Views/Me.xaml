@@ -8,10 +8,13 @@
         <Label Text="Settings go here"
                HorizontalOptions="Center"
                />
-        <Label Margin="0,0" Text="1）这是测试网络，代币随时可能会被销毁重置"
+        <Label Margin="0,0" Text="1）这是主网，彩蛋1阶段，所有代币都会被保留"
                  TextColor="Green"
               />
         <Label Margin="0,0" Text="2）目前版本app 并不具备独立节点功能，需要依靠观察链运行，目前观察链数量比较少，有可能出现网络中断或者拥堵问题"
+                TextColor="Green"
+                />
+        <Label Margin="0,0" Text="3）目前网络节点比较少，比较容易受到攻击导致服务器瘫痪，网络可能会短暂暂停"
                 TextColor="Green"
                 />
     </VerticalStackLayout>

@@ -15,7 +15,7 @@
 		<ApplicationTitle>Maons</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.asmb.asmb</ApplicationId>
+		<ApplicationId>com.asmb.maons</ApplicationId>
 		<ApplicationIdGuid>589000D3-42E6-48E1-A72A-FB92C57B4E32</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -263,12 +263,13 @@
 	  <None Remove="Resources\Images\zhuanzhang.png" />
 	</ItemGroup>
 
+
+
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\NASMB\NASMB.GO\NASMB.GO.csproj" />
 	  <ProjectReference Include="..\..\NASMB\NASMB.Wallet\NASMB.Wallet.csproj" />
 	  <ProjectReference Include="..\..\NASMB\NASMB\NASMB.csproj" />
 	  <ProjectReference Include="..\Magic.MAUI\Magic.MAUI.csproj" />
