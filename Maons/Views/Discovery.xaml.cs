@@ -26,4 +26,9 @@ public partial class Discovery : ContentPage
 	{
         await Navigation.PushAsync(new Views.egg1.egg1());
     }
+
+	private async void producerbtn_Clicked(object sender, EventArgs e)
+	{
+        await Navigation.PushAsync(new  MauiApp1.producer());
+    }
 }

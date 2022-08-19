@@ -14,6 +14,7 @@
         </HorizontalStackLayout>
 
         <Button Margin="0,20,0,0"  Text="请求代币" Clicked="Button_Clicked" ></Button>
-        <Label Margin="0,20,0,0" Text="请不要过多申请，留一些给其他小伙伴体验一下，谢谢！！！" HorizontalOptions="Center"></Label>
+        <!--<Label Margin="0,20,0,0" Text="请不要过多申请，留一些给其他小伙伴体验一下，谢谢！！！" HorizontalOptions="Center"></Label>-->
+        <Label Margin="0,20,0,0" Text="内测阶段已经过时，现在该功能已经屏蔽，谢谢！！！" HorizontalOptions="Center"></Label>
     </VerticalStackLayout>
 </ContentPage>

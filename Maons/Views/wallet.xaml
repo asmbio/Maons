@@ -25,7 +25,7 @@
         </Grid>
         
         <Label 
-            Text="Welcome to asmb！测试网络，所有代币用于测试"
+            Text="Welcome to asmb！公测网络"
             VerticalOptions="Center" 
             HorizontalOptions="Center" TextColor="Green"/>
         <Label 

@@ -5,7 +5,7 @@
              IconImageSource="compassdiscoverline.png" 
              Title="探索">
 
-        <FlexLayout Wrap="Wrap" AlignContent="Start" Margin="10,20">
+        <FlexLayout Wrap="Wrap" AlignContent="Start" Margin="0,20">
 
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
             <ImageButton Source="qukuailian.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked"></ImageButton>
@@ -18,7 +18,7 @@
         </VerticalStackLayout>
 
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
-            <ImageButton Source="shengchanshishi.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
+            <ImageButton x:Name="producerbtn" Source="shengchanshishi.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="producerbtn_Clicked"></ImageButton>
             <Label VerticalOptions="Center" HorizontalOptions="Center">节点投票</Label>
         </VerticalStackLayout>
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">

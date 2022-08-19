@@ -33,9 +33,9 @@
         <!--<Label Margin="0,20,0,0"  TextColor="Green"
             Text="1. 完矿时间间隔过短的消息将被服务器丢弃"             
              />-->
-        <Label  TextColor="Green"
+        <!--<Label  TextColor="Green"
             Text="2. 客户端版本过旧的消息将被服务器丢弃"             
-             />
+             />-->
 
         <RefreshView x:Name="isfresh" IsRefreshing="{Binding IsRefreshing}" Command="{Binding GetReciptsCmd }" CommandParameter="{Binding Account}"  >
         <CollectionView x:Name="collectionView2" Margin="0,10,0,0"

@@ -14,7 +14,8 @@ namespace ASMB.Models
 
     public partial class VoteState : CommunityToolkit.Mvvm.ComponentModel.ObservableObject
         {
-
+        [ObservableProperty]
+        private int? paiming; //自己的投票票数
         [ObservableProperty]
         private BigInteger? votes; //自己的投票票数
         [ObservableProperty]
@@ -25,6 +26,9 @@ namespace ASMB.Models
                              //Slice      []byte   //投票的目标生产分片，如果投票给别人,目标分片为空
         [ObservableProperty]                   // 0:producing 消息锁 1:生产状态 2:
         private byte _lock; //  事务锁 ，
+        [ObservableProperty]                   // 0:producing 消息锁 1:生产状态 2:
+        private string marks; //  事务锁 ，
+        public BigInteger? AllVotes { get { return votes + otherVotes; } }
 
     }
     public partial class Account :CommunityToolkit.Mvvm.ComponentModel.ObservableObject

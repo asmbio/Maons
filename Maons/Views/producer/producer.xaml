@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.producer"
+             Title="producer"
+             BindingContext="{Binding Source={StaticResource VMlc},Path=AccountViewModels}">
+    <VerticalStackLayout Margin="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="80"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Text="节点排名" FontSize="Medium"></Label>
+            <Button Grid.Column="1" Text="投票" HeightRequest="38" Clicked="Button_Clicked"></Button>
+        </Grid>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding GetproducerCmd}">
+            <CollectionView x:Name="collectionView23p" Margin="0,10,0,0"
+                    x:FieldModifier="public"
+                    SelectionMode="Single" 
+                        ItemsSource="{Binding Path=Producers,  Mode=OneWay} "  >
+                <!--<CollectionView.ItemsSource>
+                <x:Array Type="{x:Type local:FlyoutPageItem}">
+                    <local:FlyoutPageItem Title="eslmm999888xxxxx" 
+                                      IconSource="contacts.png" 
+                                      TargetType="{x:Type local:asmb}" />
+                </x:Array>
+            </CollectionView.ItemsSource>-->
+                <CollectionView.Header>
+                    <Grid Padding="5,10">
+                        <!--<Grid.GestureRecognizers>
+                            <SwipeGestureRecognizer Direction="Left,Right" Swiped="SwipeGestureRecognizer_Swiped"/>
+                        </Grid.GestureRecognizers>-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label  Text="排名" />
+
+                        <Label Grid.Column="1" Text="地址"  />
+
+                        <Label Grid.Column="2"
+                           Margin="10,0"
+                           Text="票数"                     
+                          HorizontalOptions="Center"  />
+                        <Label Grid.Column="3"
+                           Margin="10,0"
+                           Text="节点说明"                     
+                           VerticalOptions="Center" HorizontalOptions="Center" />
+
+                        <!--<ImageButton Source="cai.png" Grid.Column="4" ></ImageButton>-->
+
+                        <!--<Image Grid.Column="3" Source="xiayiyeqianjinchakangengduo.png"></Image>-->
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    
+                    <DataTemplate >
+                        
+                        <Grid Padding="5,10">
+                            <!--<Grid.GestureRecognizers>
+                            <SwipeGestureRecognizer Direction="Left,Right" Swiped="SwipeGestureRecognizer_Swiped"/>
+                        </Grid.GestureRecognizers>-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label  Text="{Binding Votest.Paiming}" VerticalOptions="Center" />
+
+                            <Label Grid.Column="1" Text="{Binding Address}" VerticalOptions="Center" />
+
+                            <Label Grid.Column="2"
+                           Margin="10,0"
+                           Text="{Binding  Votest.AllVotes}"                     
+                            HorizontalOptions="Center" LineBreakMode ="HeadTruncation"/>
+                            <Label Grid.Column="3"
+                           Margin="10,0"
+                           Text="{Binding  Votest.Marks}"                     
+                            HorizontalOptions="Center" LineBreakMode ="HeadTruncation"/>
+
+                            <ImageButton Source="cai.png" Grid.Column="4" ></ImageButton>
+                    
+                            <!--<Image Grid.Column="3" Source="xiayiyeqianjinchakangengduo.png"></Image>-->
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </VerticalStackLayout>
+</ContentPage>

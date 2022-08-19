@@ -234,6 +234,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\a-xialaanniulvse.png" />
 	  <None Remove="Resources\Images\a-zu17613.png" />
+	  <None Remove="Resources\Images\cai.png" />
 	  <None Remove="Resources\Images\caidan2x.png" />
 	  <None Remove="Resources\Images\compassdiscoverline.png" />
 	  <None Remove="Resources\Images\contacts.png" />
@@ -325,6 +326,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="NewPage1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\producer\producer.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pwd.xaml">
