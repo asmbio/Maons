@@ -30,9 +30,13 @@
 
         
         
-        <!--<Label Margin="0,20,0,0"  TextColor="Green"
-            Text="1. 完矿时间间隔过短的消息将被服务器丢弃"             
-             />-->
+        <Label Margin="0,20,0,0"  TextColor="Green"
+            Text="1. 30s后可以下拉或者点击刷新查看挖矿情况"             
+             />
+        <Label  TextColor="Green"
+            Text="2. 如果接收地址为空清先登录并添加地址"             
+             />
+
         <!--<Label  TextColor="Green"
             Text="2. 客户端版本过旧的消息将被服务器丢弃"             
              />-->

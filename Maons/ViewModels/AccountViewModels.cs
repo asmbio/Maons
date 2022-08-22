@@ -52,8 +52,7 @@ namespace ASMB.ViewModels
                         return;
                     }
                     //var w =ASMB.ViewModels.MyWallet.GetWallet();
-                    GetList();   
-                   await App.Current.MainPage. Navigation.PushAsync(new Views.walletlist.WalletlistPage());
+               
                     return;
                 }
                 var add = SimpleBase.Base58.Bitcoin.Decode(account.Address).ToArray();
@@ -276,6 +275,11 @@ namespace ASMB.ViewModels
         {
             try
             {
+                if(Model.Address == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("错误", "清先登录", "关闭");
+                    return;
+                }
                 if (aTimer == null)
                 {
                     // Create a timer with a two second interval.

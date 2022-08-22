@@ -5,13 +5,48 @@ namespace ASMB
 {
     public partial class AppShell : Shell
     {
-        public AppShell()
+        public   AppShell()
         {
             InitializeComponent();
             //this.
-            
+            // await login();
+
+            Task.Run(() =>
+            {
+                Thread.Sleep(1000);
+
+                this.Dispatcher.Dispatch(()=>{
+                    login();
+                });
+            });
+           
         }
 
+        //protected async override void OnNavigated(ShellNavigatedEventArgs args)
+        //{
+        //    base.OnNavigated(args);
+        //    //await login();
+        //}
+
+        //protected override  SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+        //{
+        
+        //  var ee=   base.OnMeasure(widthConstraint, heightConstraint);
+        //     login();
+        //    return ee;
+        //}
+        //protected override async void OnAppearing()
+        //{
+
+        //    base.OnAppearing();
+
+
+        //}
+        //protected async override void OnSizeAllocated(double width, double height)
+        //{
+        //    base.OnSizeAllocated(width, height);
+        //    await login();
+        //}
         internal async Task<bool> login()
         {
             ASMB.Views.Pwd pwd = new ASMB.Views.Pwd();
@@ -24,7 +59,11 @@ namespace ASMB
                 await DisplayAlert("", "钱包密码错误", "确定");
                 return false;
             }
+            var avm = VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>();
+            avm.GetList();
 
+      
+            await Navigation.PushAsync(new Views.walletlist.WalletlistPage());
             return true;
         }
 

@@ -9,8 +9,9 @@ namespace ASMB
         {
             InitializeComponent();
 
-           // MainPage = new login();
-            MainPage = new AppShell();
+            // MainPage = new login();
+            ////Microsoft.Maui.Devices.DeviceInfo .Idiom
+                   MainPage = new AppShell();
 
 
         }

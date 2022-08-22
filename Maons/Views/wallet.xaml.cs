@@ -74,7 +74,8 @@ public partial class wallet : ContentPage
             await DisplayAlert("", "Ç®°üÃÜÂë´íÎó", "È·¶¨");
             return false;
         }
-
+        var avm = VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>();
+        avm.GetList();
         return true;
 
     }
@@ -92,8 +93,7 @@ public partial class wallet : ContentPage
         }
         // var service = VMlc.Services.BuildServiceProvider();
 
-        var avm = VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>();
-        avm.GetList();
+
         //ASMB. MauiProgram.Services
         //ASMB.MauiProgram.Services.ge
         await Navigation.PushAsync(new Views.walletlist.WalletlistPage());

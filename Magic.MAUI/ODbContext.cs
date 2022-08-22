@@ -152,7 +152,7 @@ namespace Magic.MAUI
             try
             {
                 var ret = (await provider.GetList(Getquery(), curPage, pageSize, stime, etime, orderby, orderkey, ""));
-                list = new ObservableCollection<T>(ret.list);
+                List = new ObservableCollection<T>(ret.list);
                 list.CollectionChanged += List_CollectionChanged;
             }
             catch (Exception e)
