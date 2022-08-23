@@ -9,3 +9,4 @@ node_modules
 dist
 packages
 .output
+myapp.keystore
