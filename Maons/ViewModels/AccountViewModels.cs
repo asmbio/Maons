@@ -318,6 +318,12 @@ namespace ASMB.ViewModels
         private Models.Account account = new Models.Account() { Messagebs = new Messagebs[] { } };
 
       //  ViewModels.AccountViewModels avm = VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>();
+
+        /// <summary>
+        /// 不要尝试加快速率，服务器会验证消息频率，不符合规则的直接丢弃，并记录请求者ip 超过一定次数后直接拉黑
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         private async void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             if (isauto == false)
