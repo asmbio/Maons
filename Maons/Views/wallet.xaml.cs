@@ -11,13 +11,29 @@ using Newtonsoft.Json;
 public partial class wallet : ContentPage
 {
 
-	public   wallet()
-	{
-		InitializeComponent();
-        
+    public wallet()
+    {
+        InitializeComponent();
+        if (MyWallet.GetWallet() == null)
+        {
+            Task.Run(() =>
+            {
+                Thread.Sleep(1000);
+
+                this.Dispatcher.Dispatch(async () =>
+                {
+                    var ret = await login();
+                    if (!ret)
+                    {
+                        return;
+                    }
+                    await Navigation.PushAsync(new Views.walletlist.WalletlistPage());
+                });
+            });
+        }
         // var result =  DisplayPromptAsync("«Æ∞¸√‹¬Î", " ‰»Î«Æ∞¸√‹¬Î",  in keyboard: Keyboard.Numeric);
 
-       // login();
+        // login();
 
 
         //result.Wait();
@@ -67,7 +83,7 @@ public partial class wallet : ContentPage
         ASMB.Views.Pwd pwd = new ASMB.Views.Pwd();
         //pwd.ac
         string paswd=  ( string)( await this.ShowPopupAsync(pwd));
-
+        
 
         if (ASMB.ViewModels.MyWallet.GetWallet(paswd) == null)
         {

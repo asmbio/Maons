@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASMB.PinlunDetails">
+    <VerticalStackLayout Margin="20,20" MaximumWidthRequest="800" >
+        <Label FontSize="Subtitle" Text="{Binding Body.SignWorkscommentmsg.Workscommentmsg.From}" WidthRequest="100" HeightRequest="28" HorizontalOptions="Start"></Label>
+        <Label Margin="20,10,0,0" MaximumHeightRequest="100" Text="{Binding Body.SignWorkscommentmsg.Workscommentmsg.Content2}" VerticalOptions="Center" >
+        </Label>
+        <Grid Opacity="0.4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Margin="0,10,0,0" Text="{Binding Time, StringFormat=发布于 {0}}" TextColor="Gray" ></Label>
+            <HorizontalStackLayout Grid.Column="1" Margin="0,10,0,5"  HorizontalOptions="End">
+                <Image Margin="20,0,0,0" Source="zan.png" HeightRequest="18" ></Image>
+                <Label Text="{Binding Body.WorksmsgEx.Up}"></Label>
+                <Image  Margin="30,0,0,0" Source="pinglun.png" HeightRequest="18"></Image>
+                <Label  Text="{Binding Body.WorksmsgEx.PinglunTimes}"></Label>
+            </HorizontalStackLayout>
+        </Grid>
+        <!--<Line  X2="400" Stroke="gray" Opacity="0.8"></Line>-->
+    </VerticalStackLayout>
+</ContentView>

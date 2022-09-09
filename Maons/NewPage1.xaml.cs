@@ -1,6 +1,6 @@
 namespace ASMB;
 
-public partial class NewPage1 : TabbedPage
+public partial class NewPage1 : ContentPage
 {
 	public NewPage1()
 	{

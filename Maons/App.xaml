@@ -11,6 +11,10 @@
             <local:MaonsConverter x:Key="MaonsConverter"></local:MaonsConverter>
             <local:MaonstoUintConverter x:Key="MaonstoUintConverter"></local:MaonstoUintConverter>
             <local:AddressConverter x:Key="AddressConverter"></local:AddressConverter>
+            <local:AddressstatezanConverter x:Key="AddressstatezanConverter"></local:AddressstatezanConverter>
+            <local:AddressstatecaiConverter x:Key="AddressstatecaiConverter"></local:AddressstatecaiConverter>
+            <local:AddressstateopciyzanConverter x:Key="AddressstateopciyzanConverter"></local:AddressstateopciyzanConverter>
+            <local:AddressstateopciycaiConverter x:Key="AddressstateopciycaiConverter"></local:AddressstateopciycaiConverter>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />

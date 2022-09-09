@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using Nethereum.RLP;
 
 namespace ASMB.ViewModels
 {
@@ -97,12 +98,12 @@ namespace ASMB.ViewModels
              
                 var add = SimpleBase.Base58.Bitcoin.Decode(account.Address).ToArray();
                 var aRpcClient = NASMB.Fullapi.FindApiService(add);
-                var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, add, UInt64.MaxValue, 10);
+                var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, add,null,null, 10);
 
 
                 //  Model.Balance = ret.Balance;
                 //  var ss = Model.Balance / 1;
-                account.Messagebs = ret;
+                account.Messagebs = new ObservableCollection<Messagebs>(ret);
 
             }
             catch (Exception e)
@@ -192,7 +193,7 @@ namespace ASMB.ViewModels
                     return false;
                 }
 
-                // var rlphex = Convert.ToHexString(rlpb);
+                var rlphex = Convert.ToHexString(rlpb);
                 var w = MyWallet.GetWallet();
                 if (w == null)
                 {
@@ -200,6 +201,7 @@ namespace ASMB.ViewModels
                 }
                 signTransmsg.Sign = w.Sign(signTransmsg.Transmsg.From.GetAddressbyte(), rlpb);
 
+               // var ss2 =signTransmsg.RlpEncode();
                 Messagebs messagebs = new Messagebs();
                 messagebs.Body = signTransmsg;
                 messagebs.Msgtype = signTransmsg.Transmsg.Msgtype;
@@ -212,7 +214,6 @@ namespace ASMB.ViewModels
 
                 // 记录到本地缓存 跟踪消息状态
                 return true;
-
             }
             catch (Exception e)
             {
@@ -315,7 +316,7 @@ namespace ASMB.ViewModels
         private string egg1str = "...";
         
         [ObservableProperty]
-        private Models.Account account = new Models.Account() { Messagebs = new Messagebs[] { } };
+        private Models.Account account = new Models.Account() { Messagebs = new ObservableCollection<Messagebs>() };
 
       //  ViewModels.AccountViewModels avm = VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>();
 
@@ -551,6 +552,334 @@ namespace ASMB.ViewModels
 
 
         #endregion
+
+        #region zhuye
+        [ObservableProperty]
+        private Account zhuyeAccount= new Account   () { Address= "htaM6rQvi4ci3bQ5uReAm5XXytv" };
+
+        private RelayCommand<Account> getworkssCmd;
+        public RelayCommand<Account> GetWorkssCmd
+        {
+            get
+            {
+                return getworkssCmd ?? (getworkssCmd = new RelayCommand<Account>(GetWorkss));
+            }
+        }
+        public async void GetWorkss(Account account)
+        {
+            try
+            {
+                if (account.Address == null) return;
+                // if (Model.Messagebs == null) return;
+                if (account.Messagebs == null)
+                {
+                    account.Messagebs = new ObservableCollection<Messagebs>();
+                }
+                var add = SimpleBase.Base58.Bitcoin.Decode(account.Address).ToArray();
+                var aRpcClient = NASMB.Fullapi.FindApiService(add);
+                var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, add, null, null, 10);
+                //    var msglist = new List<Messagebs>() { };
+               // ret=  ;
+                foreach (var item in ret.Reverse())
+                {
+                    if (item.Msgtype == Msgtype.SignWorks || item.Msgtype == Msgtype.ChanSignWorks)
+                    {
+                        if (account.Messagebs.FirstOrDefault(p=>p.Time== item.Time)==null)
+                        {
+                            account.Messagebs.Insert(0, item);
+                           // msglist.Add(item);
+                        }                     
+                        //account.Messagebs =  account.Messagebs.Append(item);                        
+                    }
+                    continue;
+                }
+             //   = msglist.Concat( account.Messagebs).ToArray() ;
+                //  Moaccount.Messagebs del.Balance = ret.Balance;
+                //  var ss = Model.Balance / 1;
+               // account.Messagebs = msglist.ToArray();
+
+            }
+            catch (Exception e)
+            {
+                Magic.MAUI.LogHelper.DefaultLogger.Error(e);
+                if (App.Current.MainPage.IsLoaded)
+                {
+                    await App.Current.MainPage.DisplayAlert("网络错误", e.Message, "关闭");
+
+                }            
+            }
+            IsRefreshing = false;
+
+        }
+
+        private RelayCommand<Account> apendWorkssCmd;
+        public RelayCommand<Account> ApendWorkssCmd
+        {
+            get
+            {
+                return apendWorkssCmd ?? (apendWorkssCmd = new RelayCommand<Account>(ApendWorkss));
+            }
+        }
+        private bool iszhuyeend = false;
+
+
+        public async void ApendWorkss(Account account)
+        {
+            try
+            {
+                if(iszhuyeend)
+                {
+                    return;
+                }
+
+                if (account.Address == null) 
+                {
+                    return; 
+                }
+                // if (Model.Messagebs == null) return;
+                if (account.Messagebs == null)
+                {
+                    account.Messagebs = new ObservableCollection<Messagebs>();
+                }
+                // var last = account.Messagebs[]
+                var add = SimpleBase.Base58.Bitcoin.Decode(account.Address).ToArray();
+                var aRpcClient = NASMB.Fullapi.FindApiService(add);
+                var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, add, null, account.Messagebs.Last()._Shakey, 10);
+                //    var msglist = new List<Messagebs>() { };
+                // ret=  ;
+                if (ret.Length < 10)
+                {
+                    iszhuyeend = true;
+                }
+                foreach (var item in ret)
+                {
+                    if (item.Msgtype == Msgtype.SignWorks || item.Msgtype == Msgtype.ChanSignWorks)
+                    {
+                        if (account.Messagebs.FirstOrDefault(p => p.Time == item.Time) == null)
+                        {
+                            account.Messagebs.Add(item);
+                            // msglist.Add(item);
+                        }
+                        //account.Messagebs =  account.Messagebs.Append(item);                        
+                    }
+                    continue;
+                }
+                //   = msglist.Concat( account.Messagebs).ToArray() ;
+                //  Moaccount.Messagebs del.Balance = ret.Balance;
+                //  var ss = Model.Balance / 1;
+                // account.Messagebs = msglist.ToArray();
+
+            }
+            catch (Exception e)
+            {
+                Magic.MAUI.LogHelper.DefaultLogger.Error(e);
+                if (App.Current.MainPage.IsLoaded)
+                {
+                    await App.Current.MainPage.DisplayAlert("网络错误", e.Message, "关闭");
+
+                }
+            }
+
+
+
+
+        }
+
+        public async Task<byte> GetaddrState(Messagebs mbs)
+        {
+            if  (string.IsNullOrEmpty(Model.Address))
+            {
+                // 
+                return 0;
+            }
+            var swex = mbs.Body as SignWorksmsgEx;
+            byte[] workaddr = swex.SignWorksmsg.Worksmsg.From.GetAddressbyte();
+
+
+            byte[] hash = swex.WorksmsgEx.Pinglun;
+      
+            byte[] key = SimpleBase.Base58.Bitcoin.Decode(Model.Address).ToArray();
+            try
+            {
+                //if (account.Address == null) return;
+                //// if (Model.Messagebs == null) return;
+
+                // var add = SimpleBase.Base58.Bitcoin.Decode(account.Address).ToArray();
+                var aRpcClient = NASMB.Fullapi.FindApiService(workaddr);
+                var ret = await aRpcClient.SendRequestAsync<byte[]>("GetReceipt", null,null, hash, key);
+                //var msglist = new List<Messagebs>() { };
+                //foreach (var item in ret)
+                //{
+                //    if (item.Msgtype == Msgtype.SignWorks || item.Msgtype == Msgtype.ChanSignWorks)
+                //    {
+                //        msglist.Add(item);
+                //        //account.Messagebs =  account.Messagebs.Append(item);                        
+                //    }
+                //    continue;
+                //}
+                //  Model.Balance = ret.Balance;
+                //  var ss = Model.Balance / 1;
+                //  account.Messagebs = ret;
+
+                return ret==null? (byte)0 : ret[0];
+
+            }
+            catch (Exception e)
+            {
+
+                Magic.MAUI.LogHelper.DefaultLogger.Error(e);
+                await App.Current.MainPage.DisplayAlert("网络错误", e.Message, "关闭");
+            }
+            IsRefreshing = false;
+            return 0;
+        }
+        //rcphash[] byte, rcpkey[] byte, n int
+
+      
+        internal async Task<bool> Fasongcontent(string title ,string content)
+        {
+            try
+            {        
+                if (Model.Balance <= 0)
+                {
+                    await App.Current.MainPage.DisplayAlert("输入错误", "余额要大于0", "关闭");
+                    return false;
+                }         
+                //var ret = await ((AppShell)App.Current.MainPage).login();
+                //if (!ret)
+                //{
+                //    return false;
+                //}
+                NASMB.TYPES.SignWorksmsg signTransmsg = new NASMB.TYPES.SignWorksmsg();
+                signTransmsg.Worksmsg = new NASMB.TYPES.Worksmsg();
+                signTransmsg.Worksmsg.From = new AsmbAddress(Model.Address);
+                //signTransmsg.Transmsg.From =  SetAddress( Model.Address);
+                signTransmsg.Worksmsg.Channel =  new AsmbAddress( zhuyeAccount.Address);
+                signTransmsg.Worksmsg.Feesrate = 1000000000000;
+                signTransmsg.Worksmsg.Title = title;
+                signTransmsg.Worksmsg.Content = content.ToBytesForRLPEncoding();
+                //signTransmsg.Transmsg.Time = 637944439095943909;
+                signTransmsg.Worksmsg.Time = (UInt64)(System.DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) * 100;
+
+
+                var rlpb = signTransmsg.Worksmsg.RlpEncode();
+
+
+                var istreu = await App.Current.MainPage.DisplayAlert(title: "交易确认", message: $"总费用：{Maons.FromNil(new System.Numerics.BigInteger(signTransmsg.Worksmsg.Feesrate) * (rlpb.Length + 69) * 2)}", "确定", "取消");
+                if (!istreu)
+                {
+                    return false;
+                }
+
+                // var rlphex = Convert.ToHexString(rlpb);
+                var w = MyWallet.GetWallet();
+                if (w == null)
+                {
+                    return false;
+                }
+                signTransmsg.Sign = w.Sign(signTransmsg.Worksmsg.From.GetAddressbyte(), rlpb);
+
+                Messagebs messagebs = new Messagebs();
+                messagebs.Body = signTransmsg;
+                messagebs.Msgtype = signTransmsg.Worksmsg.Msgtype;
+
+                var msg = Newtonsoft.Json.JsonConvert.SerializeObject(messagebs);
+
+
+                var aRpcClient = Fullapi.FindSliceApiService(signTransmsg.Worksmsg.From.GetAddressbyte());
+                await aRpcClient.SendRequestAsync<object>("Pubmsg", null, messagebs);
+
+                // 记录到本地缓存 跟踪消息状态
+                return true;
+
+            }
+            catch (Exception e)
+            {
+
+                Magic.MAUI.LogHelper.DefaultLogger.Error(e);
+                await App.Current.MainPage.DisplayAlert("网络错误", e.Message, "关闭");
+                return false;
+            }
+
+        }
+
+        internal async Task<Messagebs> FasongcontentComment(string addr, byte[] key, byte tag, string content)
+        {
+            try
+            {
+
+                if (Model.Balance <= 0)
+                {
+                    await App.Current.MainPage.DisplayAlert("输入错误", "余额要大于0", "关闭");
+                    return null;
+                }
+                //var ret = await ((AppShell)App.Current.MainPage).login();
+                //if (!ret)
+                //{
+                //    return false;
+                //}
+                NASMB.TYPES.SignWorkscommentmsg signTransmsg = new NASMB.TYPES.SignWorkscommentmsg();
+                signTransmsg.Workscommentmsg = new NASMB.TYPES.Workscommentmsg();
+                signTransmsg.Workscommentmsg.From = new AsmbAddress(Model.Address);
+                //signTransmsg.Transmsg.From =  SetAddress( Model.Address);
+                signTransmsg.Workscommentmsg.To = new AsmbAddress(addr);
+                signTransmsg.Workscommentmsg.Feesrate = 1000000000000;
+                signTransmsg.Workscommentmsg.Key = key;
+                signTransmsg.Workscommentmsg.Tag = tag;
+
+                signTransmsg.Workscommentmsg.Content = content.ToBytesForRLPEncoding();
+                //signTransmsg.Transmsg.Time = 637944439095943909;
+                signTransmsg.Workscommentmsg.Time = (UInt64)(System.DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) * 100;
+
+
+                var rlpb = signTransmsg.Workscommentmsg.RlpEncode();
+
+
+                var istreu = await App.Current.MainPage.DisplayAlert(title: "交易确认", message: $"总费用：{Maons.FromNil(new System.Numerics.BigInteger(signTransmsg.Workscommentmsg.Feesrate) * (rlpb.Length + 69) * 2)}", "确定", "取消");
+                if (!istreu)
+                {
+                    return null;
+                }
+
+                // var rlphex = Convert.ToHexString(rlpb);
+                var w = MyWallet.GetWallet();
+                if (w == null)
+                {
+                    return null;
+                }
+                signTransmsg.Sign = w.Sign(signTransmsg.Workscommentmsg.From.GetAddressbyte(), rlpb);
+
+                Messagebs messagebs = new Messagebs();
+                messagebs.Body = signTransmsg;
+                messagebs.Msgtype = signTransmsg.Workscommentmsg.Msgtype;
+
+                var msg = Newtonsoft.Json.JsonConvert.SerializeObject(messagebs);
+
+
+                var aRpcClient = Fullapi.FindSliceApiService(signTransmsg.Workscommentmsg.From.GetAddressbyte());
+                await aRpcClient.SendRequestAsync<object>("Pubmsg", null, messagebs);
+
+                // 记录到本地缓存 跟踪消息状态
+
+
+
+                return messagebs;
+
+            }
+            catch (Exception e)
+            {
+
+                Magic.MAUI.LogHelper.DefaultLogger.Error(e);
+                await App.Current.MainPage.DisplayAlert("网络错误", e.Message, "关闭");
+                return null;
+            }
+
+        }
+
+        #endregion
+
+
+
     }
 
 

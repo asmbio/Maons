@@ -1,0 +1,26 @@
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="ASMB.Tianjia" BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}"
+                CanBeDismissedByTappingOutsideOfPopup="False">
+
+    <Grid BackgroundColor="White" Background="White" Padding="15,15">
+            <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="24"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="guanbi_o.png" Clicked="ImageButton_Clicked_1"></ImageButton>
+            <Label x:Name="lbladdr" Grid.Column="1"  Text="{Binding Path=Model.Address, Mode=OneWay}"  BackgroundColor="White" TextColor="Black" HorizontalOptions="Center"></Label>
+            <ImageButton Grid.Column="2" Source="fasong.png" Clicked="ImageButton_Clicked_2"></ImageButton>
+        </Grid>
+        <Editor x:Name="txtcontent" Grid.Row="1"   AutoSize="TextChanges" ></Editor>
+    </Grid>
+      
+</toolkit:Popup>

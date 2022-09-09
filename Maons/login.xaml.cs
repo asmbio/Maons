@@ -24,8 +24,8 @@ public partial class login : ContentPage
         var avm = VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>();
         avm.GetList();
         avm.Model = avm.List.First(p => p.Address == w.Keys.Defaultkey.Address.Address );
-        
-        App.Current.MainPage = new AppShell();
+
+        await Shell.Current.GoToAsync("//zhuye");
 
 
     }

@@ -16,8 +16,9 @@
             <HorizontalStackLayout Margin="0,20,0,0">
                 <CheckBox x:Name="isauto" VerticalOptions="Center" IsChecked="{Binding Isauto}"></CheckBox>
                 <Label VerticalOptions="Center">自动挖矿</Label>
-                <Image Source="wakuang.gif" HeightRequest="60" IsAnimationPlaying="{Binding Source={Reference isauto}, Path=IsChecked}"></Image>
-                <Label x:Name="choujiang" VerticalOptions="Center" Margin="20,0,0,0" TextColor="Red" Text="{Binding Egg1str}"></Label>
+                <!--"{Binding Source={Reference isauto}-->
+                <Image Source="wakuang.gif" HeightRequest="100" WidthRequest="100" IsAnimationPlaying="{Binding Source={Reference isauto}, Path=IsChecked}" ></Image>
+                <Label x:Name="choujiang" VerticalOptions="Center" Margin="20,0,0,0" TextColor="Red" Text="..."></Label>
                 
             </HorizontalStackLayout>
             <ImageButton Grid.Column="1" HorizontalOptions="EndAndExpand" Source="shuaxin.png" HeightRequest="24"  Command="{Binding GetReciptsCmd }" CommandParameter="{Binding Account}"></ImageButton>

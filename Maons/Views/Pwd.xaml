@@ -2,7 +2,7 @@
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                xmlns:local="clr-namespace:ASMB.Views"   
-               x:Class="ASMB.Views.Pwd" Color="White" VerticalOptions="End" >
+               x:Class="ASMB.Views.Pwd" Color="White" VerticalOptions="End"     CanBeDismissedByTappingOutsideOfPopup="False">
 
     <VerticalStackLayout Margin="0,0,0,0" VerticalOptions="Center" >
         <!--<Label Text="请输入钱包密码!" FontSize="Title" Margin="0,40,0,0"  VerticalOptions="Center" 

@@ -4,14 +4,16 @@
              x:Class="ASMB.login"
              Title="login" Shell.FlyoutBehavior="Disabled">
 
-    <VerticalStackLayout VerticalOptions="Center">
-        <Label Text="请输入钱包密码!" Margin="0,20,0,0"  VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Entry x:Name="epwd" Margin="0,20,0,0" VerticalOptions="Center" WidthRequest="200"
-            HorizontalOptions="Center" IsPassword="True" ></Entry>
+    <VerticalStackLayout Margin="0,0,0,0" VerticalOptions="Center" >
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Margin="0,20,0,0" Text="密码：" VerticalOptions="Center"></Label>
+            <Entry x:Name="epwd" Margin="0,20,0,0" VerticalOptions="Center" MinimumWidthRequest="200"
+            IsPassword="True" Placeholder="请输入钱包管理密码" ></Entry>
+        </HorizontalStackLayout>
+
         <Button Text="OK" Margin="0,20,0,0" VerticalOptions="Center"  WidthRequest="80"
             HorizontalOptions="Center"
                 Clicked="OnOKButtonClicked" />
     </VerticalStackLayout>
-
 </ContentPage>

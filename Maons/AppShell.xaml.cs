@@ -8,18 +8,25 @@ namespace ASMB
         public   AppShell()
         {
             InitializeComponent();
-            //this.
-            // await login();
+          
+            //if (MyWallet.GetWallet() == null)
+            //{
+            //    Task.Run(() =>
+            //    {
+            //        Thread.Sleep(1000);
 
-            Task.Run(() =>
-            {
-                Thread.Sleep(1000);
+            //        this.Dispatcher.Dispatch(async () =>
+            //        {
+            //            var ret = await login();
+            //            if (!ret)
+            //            {
+            //                return;
+            //            }
+            //            await Navigation.PushAsync(new Views.walletlist.WalletlistPage());
+            //        });
+            //    });
+            //}
 
-                this.Dispatcher.Dispatch(()=>{
-                    login();
-                });
-            });
-           
         }
 
         //protected async override void OnNavigated(ShellNavigatedEventArgs args)
@@ -63,7 +70,8 @@ namespace ASMB
             avm.GetList();
 
       
-            await Navigation.PushAsync(new Views.walletlist.WalletlistPage());
+         //   await Navigation.PushAsync(new Views.walletlist.WalletlistPage());
+         
             return true;
         }
 
@@ -110,6 +118,41 @@ namespace ASMB
             private void flyout_HandlerChanged(object sender, EventArgs e)
         {
 
+        }
+
+
+        private async void ImageButton_Clicked(object sender, EventArgs e)
+        {
+
+            if (MyWallet.GetWallet() == null)
+            {
+
+
+
+                var ret = await login();
+                if (!ret)
+                {
+                    return;
+                }
+
+                await Navigation.PushAsync(new Views.walletlist.WalletlistPage());
+
+
+            }
+            else
+            {
+                ASMB.Tianjia pwd = new ASMB.Tianjia();
+                //pwd.ac
+                await this.ShowPopupAsync(pwd);
+            }
+
+        
+        }
+
+        private void ImageButton_Clicked_1(object sender, EventArgs e)
+        {
+            // 
+            //Shell.Current.go
         }
     }
 }

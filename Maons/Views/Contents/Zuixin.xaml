@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASMB.Zuixin"
+             xmlns:local="clr-namespace:ASMB"
+             BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}"
+             Title="Zuixin">
+
+        <RefreshView HorizontalOptions="Center" IsRefreshing="{Binding IsRefreshing}" Command="{Binding GetWorkssCmd}" CommandParameter="{Binding ZhuyeAccount}"
+                     >
+        <!--RemainingItemsThresholdReachedCommand="{Binding GetWorkssCmd}"
+                             RemainingItemsThresholdReachedCommandParameter="{Binding ZhuyeAccount}"-->
+        <CollectionView  SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged"  MaximumWidthRequest="820"
+                        ItemsSource="{Binding Path=ZhuyeAccount.Messagebs,  Mode=OneWay} "  HorizontalOptions="Center"
+                            VerticalScrollBarVisibility="Never"  
+                       
+                         Scrolled="CollectionView_Scrolled">
+                <CollectionView.ItemTemplate HorizontalOptions="Center">
+                <DataTemplate >
+                        <local:ContentCard HorizontalOptions="Center"></local:ContentCard>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+            
+        </RefreshView>
+
+    <!--<ScrollView Scrolled="ScrollView_Scrolled" >
+    </ScrollView>-->
+</ContentPage>

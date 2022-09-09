@@ -2,6 +2,7 @@
 using NASMB.TYPES;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Numerics;
@@ -83,7 +84,10 @@ namespace ASMB.Models
         [ObservableProperty]
         private byte[] receipts;//确认消息列表trie k
         [ObservableProperty]
-        private NASMB.TYPES.Messagebs[] messagebs;
+        private ObservableCollection<Messagebs> messagebs;
+
+        [ObservableProperty]
+        private ObservableCollection<Messagebs> mymessagebs;
         // public event PropertyChangedEventHandler PropertyChanged;
         // public void OnPropertyChanged([CallerMemberName] string name = "") =>
         //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

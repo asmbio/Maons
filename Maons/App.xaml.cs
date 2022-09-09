@@ -11,7 +11,7 @@ namespace ASMB
 
             // MainPage = new login();
             ////Microsoft.Maui.Devices.DeviceInfo .Idiom
-                   MainPage = new AppShell();
+            MainPage = new AppShell();
 
 
         }

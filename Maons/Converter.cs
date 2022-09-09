@@ -1,6 +1,98 @@
 ﻿namespace ASMB
 {
 
+    public class AddressstatezanConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            switch ((byte)value)
+            {    
+                case 1:
+                    return 24;
+                default:
+                    return 18;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new Exception();
+            //var ret = new NASMB.TYPES.AsmbAddress((string)value);
+            //// ret.Address = ;
+            //return ret;
+        }
+    }
+
+    public class AddressstatecaiConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            switch ((byte)value)
+            {
+   
+                case 2:
+                    return 24;
+                default:
+                    return 18;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new Exception();
+            //var ret = new NASMB.TYPES.AsmbAddress((string)value);
+            //// ret.Address = ;
+            //return ret;
+        }
+    }
+
+
+    public class AddressstateopciyzanConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            switch ((byte)value)
+            {
+
+                case 1:
+                    return 1;
+                default:
+                    return 0.4;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new Exception();
+            //var ret = new NASMB.TYPES.AsmbAddress((string)value);
+            //// ret.Address = ;
+            //return ret;
+        }
+    }
+
+
+    public class AddressstateopciycaiConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            switch ((byte)value)
+            {
+
+                case 2:
+                    return 1;
+                default:
+                    return 0.4;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new Exception();
+            //var ret = new NASMB.TYPES.AsmbAddress((string)value);
+            //// ret.Address = ;
+            //return ret;
+        }
+    }
     public class AddressConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

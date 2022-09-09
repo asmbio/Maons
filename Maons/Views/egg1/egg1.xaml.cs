@@ -19,7 +19,7 @@ public partial class egg1 : ContentPage
     }
 
 
-    private static System.Timers.Timer aTimer;
+
 
 
     //private  void SetTimer()

@@ -5,7 +5,8 @@
              IconImageSource="compassdiscoverline.png" 
              Title="探索">
 
-        <FlexLayout Wrap="Wrap" AlignContent="Start" Margin="0,20">
+    <FlexLayout Wrap="Wrap" AlignContent="Start" Margin="0,20" >
+        <!--<FlexLayout.BindingContext>1</FlexLayout.BindingContext>-->
 
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
             <ImageButton Source="qukuailian.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked"></ImageButton>
@@ -23,7 +24,15 @@
         </VerticalStackLayout>
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
             <ImageButton Source="faqijiangcheng.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
-            <Label VerticalOptions="Center" HorizontalOptions="Center">发起公投</Label>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">发起提案</Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton Source="dianzihetong.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">电子合同</Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton Source="yiliaojilu.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">医疗记录</Label>
         </VerticalStackLayout>
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
             <ImageButton x:Name="btnegg1" Source="caidan2x.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="btnegg1_Clicked"></ImageButton>

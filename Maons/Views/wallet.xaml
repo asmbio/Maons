@@ -5,9 +5,6 @@
              x:Class="ASMB.wallet"
              IconImageSource="wallet_line.png"
              Title="Maons" BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}">
-    <ContentPage.Resources>
-        
-    </ContentPage.Resources>
     <VerticalStackLayout HorizontalOptions="Center">
         <Button  ImageSource="xialaanniulvse16.png" Text="{Binding Path=Model.Address, Mode=OneWay}" Clicked="Button_Clicked" BackgroundColor="White" TextColor="Black" HorizontalOptions="Start"></Button>
         <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand" >
@@ -58,8 +55,7 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>
-                      
-                        </Grid.ColumnDefinitions>
+                            </Grid.ColumnDefinitions>
 
                         <Label  Text="{Binding Mtype}" VerticalOptions="Center" />
 

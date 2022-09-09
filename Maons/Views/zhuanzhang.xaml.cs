@@ -48,7 +48,6 @@ public partial class zhuanzhang : ContentPage
         {
             await this.DisplayAlert("转账", "请求确认中，请等待30s左右刷新查看", "关闭");
             await Navigation.PopAsync();
-
         }
     }
 }
