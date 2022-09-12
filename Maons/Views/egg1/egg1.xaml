@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ASMB.Views.egg1.egg1"
              Title="彩蛋1" BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}">
+   
     <VerticalStackLayout Margin="10,0">
         <Label 
             Text="Welcome to ASMB!"
@@ -17,6 +18,11 @@
                 <CheckBox x:Name="isauto" VerticalOptions="Center" IsChecked="{Binding Isauto}"></CheckBox>
                 <Label VerticalOptions="Center">自动挖矿</Label>
                 <!--"{Binding Source={Reference isauto}-->
+                <!--<WebView>
+                    <WebView.Source>
+                        imggif.html
+                    </WebView.Source>
+                </WebView>-->
                 <Image Source="wakuang.gif" HeightRequest="100" WidthRequest="100" IsAnimationPlaying="{Binding Source={Reference isauto}, Path=IsChecked}" ></Image>
                 <Label x:Name="choujiang" VerticalOptions="Center" Margin="20,0,0,0" TextColor="Red" Text="..."></Label>
                 

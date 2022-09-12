@@ -126,9 +126,6 @@ namespace ASMB
 
             if (MyWallet.GetWallet() == null)
             {
-
-
-
                 var ret = await login();
                 if (!ret)
                 {
@@ -136,17 +133,13 @@ namespace ASMB
                 }
 
                 await Navigation.PushAsync(new Views.walletlist.WalletlistPage());
-
-
             }
             else
             {
                 ASMB.Tianjia pwd = new ASMB.Tianjia();
                 //pwd.ac
                 await this.ShowPopupAsync(pwd);
-            }
-
-        
+            }        
         }
 
         private void ImageButton_Clicked_1(object sender, EventArgs e)

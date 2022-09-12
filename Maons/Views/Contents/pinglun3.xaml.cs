@@ -15,28 +15,28 @@ public partial class Pinglun : ContentPage
 	{
 		InitializeComponent();
 
-        if (DeviceDisplay.Current.MainDisplayInfo.Width/ DeviceDisplay.Current.MainDisplayInfo.Density > txtcontent.MaximumWidthRequest)
-        {
-            txtcontent.WidthRequest = txtcontent.MaximumWidthRequest - 50;
-        }
-        else
-        {
-            txtcontent.WidthRequest = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density - 50;
-        }
-        var cp = App.Current.MainPage as AppShell;
+        //if (DeviceDisplay.Current.MainDisplayInfo.Width/ DeviceDisplay.Current.MainDisplayInfo.Density > txtcontent.MaximumWidthRequest)
+        //{
+        //    txtcontent.WidthRequest = txtcontent.MaximumWidthRequest - 50;
+        //}
+        //else
+        //{
+        //    txtcontent.WidthRequest = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density - 50;
+        //}
+        //var cp = App.Current.MainPage as AppShell;
      //   view2.HeightRequest = cp.CurrentPage.Height-100;
 
         var vm = new PinlunVm(_msg);
         
-    ///    var avm = VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>();
-        this.Dispatcher.Dispatch(async () =>
-        {
-            vm.GetWorksReceipts();
-            BindingContext = vm;
+        //vm.GetWorksReceipts();
+        BindingContext = vm;
+        ///    var avm = VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>();
+        //this.Dispatcher.Dispatch(async () =>
+        //{
+          
+        //    //  ((NASMB.TYPES.SignWorksmsgEx)_msg.Body).WorksmsgEx.AddrState = t;
 
-            //  ((NASMB.TYPES.SignWorksmsgEx)_msg.Body).WorksmsgEx.AddrState = t;
-
-        });
+        //});
 
 
     }

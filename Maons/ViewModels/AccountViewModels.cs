@@ -706,7 +706,7 @@ namespace ASMB.ViewModels
 
                 // var add = SimpleBase.Base58.Bitcoin.Decode(account.Address).ToArray();
                 var aRpcClient = NASMB.Fullapi.FindApiService(workaddr);
-                var ret = await aRpcClient.SendRequestAsync<byte[]>("GetReceipt", null,null, hash, key);
+                var ret = await aRpcClient.SendRequestAsync<byte[]>("GetReceipt", null,null, hash,ATypes.GettrieIndex(0, key));
                 //var msglist = new List<Messagebs>() { };
                 //foreach (var item in ret)
                 //{
@@ -755,7 +755,7 @@ namespace ASMB.ViewModels
                 signTransmsg.Worksmsg.From = new AsmbAddress(Model.Address);
                 //signTransmsg.Transmsg.From =  SetAddress( Model.Address);
                 signTransmsg.Worksmsg.Channel =  new AsmbAddress( zhuyeAccount.Address);
-                signTransmsg.Worksmsg.Feesrate = 1000000000000;
+                signTransmsg.Worksmsg.Feesrate = 1000000000000000;
                 signTransmsg.Worksmsg.Title = title;
                 signTransmsg.Worksmsg.Content = content.ToBytesForRLPEncoding();
                 //signTransmsg.Transmsg.Time = 637944439095943909;
@@ -823,7 +823,7 @@ namespace ASMB.ViewModels
                 signTransmsg.Workscommentmsg.From = new AsmbAddress(Model.Address);
                 //signTransmsg.Transmsg.From =  SetAddress( Model.Address);
                 signTransmsg.Workscommentmsg.To = new AsmbAddress(addr);
-                signTransmsg.Workscommentmsg.Feesrate = 1000000000000;
+                signTransmsg.Workscommentmsg.Feesrate = 1000000000000000;
                 signTransmsg.Workscommentmsg.Key = key;
                 signTransmsg.Workscommentmsg.Tag = tag;
 

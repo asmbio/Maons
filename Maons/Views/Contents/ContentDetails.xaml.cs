@@ -130,7 +130,11 @@ public partial class ContentDetails : ContentPage
                 body.WorksmsgEx.Up = body.WorksmsgEx.Up + 1;
                 //body.WorksmsgEx.Up--;
             }
-          
+
+        }
+        else
+        {
+            return;
         }
      
         body.WorksmsgEx.Laststatetime = DateTime.Now;
@@ -186,10 +190,11 @@ public partial class ContentDetails : ContentPage
             {
                 body.WorksmsgEx.Down = body.WorksmsgEx.Down + 1;
             }
-          
+
             // await App.Current.MainPage.DisplayAlert("内容", "区块确认中，请等待30s左右刷新查看", "关闭");
             //await App.Current.MainPage.Navigation.PopAsync();
         }
+        else { return; }
     
         body.WorksmsgEx.Laststatetime = DateTime.Now;
         Msg = msg;

@@ -15,15 +15,15 @@ public partial class Pinglun : ContentPage
 	{
 		InitializeComponent();
 
-        if (DeviceDisplay.Current.MainDisplayInfo.Width/ DeviceDisplay.Current.MainDisplayInfo.Density > txtcontent.MaximumWidthRequest)
-        {
-            txtcontent.WidthRequest = txtcontent.MaximumWidthRequest - 50;
-        }
-        else
-        {
-            txtcontent.WidthRequest = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density - 50;
-        }
-        var cp = App.Current.MainPage as AppShell;
+        //if (DeviceDisplay.Current.MainDisplayInfo.Width/ DeviceDisplay.Current.MainDisplayInfo.Density > txtcontent.MaximumWidthRequest)
+        //{
+        //    txtcontent.WidthRequest = txtcontent.MaximumWidthRequest - 50;
+        //}
+        //else
+        //{
+        //    txtcontent.WidthRequest = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density - 50;
+        //}
+        //var cp = App.Current.MainPage as AppShell;
      //   view2.HeightRequest = cp.CurrentPage.Height-100;
 
         var vm = new PinlunVm(_msg);

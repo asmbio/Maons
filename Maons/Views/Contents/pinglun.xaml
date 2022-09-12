@@ -3,22 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"         
              xmlns:local="clr-namespace:ASMB"
              Title="评价"           
-             x:Class="ASMB.Pinglun">
-
-    <Grid x:Name="grid0"  MaximumWidthRequest="1000">
+             x:Class="ASMB.Pinglun" MaximumWidthRequest="800">
+    <VerticalStackLayout  HorizontalOptions="Center">
+    <Grid x:Name="grid0"  >
         <Grid.RowDefinitions>
             <RowDefinition Height="50" ></RowDefinition>
-            <RowDefinition x:Name="grid1" Height="*"></RowDefinition>
-            
+            <RowDefinition x:Name="grid1" Height="*"></RowDefinition>            
         </Grid.RowDefinitions>
         <HorizontalStackLayout Grid.Row="0" HorizontalOptions="End">
             <Label>默认</Label>
             <Label Margin="10,0">最新</Label>
         </HorizontalStackLayout>
         <Grid Grid.Row="1">
-            <!--<ScrollView   Grid.Row="1" VerticalOptions="Start" ></ScrollView>-->
-            <VerticalStackLayout Margin="0,0,0,50">
-                <!--<CollectionView  x:Name="view1" SizeChanged="CollectionView_SizeChanged"  SelectionMode="None"  MaximumWidthRequest="820" VerticalScrollBarVisibility="Never"
+                <!--<ScrollView   Grid.Row="1" VerticalOptions="Start" ></ScrollView>-->
+                <VerticalStackLayout Margin="0,0,0,50">
+                    <!--<CollectionView  x:Name="view1" SizeChanged="CollectionView_SizeChanged"  SelectionMode="None"  MaximumWidthRequest="820" VerticalScrollBarVisibility="Never"
                         ItemsSource="{Binding Path=Msg.Body.WorksmsgEx.MyReceipts,  Mode=OneWay} "  HorizontalOptions="Center">
                     <CollectionView.ItemTemplate HorizontalOptions="Center">
                         <DataTemplate >
@@ -27,33 +26,29 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 <Line  X2="30" Stroke="gray" Opacity="0.5" HorizontalOptions="Center"></Line>-->
-     
-                <RefreshView    HorizontalOptions="Center" IsRefreshing="{Binding IsRefreshing}" 
+
+                    <RefreshView    HorizontalOptions="Center" IsRefreshing="{Binding IsRefreshing}" 
                          Command="{Binding GetWorksReceiptsCmd}" >
 
-                    <CollectionView x:Name="view2" SelectionMode="None"  MaximumWidthRequest="820" VerticalScrollBarVisibility="Never"                                 
+                        <CollectionView x:Name="view2" SelectionMode="None"   VerticalScrollBarVisibility="Never"                                 
                         ItemsSource="{Binding Path=Msg.Body.WorksmsgEx.Receipts,  Mode=OneWay} "  HorizontalOptions="Center"
                                  Scrolled="CollectionView_Scrolled">
-                        <CollectionView.ItemTemplate HorizontalOptions="Center">
-                            <DataTemplate >
-                                <local:PinlunDetails></local:PinlunDetails>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </RefreshView>
-
-            </VerticalStackLayout>
-            <VerticalStackLayout  x:Name="tbpl"  MaximumHeightRequest="820" HorizontalOptions="Center" VerticalOptions="End">
-                <HorizontalStackLayout >
-
-                    <Editor x:Name="txtcontent"  AutoSize="TextChanges"  
-                        MaximumWidthRequest="800"
+                            <CollectionView.ItemTemplate >
+                                <DataTemplate >
+                                    <local:PinlunDetails></local:PinlunDetails>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </RefreshView>
+                </VerticalStackLayout>
+                <VerticalStackLayout  x:Name="tbpl"  VerticalOptions="End" >
+                    <HorizontalStackLayout >
+                        <Editor x:Name="txtcontent"  AutoSize="TextChanges" MaximumWidthRequest="800"
                         MaxLength="280"></Editor>
-                    <ImageButton  Margin="15,0"  Source="fasong.png" HeightRequest="24"  Clicked="ImageButton_Clicked"></ImageButton>
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
+                        <ImageButton  Margin="15,0"  Source="fasong.png" HeightRequest="24"  Clicked="ImageButton_Clicked"></ImageButton>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
         </Grid>
-      
-    </Grid>
-
+    </VerticalStackLayout>
 </ContentPage>

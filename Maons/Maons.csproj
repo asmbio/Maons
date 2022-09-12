@@ -231,6 +231,18 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+
+	<ItemGroup>
+	  <Compile Remove="Views\Contents\pinglun.xaml.cs" />
+	  <Compile Remove="Views\Contents\pinglun2.xaml.cs" />
+	</ItemGroup>
+
+
+	<ItemGroup>		
+	  <MauiXaml Remove="Views\Contents\pinglun.xaml" />
+	  <MauiXaml Remove="Views\Contents\pinglun2.xaml" />
+	</ItemGroup>
+
 	<ItemGroup>
 	  <None Remove="Resources\Images\a-xialaanniulvse.png" />
 	  <None Remove="Resources\Images\a-zu17613.png" />
@@ -265,6 +277,10 @@
 	  <None Remove="Resources\Images\zhuye.png" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiImage Include="Resources\Raw\imggif.html" />
+	</ItemGroup>
+
 
 
 	<ItemGroup>
@@ -278,6 +294,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\Contents\pinglun3.xaml.cs">
+	    <DependentUpon>pinglun3.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Discovery.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
@@ -320,7 +339,7 @@
 	  <MauiXaml Update="Views\Contents\ContentDetails.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Contents\pinglun.xaml">
+	  <MauiXaml Update="Views\Contents\pinglun3.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Contents\PinlunDetails.xaml">

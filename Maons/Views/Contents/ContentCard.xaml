@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ASMB.ContentCard" HorizontalOptions="Center">
-    <VerticalStackLayout x:Name="xwithe" Margin="20,20" MaximumWidthRequest="800" >
-        <Label FontSize="Title" Text="{Binding Body.SignWorksmsg.Worksmsg.From}" WidthRequest="100" HeightRequest="30" HorizontalOptions="Start"></Label>
+             x:Class="ASMB.ContentCard" >
+    <ContentView.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+    </ContentView.GestureRecognizers>
+    <VerticalStackLayout Margin="20,0,20,0" x:Name="xwithe" >
+        <Label FontSize="Title" Text="{Binding Body.SignWorksmsg.Worksmsg.From}" 
+               WidthRequest="100" HeightRequest="30" HorizontalOptions="Start"></Label>
         <Label MaximumHeightRequest="100"
             Text="{Binding Body.SignWorksmsg.Worksmsg.Content2}"
             VerticalOptions="Center" >
             <!--<Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+               
             </Label.GestureRecognizers>-->
         </Label>
-        <Label Margin="0,10,0,0" Text="{Binding Time, StringFormat=发布于 {0}}" TextColor="Gray" ></Label>
-        <HorizontalStackLayout Margin="0,10,0,5" Opacity="0.4">
+        <Label Margin="0,10,0,0" Text="{Binding Time}" TextColor="Gray" ></Label>
+        <HorizontalStackLayout Margin="0,10,0,5" Opacity="1">
             <Image Margin="20,0,0,0" Source="zan.png" HeightRequest="18" ></Image>
             <Label Text="{Binding Body.WorksmsgEx.Up}"></Label>
             <Image Margin="30,0,0,0" Source="cai_1.png" HeightRequest="18"></Image>
@@ -22,6 +26,6 @@
             <Image  Margin="30,0,0,0" Source="fenxiang.png" HeightRequest="18"></Image>
             <Label  Text="{Binding Body.WorksmsgEx.Fenxiang}"></Label>
         </HorizontalStackLayout>
-        <Line  X2="400" Stroke="gray" Opacity="0.8"></Line>
+        <Line  X2="400" Stroke="gray" Opacity="0.2"></Line>
     </VerticalStackLayout>
 </ContentView>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"         
+             xmlns:local="clr-namespace:ASMB"
+             Title="评价"           
+             x:Class="ASMB.Pinglun" MaximumWidthRequest="800" >
+    <VerticalStackLayout  HorizontalOptions="Center">
+        <RefreshView   HorizontalOptions="Center" IsRefreshing="{Binding IsRefreshing}" 
+                         Command="{Binding GetWorksReceiptsCmd}" >
+        <Grid x:Name="grid0"  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            
+            </Grid.RowDefinitions>
+                <HorizontalStackLayout Grid.Row="0" HorizontalOptions="End">
+                    <Label>默认</Label>
+                    <Label Margin="10,0">最新</Label>
+                </HorizontalStackLayout>
+                <ScrollView Grid.Row="1">
+                    <VerticalStackLayout>
+                    <CollectionView  SelectionMode="None"   VerticalScrollBarVisibility="Never"                                 
+                            ItemsSource="{Binding Path=Msg.Body.WorksmsgEx.Receipts,  Mode=OneWay} "  HorizontalOptions="Center"
+                                     Scrolled="CollectionView_Scrolled">
+                        <CollectionView.ItemTemplate >
+                            <DataTemplate >
+                                <local:PinlunDetails></local:PinlunDetails>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    </VerticalStackLayout>
+                </ScrollView>
+                <VerticalStackLayout Grid.Row="1" VerticalOptions="End"  >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Editor x:Name="txtcontent"  AutoSize="TextChanges" MaximumWidthRequest="800"
+                        MaxLength="280"></Editor>
+                    <ImageButton Grid.Column="1" Margin="15,0"  Source="fasong.png" HeightRequest="24"  Clicked="ImageButton_Clicked"></ImageButton>
+                </Grid>
+             
+            </VerticalStackLayout>
+        </Grid>
+        </RefreshView>
+
+    </VerticalStackLayout>
+</ContentPage>

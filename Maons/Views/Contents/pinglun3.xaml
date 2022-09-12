@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"         
+             xmlns:local="clr-namespace:ASMB"
+             Title="评价"           
+             x:Class="ASMB.Pinglun" MaximumWidthRequest="800" >
+   
+       
+        <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+        <HorizontalStackLayout  HorizontalOptions="End">
+            <Label>默认</Label>
+            <Label Margin="10,0">最新</Label>
+        </HorizontalStackLayout>
+        <!--<VerticalStackLayout >-->
+            <RefreshView Margin="0,40,0,60"  HorizontalOptions="Center" IsRefreshing="{Binding IsRefreshing}" 
+                         Command="{Binding GetWorksReceiptsCmd}" >
+                <CollectionView  SelectionMode="None"   VerticalScrollBarVisibility="Never"                                 
+                            ItemsSource="{Binding Path=Msg.Body.WorksmsgEx.Receipts,  Mode=OneWay} "  HorizontalOptions="Center"
+                                     Scrolled="CollectionView_Scrolled">
+                    <CollectionView.ItemTemplate >
+                        <DataTemplate >
+                            <local:PinlunDetails></local:PinlunDetails>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+            <!--<Button Text="加载更多" TextColor="Gray" BorderWidth="0" FontSize="Default" BackgroundColor="White" HorizontalOptions="Center" WidthRequest="80"></Button>
+            </VerticalStackLayout>-->
+            <VerticalStackLayout  VerticalOptions="End"  >
+            <!--<HorizontalStackLayout  HorizontalOptions="Fill" >
+                <Editor x:Name="txtcontent" HorizontalOptions="Fill"  AutoSize="TextChanges" 
+                        MaxLength="280"></Editor>
+                <ImageButton  Margin="15,0"  Source="fasong.png" HeightRequest="24"  Clicked="ImageButton_Clicked"></ImageButton>
+            </HorizontalStackLayout>-->
+            <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Editor Margin="10,0,0,0" x:Name="txtcontent"  AutoSize="TextChanges" 
+                        MaxLength="280" Placeholder="有爱评论，说点儿好听的"></Editor>
+                    <ImageButton Grid.Column="1" Margin="15,0"  Source="fasong.png" HeightRequest="24"  Clicked="ImageButton_Clicked"></ImageButton>
+                </Grid>
+            </VerticalStackLayout>
+        </Grid>
+      
+    
+</ContentPage>

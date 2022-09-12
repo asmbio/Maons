@@ -34,7 +34,34 @@
     </ShellContent>-->
     
     <TabBar x:Name="flyout" >
-        <Tab x:Name="zhuye" Title="广场"  Icon="zhuye.png" Route="zhuye">
+        <ShellContent
+            Title="广场"
+            Icon="zhuye.png"
+        ContentTemplate="{DataTemplate local:Zuixin}"
+        Route="zhuye" >
+            <Shell.TitleView>
+                <Grid VerticalOptions="Center" Margin="0,0"  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" TextColor="White" FontSize="Title" VerticalOptions="Center" Text="广场" ></Label>
+                    <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="End">
+                        <Label    TextColor="White" VerticalOptions="Center" Text="最新" ></Label>
+                        <Label   Margin="20,0,0,0" TextColor="White" VerticalOptions="Center" Text="推荐" ></Label>
+                        <Label   Margin="20,0,0,0"  TextColor="White" VerticalOptions="Center" Text="关注" ></Label>
+                    </HorizontalStackLayout>
+                    <Label  HorizontalOptions="End" Grid.Column="2" TextColor="White" VerticalOptions="Center" Text="发布" ></Label>
+
+                    <ImageButton Opacity="0.5" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" Source="tianjia.png" HeightRequest="24" Clicked="ImageButton_Clicked"></ImageButton>
+                </Grid>
+            </Shell.TitleView>
+        </ShellContent>
+        
+        <!--<Tab x:Name="zhuye" Title="广场"  Icon="zhuye.png" Route="zhuye">
             <Shell.TitleView>
 
                 <Grid VerticalOptions="Center" Margin="0,0"  >
@@ -47,12 +74,17 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" TextColor="White" FontSize="Title" VerticalOptions="Center" Text="广场" ></Label>
+                    <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center">
+                        <Label    TextColor="White" VerticalOptions="Center" Text="最新" ></Label>
+                        <Label    TextColor="White" VerticalOptions="Center" Text="推荐" ></Label>
+                        <Label    TextColor="White" VerticalOptions="Center" Text="关注" ></Label>
+                    </HorizontalStackLayout>
                     <Label  HorizontalOptions="End" Grid.Column="2" TextColor="White" VerticalOptions="Center" Text="发布" ></Label>
-
+                    
                     <ImageButton Opacity="0.5" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" Source="tianjia.png" HeightRequest="24" Clicked="ImageButton_Clicked"></ImageButton>
                 </Grid>
-            </Shell.TitleView>
-            <ShellContent
+            </Shell.TitleView>-->
+            <!--<ShellContent
             Title="最新"
             Icon="compassdiscoverline.png"
         ContentTemplate="{DataTemplate local:Zuixin}"
@@ -75,24 +107,21 @@
           
 
         </Tab>
-
+-->
 
         <ShellContent
             Title="探索"
             Icon="compassdiscoverline.png"
         ContentTemplate="{DataTemplate local:Discovery}"
         Route="Discovery" />
-        <!--<ShellContent            
-            Icon="tianjia_2.png"
-            ContentTemplate="{DataTemplate local:tianjia}"
-            Route="tianjia" />-->
+     
         <ShellContent 
             Title="钱包"
             Icon="wallet_line.png"
         ContentTemplate="{DataTemplate local:wallet}"
         Route="wallet" />
         <ShellContent
-            Title="我的"
+            Title="我"
             Icon="user_line.png"
         ContentTemplate="{DataTemplate local:MePage}"
         Route="MePage" />

@@ -4,6 +4,7 @@ using NASMB.TYPES;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace ASMB.ViewModels
         public PinlunVm(NASMB.TYPES.Messagebs _msg)
         {
             Msg = _msg;
+            GetWorksReceipts();
         }
 
         [ObservableProperty]
@@ -71,10 +73,18 @@ namespace ASMB.ViewModels
                 {
                     if (item.Msgtype == Msgtype.SWorkscomment || item.Msgtype == Msgtype.CfmSWorkscomment)
                     {
-                        if (swex.GetWorksmsgEx().Receipts.FirstOrDefault(p => p.Time == item.Time) == null)
+                        switch ((item.Body as SignWorkscommentmsgEx).SignWorkscommentmsg.Workscommentmsg.Tag)
                         {
-                            msglist.Add(item);
+                            case 4:
+                                if (swex.GetWorksmsgEx().Receipts.FirstOrDefault(p => p.Time == item.Time) == null)
+                                {
+                                    msglist.Add(item);
+                                }
+                                break;
+                            default:
+                                break;
                         }
+                
 
                         //account.Messagebs =  account.Messagebs.Append(item);                        
                     }
@@ -146,11 +156,19 @@ namespace ASMB.ViewModels
                 {
                     if (item.Msgtype == Msgtype.SWorkscomment || item.Msgtype == Msgtype.CfmSWorkscomment)
                     {
-                        if (swex.GetWorksmsgEx().Receipts. FirstOrDefault(p => p.Time == item.Time) == null)
+                        switch ((item.Body as SignWorkscommentmsgEx).SignWorkscommentmsg.Workscommentmsg.Tag)
                         {
-                            swex.GetWorksmsgEx().Receipts.Add(item);
-                            // msglist.Add(item);
+                            case 4:
+                                if (swex.GetWorksmsgEx().Receipts.FirstOrDefault(p => p.Time == item.Time) == null)
+                                {
+                                    swex.GetWorksmsgEx().Receipts.Add(item);
+                                    // msglist.Add(item);
+                                };
+                                break;
+                            default:
+                                break;
                         }
+                
                         //account.Messagebs =  account.Messagebs.Append(item);                        
                     }
                     continue;
