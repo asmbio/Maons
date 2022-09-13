@@ -5,6 +5,14 @@ namespace ASMB
 {
     public partial class AppShell : Shell
     {
+        Dictionary<string, string> _data = new Dictionary<string, string>()
+        {
+            {"想法","htaM6rQvi4ci3bQ5uReAm5XXytv" },
+            {"提案","3E4ZuLQW2NAtB8aCvH4CTm2iBVMa" },
+            {"悬赏","4ZFmgxH4KPVzUtPS16CdoKAEw76Z" },
+        };
+
+        string curguangchang = "想法";
         public   AppShell()
         {
             InitializeComponent();
@@ -131,12 +139,17 @@ namespace ASMB
                 {
                     return;
                 }
-
-                await Navigation.PushAsync(new Views.walletlist.WalletlistPage());
+                await Navigation.PushAsync(new Views.walletlist.WalletlistPage());        
+        
             }
             else
             {
-                ASMB.Tianjia pwd = new ASMB.Tianjia();
+                if (curguangchang == "悬赏" && VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>().Model.Address != _data[curguangchang])
+                {
+                    await DisplayAlert("提示", "非管理员不能发布悬赏", "确定");
+                    return;
+                }
+                ASMB.Tianjia pwd = new ASMB.Tianjia(_data[curguangchang]);
                 //pwd.ac
                 await this.ShowPopupAsync(pwd);
             }        
@@ -146,6 +159,17 @@ namespace ASMB
         {
             // 
             //Shell.Current.go
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            curguangchang = (sender as Button).Text;
+
+            //(sender as Button).
+            await GoToAsync("//zhuye",new Dictionary<string, object>()
+            {
+                {  "Vm",new WorksVm(_data[curguangchang]) }
+            });
         }
     }
 }

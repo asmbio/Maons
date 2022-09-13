@@ -4,9 +4,11 @@ namespace ASMB;
 
 public partial class Tianjia : CommunityToolkit.Maui.Views.Popup
 {
-	public Tianjia()
+    string channel = "";
+	public Tianjia(string _channel)
 	{
 		InitializeComponent();
+        channel = _channel;
         var cp = App.Current.MainPage as AppShell;
         //  Size =new Size(DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density-10, DeviceDisplay.Current.MainDisplayInfo.Height/ (DeviceDisplay.Current.MainDisplayInfo.Density*2));
         Size = new Size(cp.CurrentPage.Width, DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density);
@@ -53,7 +55,7 @@ public partial class Tianjia : CommunityToolkit.Maui.Views.Popup
           //  await App.Current.MainPage.DisplayAlert("内容", "区块确认中，请等待30s左右刷新查看", "关闭");
             return;
         }
-        if (await avm.Fasongcontent("", txtcontent.Text))
+        if (await avm.Fasongcontent("", txtcontent.Text, channel))
         {
             await App.Current.MainPage.DisplayAlert("内容", "区块确认中，请等待30s左右刷新查看", "关闭");
             Close();

@@ -117,7 +117,5 @@ namespace ASMB.ViewModels
             //  var ss = Model.Balance / 1;
             //Model.Messagebs = ret;
         }
-
-
     }
 }

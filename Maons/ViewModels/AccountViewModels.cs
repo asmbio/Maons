@@ -554,136 +554,6 @@ namespace ASMB.ViewModels
         #endregion
 
         #region zhuye
-        [ObservableProperty]
-        private Account zhuyeAccount= new Account   () { Address= "htaM6rQvi4ci3bQ5uReAm5XXytv" };
-
-        private RelayCommand<Account> getworkssCmd;
-        public RelayCommand<Account> GetWorkssCmd
-        {
-            get
-            {
-                return getworkssCmd ?? (getworkssCmd = new RelayCommand<Account>(GetWorkss));
-            }
-        }
-        public async void GetWorkss(Account account)
-        {
-            try
-            {
-                if (account.Address == null) return;
-                // if (Model.Messagebs == null) return;
-                if (account.Messagebs == null)
-                {
-                    account.Messagebs = new ObservableCollection<Messagebs>();
-                }
-                var add = SimpleBase.Base58.Bitcoin.Decode(account.Address).ToArray();
-                var aRpcClient = NASMB.Fullapi.FindApiService(add);
-                var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, add, null, null, 10);
-                //    var msglist = new List<Messagebs>() { };
-               // ret=  ;
-                foreach (var item in ret.Reverse())
-                {
-                    if (item.Msgtype == Msgtype.SignWorks || item.Msgtype == Msgtype.ChanSignWorks)
-                    {
-                        if (account.Messagebs.FirstOrDefault(p=>p.Time== item.Time)==null)
-                        {
-                            account.Messagebs.Insert(0, item);
-                           // msglist.Add(item);
-                        }                     
-                        //account.Messagebs =  account.Messagebs.Append(item);                        
-                    }
-                    continue;
-                }
-             //   = msglist.Concat( account.Messagebs).ToArray() ;
-                //  Moaccount.Messagebs del.Balance = ret.Balance;
-                //  var ss = Model.Balance / 1;
-               // account.Messagebs = msglist.ToArray();
-
-            }
-            catch (Exception e)
-            {
-                Magic.MAUI.LogHelper.DefaultLogger.Error(e);
-                if (App.Current.MainPage.IsLoaded)
-                {
-                    await App.Current.MainPage.DisplayAlert("网络错误", e.Message, "关闭");
-
-                }            
-            }
-            IsRefreshing = false;
-
-        }
-
-        private RelayCommand<Account> apendWorkssCmd;
-        public RelayCommand<Account> ApendWorkssCmd
-        {
-            get
-            {
-                return apendWorkssCmd ?? (apendWorkssCmd = new RelayCommand<Account>(ApendWorkss));
-            }
-        }
-        private bool iszhuyeend = false;
-
-
-        public async void ApendWorkss(Account account)
-        {
-            try
-            {
-                if(iszhuyeend)
-                {
-                    return;
-                }
-
-                if (account.Address == null) 
-                {
-                    return; 
-                }
-                // if (Model.Messagebs == null) return;
-                if (account.Messagebs == null)
-                {
-                    account.Messagebs = new ObservableCollection<Messagebs>();
-                }
-                // var last = account.Messagebs[]
-                var add = SimpleBase.Base58.Bitcoin.Decode(account.Address).ToArray();
-                var aRpcClient = NASMB.Fullapi.FindApiService(add);
-                var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, add, null, account.Messagebs.Last()._Shakey, 10);
-                //    var msglist = new List<Messagebs>() { };
-                // ret=  ;
-                if (ret.Length < 10)
-                {
-                    iszhuyeend = true;
-                }
-                foreach (var item in ret)
-                {
-                    if (item.Msgtype == Msgtype.SignWorks || item.Msgtype == Msgtype.ChanSignWorks)
-                    {
-                        if (account.Messagebs.FirstOrDefault(p => p.Time == item.Time) == null)
-                        {
-                            account.Messagebs.Add(item);
-                            // msglist.Add(item);
-                        }
-                        //account.Messagebs =  account.Messagebs.Append(item);                        
-                    }
-                    continue;
-                }
-                //   = msglist.Concat( account.Messagebs).ToArray() ;
-                //  Moaccount.Messagebs del.Balance = ret.Balance;
-                //  var ss = Model.Balance / 1;
-                // account.Messagebs = msglist.ToArray();
-
-            }
-            catch (Exception e)
-            {
-                Magic.MAUI.LogHelper.DefaultLogger.Error(e);
-                if (App.Current.MainPage.IsLoaded)
-                {
-                    await App.Current.MainPage.DisplayAlert("网络错误", e.Message, "关闭");
-
-                }
-            }
-
-
-
-
-        }
 
         public async Task<byte> GetaddrState(Messagebs mbs)
         {
@@ -736,7 +606,7 @@ namespace ASMB.ViewModels
         //rcphash[] byte, rcpkey[] byte, n int
 
       
-        internal async Task<bool> Fasongcontent(string title ,string content)
+        internal async Task<bool> Fasongcontent(string title ,string content,string channel)
         {
             try
             {        
@@ -754,7 +624,7 @@ namespace ASMB.ViewModels
                 signTransmsg.Worksmsg = new NASMB.TYPES.Worksmsg();
                 signTransmsg.Worksmsg.From = new AsmbAddress(Model.Address);
                 //signTransmsg.Transmsg.From =  SetAddress( Model.Address);
-                signTransmsg.Worksmsg.Channel =  new AsmbAddress( zhuyeAccount.Address);
+                signTransmsg.Worksmsg.Channel =  new AsmbAddress( channel);
                 signTransmsg.Worksmsg.Feesrate = 1000000000000000;
                 signTransmsg.Worksmsg.Title = title;
                 signTransmsg.Worksmsg.Content = content.ToBytesForRLPEncoding();
@@ -878,9 +748,5 @@ namespace ASMB.ViewModels
 
         #endregion
 
-
-
     }
-
-
 }

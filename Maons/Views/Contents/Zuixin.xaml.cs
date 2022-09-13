@@ -2,20 +2,31 @@ using ASMB.ViewModels;
 
 namespace ASMB;
 
+[QueryProperty(nameof(Vm), "Vm")]
 public partial class Zuixin : ContentPage
 {
-    AccountViewModels avm = VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>();
+    WorksVm vm = new WorksVm("htaM6rQvi4ci3bQ5uReAm5XXytv");
+    public WorksVm Vm
+    {
+        get => vm;
+        set
+        {
+            vm = value;
+            vm.GetWorkss();
+            OnPropertyChanged();
+        }
+    }
+   // AccountViewModels avm = VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>();
     public Zuixin()
 	{
 		InitializeComponent();
+        BindingContext = this;
 		try
-		{
-          
-            avm.GetWorkss(avm.ZhuyeAccount);
+		{          
+            vm.GetWorkss();
         }
 		catch (Exception)
 		{
-
 		//	throw;
 		}
 
@@ -31,8 +42,6 @@ public partial class Zuixin : ContentPage
 		var cv =new ContentDetails(item);
 		// 设置 本账户是否点赞
 
-
-
 		//cv.Msg = ;
 
 		await Navigation.PushAsync(cv);
@@ -47,11 +56,11 @@ public partial class Zuixin : ContentPage
     private object syncobj = new object();
     private async void CollectionView_Scrolled(object sender, ItemsViewScrolledEventArgs e)
 	{
-		if(e.LastVisibleItemIndex >= avm.ZhuyeAccount.Messagebs.Count-1)
+		if(e.LastVisibleItemIndex >= vm.Account.Messagebs.Count-2)
 		{          
 			lock (syncobj)
 			{
-                avm.ApendWorkss(avm.ZhuyeAccount);
+                vm.ApendWorkss();
             }
         }
      

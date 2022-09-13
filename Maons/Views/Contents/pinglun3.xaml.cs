@@ -101,7 +101,7 @@ public partial class Pinglun : ContentPage
     private void CollectionView_Scrolled(object sender, ItemsViewScrolledEventArgs e)
     {
         var vm = (this.BindingContext as PinlunVm);
-        if (e.LastVisibleItemIndex >= (vm.Msg.Body as IWorksEx).GetWorksmsgEx().Receipts.Count - 1)
+        if (e.LastVisibleItemIndex >= (vm.Msg.Body as IWorksEx).GetWorksmsgEx().Receipts.Count - 2)
         {
             vm.ApendWorksReceipts();            
         }

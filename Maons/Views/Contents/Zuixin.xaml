@@ -2,27 +2,26 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ASMB.Zuixin"
-             xmlns:local="clr-namespace:ASMB"
-             BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}"
+             xmlns:local="clr-namespace:ASMB"   
+  
              Title="Zuixin" MaximumWidthRequest="800" >
    
     <RefreshView  IsRefreshing="{Binding IsRefreshing}" 
-                     Command="{Binding GetWorkssCmd}" CommandParameter="{Binding ZhuyeAccount}"
-                    VerticalOptions="Fill">
+                     Command="{Binding Vm.GetWorkssCmd}" 
+                    >
         <!--RemainingItemsThresholdReachedCommand="{Binding GetWorkssCmd}"
                              RemainingItemsThresholdReachedCommandParameter="{Binding ZhuyeAccount}"-->
-            <CollectionView   SelectionMode="None" SelectionChanged="CollectionView_SelectionChanged" 
-                        ItemsSource="{Binding Path=ZhuyeAccount.Messagebs,  Mode=OneWay} "  
+        <CollectionView   SelectionMode="None" SelectionChanged="CollectionView_SelectionChanged" 
+                        ItemsSource="{Binding Path=Vm.Account.Messagebs,  Mode=OneWay} "  
                             VerticalScrollBarVisibility="Never"                 
                          Scrolled="CollectionView_Scrolled">
-                <CollectionView.ItemTemplate >
+            <CollectionView.ItemTemplate >
                 <DataTemplate >
-                        <local:ContentCard ></local:ContentCard>
+                    <local:ContentCard ></local:ContentCard>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-            
-        </RefreshView>
+    </RefreshView>
 
     <!--<ScrollView Scrolled="ScrollView_Scrolled" >
     </ScrollView>-->

@@ -5,7 +5,33 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ASMB"   
     Shell.FlyoutBehavior="Disabled"  >
- 
+    <Shell.Resources>
+
+        <DataTemplate x:Key="defaultTemplate">
+            <Label Text="{Binding}"
+                   FontSize="{StaticResource smallTextSize}"
+                   Margin="0,0,7,0" />
+        </DataTemplate>
+
+        <DataTemplate x:Key="mauiTemplate">
+            <Label FontSize="{StaticResource smallTextSize}"
+                   Margin="0,0,7,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding}"
+                              TextColor="DarkRed" />
+                        <Span Text="&#xf004;"
+                              TextColor="DarkRed"
+                              FontFamily="fa-solid-900" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </DataTemplate>
+
+        <local:TechItemTemplateSelector x:Key="TechItemTemplateSelector"
+                                            DefaultTemplate="{StaticResource defaultTemplate}"
+                                            MAUITemplate="{StaticResource mauiTemplate}" />
+    </Shell.Resources>
     <!--<ShellContent
         Title="测试"            
         ContentTemplate="{DataTemplate local:NewPage1}"
@@ -35,10 +61,11 @@
     
     <TabBar x:Name="flyout" >
         <ShellContent
+            
             Title="广场"
             Icon="zhuye.png"
-        ContentTemplate="{DataTemplate local:Zuixin}"
-        Route="zhuye" >
+            ContentTemplate="{DataTemplate local:Zuixin}"            
+            Route="zhuye" >
             <Shell.TitleView>
                 <Grid VerticalOptions="Center" Margin="0,0"  >
                     <Grid.ColumnDefinitions>
@@ -47,15 +74,17 @@
                         <ColumnDefinition Width="30"></ColumnDefinition>
                         <ColumnDefinition Width="50"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-
                     <Label Grid.Column="0" TextColor="White" FontSize="Title" VerticalOptions="Center" Text="广场" ></Label>
-                    <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="End">
-                        <Label    TextColor="White" VerticalOptions="Center" Text="最新" ></Label>
-                        <Label   Margin="20,0,0,0" TextColor="White" VerticalOptions="Center" Text="推荐" ></Label>
-                        <Label   Margin="20,0,0,0"  TextColor="White" VerticalOptions="Center" Text="关注" ></Label>
+                    <HorizontalStackLayout  Grid.Column="1"  HorizontalOptions="Center" VerticalOptions="End">
+                        <Button BorderWidth="0"  TextColor="White" VerticalOptions="Center" Text="想法" Clicked="Button_Clicked"></Button>
+                        <Button BorderWidth="0"  Margin="15,0,0,0" TextColor="White" VerticalOptions="Center" Text="提案" Clicked="Button_Clicked" ></Button>
+                        <Button BorderWidth="0"  Margin="15,0,0,0" TextColor="White" VerticalOptions="Center" Text="悬赏" Clicked="Button_Clicked"></Button>
+                        <!--<Label   Margin="20,0,0,0" TextColor="White" VerticalOptions="Center" >
+                            <Underline>C</ Underline>
+                        </Label>-->
+                            <!--<Label   Margin="20,0,0,0" TextColor="White" VerticalOptions="Center" Text="热点" ></Label>-->
                     </HorizontalStackLayout>
                     <Label  HorizontalOptions="End" Grid.Column="2" TextColor="White" VerticalOptions="Center" Text="发布" ></Label>
-
                     <ImageButton Opacity="0.5" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" Source="tianjia.png" HeightRequest="24" Clicked="ImageButton_Clicked"></ImageButton>
                 </Grid>
             </Shell.TitleView>
@@ -108,14 +137,18 @@
 
         </Tab>
 -->
-
+        <!--<ShellContent IsVisible="False"
+            Title="悬赏"
+            Icon="compassdiscoverline.png"
+        ContentTemplate="{DataTemplate local:Discovery}"
+        Route="Discovery" />-->
         <ShellContent
             Title="探索"
             Icon="compassdiscoverline.png"
         ContentTemplate="{DataTemplate local:Discovery}"
         Route="Discovery" />
      
-        <ShellContent 
+        <ShellContent
             Title="钱包"
             Icon="wallet_line.png"
         ContentTemplate="{DataTemplate local:wallet}"
