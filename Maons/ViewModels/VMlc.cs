@@ -15,6 +15,7 @@ namespace ASMB.ViewModels
 
             Services.AddSingleton<ViewModels.AccountViewModels>();
             Services.AddSingleton<ViewModels.BlocksViewModels>();
+            Services.AddSingleton<ViewModels.ShellVm>();
             ServiceProvider = Services.BuildServiceProvider();
         }
 
@@ -31,6 +32,14 @@ namespace ASMB.ViewModels
             get
             {
                 return ServiceProvider.GetService<BlocksViewModels>();
+            }
+        }
+
+        public ShellVm ShellVm
+        {
+            get
+            {
+                return ServiceProvider.GetService<ShellVm>();
             }
         }
     }

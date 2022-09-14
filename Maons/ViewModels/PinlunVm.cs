@@ -67,7 +67,10 @@ namespace ASMB.ViewModels
                 byte[] hash = swex.Rcphash();
 
                 var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, null, hash, null, 10);
-
+                if (ret.Length == 0)
+                {
+                    return;
+                }
                 var msglist = new List<Messagebs>() { };
                 foreach (var item in ret)
                 {
@@ -84,7 +87,7 @@ namespace ASMB.ViewModels
                             default:
                                 break;
                         }
-                
+
 
                         //account.Messagebs =  account.Messagebs.Append(item);                        
                     }
@@ -100,8 +103,13 @@ namespace ASMB.ViewModels
 
                 foreach (var item in msglist.ToArray().Reverse())
                 {
-                    swex.GetWorksmsgEx().Receipts.Insert(0,item);
+                    swex.GetWorksmsgEx().Receipts.Insert(0, item);
                 }
+                if (swex.GetWorksmsgEx().Receipts.Count < 10)
+                {
+                    ApendWorksReceipts();
+                }
+
                 // swex.GetWorksmsgEx().Receipts =  swex.GetWorksmsgEx().Receipts.Concat(msglist);
             }
             catch (Exception e)
@@ -110,7 +118,10 @@ namespace ASMB.ViewModels
                 Magic.MAUI.LogHelper.DefaultLogger.Error(e);
                 await App.Current.MainPage.DisplayAlert("网络错误", e.Message, "关闭");
             }
-            IsRefreshing = false;
+            finally {
+                IsRefreshing = false;
+            }
+       
 
         }
 
@@ -145,34 +156,48 @@ namespace ASMB.ViewModels
 
                 byte[] hash = swex.Rcphash();
 
-                var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, null, hash, swex.GetWorksmsgEx().Receipts.Last()._Shakey, 10);
 
-                // ret=  ;
-                if (ret.Length < 10)
+                var n1 = swex.GetWorksmsgEx().Receipts.Count;
+                byte[] keys = null;
+                if (n1 > 0)
                 {
-                    isend = true;
+                    keys = swex.GetWorksmsgEx().Receipts.Last()._Shakey;
                 }
-                foreach (var item in ret)
+
+                do
                 {
-                    if (item.Msgtype == Msgtype.SWorkscomment || item.Msgtype == Msgtype.CfmSWorkscomment)
+                    var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, null, hash, keys, 10);
+
+                    // ret=  ;
+                    if (ret.Length < 10)
                     {
-                        switch ((item.Body as SignWorkscommentmsgEx).SignWorkscommentmsg.Workscommentmsg.Tag)
-                        {
-                            case 4:
-                                if (swex.GetWorksmsgEx().Receipts.FirstOrDefault(p => p.Time == item.Time) == null)
-                                {
-                                    swex.GetWorksmsgEx().Receipts.Add(item);
-                                    // msglist.Add(item);
-                                };
-                                break;
-                            default:
-                                break;
-                        }
-                
-                        //account.Messagebs =  account.Messagebs.Append(item);                        
+                        isend = true;
+                        return;
                     }
-                    continue;
-                }
+                    foreach (var item in ret)
+                    {
+                        if (item.Msgtype == Msgtype.SWorkscomment || item.Msgtype == Msgtype.CfmSWorkscomment)
+                        {
+                            switch ((item.Body as SignWorkscommentmsgEx).SignWorkscommentmsg.Workscommentmsg.Tag)
+                            {
+                                case 4:
+                                    if (swex.GetWorksmsgEx().Receipts.FirstOrDefault(p => p.Time == item.Time) == null)
+                                    {
+                                        swex.GetWorksmsgEx().Receipts.Add(item);
+                                        // msglist.Add(item);
+                                    };
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            //account.Messagebs =  account.Messagebs.Append(item);                        
+                        }
+                        continue;
+                    }
+                    keys = ret.Last()._Shakey;
+                } while (swex.GetWorksmsgEx().Receipts.Count - n1 < 10);
+               
                 //   = msglist.Concat( account.Messagebs).ToArray() ;
                 //  Moaccount.Messagebs del.Balance = ret.Balance;
                 //  var ss = Model.Balance / 1;

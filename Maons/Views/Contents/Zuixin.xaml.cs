@@ -11,9 +11,13 @@ public partial class Zuixin : ContentPage
         get => vm;
         set
         {
-            vm = value;
-            vm.GetWorkss();
-            OnPropertyChanged();
+            if (value !=null)
+            {
+                vm = value;
+                vm.GetWorkss();
+                OnPropertyChanged();
+            }
+           
         }
     }
    // AccountViewModels avm = VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>();

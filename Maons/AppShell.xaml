@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ASMB"   
+    BindingContext="{Binding Source={StaticResource VMlc},Path=ShellVm}"
     Shell.FlyoutBehavior="Disabled"  >
     <Shell.Resources>
 
@@ -69,23 +70,24 @@
             <Shell.TitleView>
                 <Grid VerticalOptions="Center" Margin="0,0"  >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="30"></ColumnDefinition>
                         <ColumnDefinition Width="50"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" TextColor="White" FontSize="Title" VerticalOptions="Center" Text="广场" ></Label>
+                    <!--<Label Grid.Column="0" TextColor="White" FontSize="Title" VerticalOptions="Center" Text="广场" ></Label>-->
+                    <ImageButton Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Source="tianjia.png" HeightRequest="24" Clicked="ImageButton_Clicked" BackgroundColor="#512BD4"></ImageButton>
                     <HorizontalStackLayout  Grid.Column="1"  HorizontalOptions="Center" VerticalOptions="End">
-                        <Button BorderWidth="0"  TextColor="White" VerticalOptions="Center" Text="想法" Clicked="Button_Clicked"></Button>
-                        <Button BorderWidth="0"  Margin="15,0,0,0" TextColor="White" VerticalOptions="Center" Text="提案" Clicked="Button_Clicked" ></Button>
-                        <Button BorderWidth="0"  Margin="15,0,0,0" TextColor="White" VerticalOptions="Center" Text="悬赏" Clicked="Button_Clicked"></Button>
+                        <Button BorderWidth="0"  TextColor="White"  Text="最新" Command="{Binding FenquCmd}"  CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" ></Button>
+                        <Button BorderWidth="0"  Margin="0,0,0,0" TextColor="White"  Text="推荐" Command="{Binding FenquCmd}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" ></Button>
+                        <Button BorderWidth="0"  Margin="0,0,0,0" TextColor="White"  Text="热点" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" ></Button>
                         <!--<Label   Margin="20,0,0,0" TextColor="White" VerticalOptions="Center" >
                             <Underline>C</ Underline>
                         </Label>-->
                             <!--<Label   Margin="20,0,0,0" TextColor="White" VerticalOptions="Center" Text="热点" ></Label>-->
                     </HorizontalStackLayout>
-                    <Label  HorizontalOptions="End" Grid.Column="2" TextColor="White" VerticalOptions="Center" Text="发布" ></Label>
-                    <ImageButton Opacity="0.5" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" Source="tianjia.png" HeightRequest="24" Clicked="ImageButton_Clicked"></ImageButton>
+                    <ImageButton Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" Source="kuaijiecaidan.png" HeightRequest="24" BackgroundColor="#512BD4" Clicked="ImageButton_Clicked_2"></ImageButton>
+                    <ImageButton Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" Source="sousuo.png" HeightRequest="24" BackgroundColor="#512BD4"></ImageButton>
                 </Grid>
             </Shell.TitleView>
         </ShellContent>
@@ -162,17 +164,12 @@
     <FlyoutItem >
         <Shell.TabBarIsVisible> False</Shell.TabBarIsVisible>
         <Shell.TitleView>
-            <ImageButton  VerticalOptions="Center" HorizontalOptions="Center" Source="xiangqian.png" HeightRequest="24" Clicked="ImageButton_Clicked_1"></ImageButton>
-            <!--<Grid VerticalOptions="Center" Margin="0,0"  >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="50"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" TextColor="White" FontSize="Title" VerticalOptions="Center" Text="广场" ></Label>
-                <ImageButton Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" Source="tianjia.png" HeightRequest="24" Clicked="ImageButton_Clicked"></ImageButton>
-            </Grid>-->
-        </Shell.TitleView>
+            <HorizontalStackLayout>
+                <ImageButton  VerticalOptions="Center" BackgroundColor="#512BD4"
+                          HorizontalOptions="Start" Source="houtui.png" HeightRequest="24" Clicked="ImageButton_Clicked_1"></ImageButton>
+            </HorizontalStackLayout>
+         
+        </Shell.TitleView> 
         <ShellContent IsVisible="True"
         Title="内容"            
         ContentTemplate="{DataTemplate local:ContentDetails}"
@@ -181,6 +178,10 @@
         Title="评价"       IsVisible="True"      
         ContentTemplate="{DataTemplate local:Pinglun}"
         Route="pinglundetails" />
+        <ShellContent
+        Title="频道"       IsVisible="True"      
+        ContentTemplate="{DataTemplate local:fenqu}"
+        Route="fenqu" />
     </FlyoutItem>
  
 

@@ -155,21 +155,37 @@ namespace ASMB
             }        
         }
 
-        private void ImageButton_Clicked_1(object sender, EventArgs e)
+        private async void ImageButton_Clicked_1(object sender, EventArgs e)
         {
-            // 
-            //Shell.Current.go
+            await GoToAsync("//zhuye");
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+
             curguangchang = (sender as Button).Text;
 
-            //(sender as Button).
-            await GoToAsync("//zhuye",new Dictionary<string, object>()
+            if (_data.ContainsKey(curguangchang))
             {
-                {  "Vm",new WorksVm(_data[curguangchang]) }
-            });
+                await GoToAsync("//zhuye", new Dictionary<string, object>()
+                {
+                    {  "Vm",new WorksVm(_data[curguangchang]) }
+                });
+            }
+            else
+            {
+                await DisplayAlert("提示", "功能完善中", "确定");
+            }
+            
+
+
+            //(sender as Button).
+     
+        }
+
+        private async void ImageButton_Clicked_2(object sender, EventArgs e)
+        {
+            await GoToAsync("//fenqu");
         }
     }
 }

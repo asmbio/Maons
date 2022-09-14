@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASMB.fenqu"
+               BindingContext="{Binding Source={StaticResource VMlc},Path=ShellVm}"
+             Title="fenqu">
+
+    <FlexLayout Wrap="Wrap" AlignContent="Start" HorizontalOptions="Center" Margin="0,20" >
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton Source="xiangfa.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  
+                          Command="{Binding FenquCmd}" CommandParameter="{Binding Source={Reference zhuixin}, Path=Text}" ></ImageButton>
+            <Label x:Name="zhuixin" VerticalOptions="Center" HorizontalOptions="Center">最新</Label>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton Source="tiangaishanliucheng.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+                         Command="{Binding FenquCmd}" CommandParameter="{Binding Source={Reference tian}, Path=Text}"></ImageButton>
+            <Label x:Name="tian" VerticalOptions="Center" HorizontalOptions="Center">提案</Label>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton x:Name="producerbtn" Source="xuanshangzhaopinicon1x.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+                         Command="{Binding FenquCmd}" CommandParameter="{Binding Source={Reference xuanshang}, Path=Text}"></ImageButton>
+            <Label x:Name="xuanshang" VerticalOptions="Center" HorizontalOptions="Center">悬赏</Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton Source="zhishi.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  ></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">知识</Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton Source="keji.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  ></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">科技</Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton x:Name="btnegg1" Source="youxi.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" ></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">游戏</Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton Source="donghua.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  ></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">动画</Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton Source="dongman.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  ></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">动漫</Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton Source="yinle.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  ></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">音乐</Label>
+        </VerticalStackLayout>
+    </FlexLayout>
+
+</ContentPage>

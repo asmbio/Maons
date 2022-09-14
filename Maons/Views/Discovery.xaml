@@ -5,7 +5,7 @@
              IconImageSource="compassdiscoverline.png" 
              Title="探索">
 
-    <FlexLayout Wrap="Wrap" AlignContent="Start" Margin="0,20" >
+    <FlexLayout Wrap="Wrap" AlignContent="Start" HorizontalOptions="Center" Margin="0,20" >
         <!--<FlexLayout.BindingContext>1</FlexLayout.BindingContext>-->
 
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">

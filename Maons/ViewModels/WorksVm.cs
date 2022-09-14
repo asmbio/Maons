@@ -50,9 +50,14 @@ namespace ASMB.ViewModels
                 }
                 var add = SimpleBase.Base58.Bitcoin.Decode(account.Address).ToArray();
                 var aRpcClient = NASMB.Fullapi.FindApiService(add);
-                var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, add, null, null, 10);
-                //    var msglist = new List<Messagebs>() { };
-                // ret=  ;
+
+                byte[] keys = null;
+
+                var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, add, null, keys, 10);
+                if (ret.Length == 0)
+                {
+                    return;
+                }
                 foreach (var item in ret.Reverse())
                 {
                     if (item.Msgtype == Msgtype.SignWorks || item.Msgtype == Msgtype.ChanSignWorks)
@@ -66,6 +71,18 @@ namespace ASMB.ViewModels
                     }
                     continue;
                 }
+                if (account.Messagebs.Count < 10)
+                {
+                    ApendWorkss();
+                }
+
+                //    var msglist = new List<Messagebs>() { };
+                // ret=  ;
+
+
+
+
+
                 //   = msglist.Concat( account.Messagebs).ToArray() ;
                 //  Moaccount.Messagebs del.Balance = ret.Balance;
                 //  var ss = Model.Balance / 1;
@@ -80,7 +97,11 @@ namespace ASMB.ViewModels
 
                 }
             }
-            IsRefreshing = false;
+            finally
+            {
+                IsRefreshing = false;
+            }
+          
 
         }
 
@@ -116,26 +137,38 @@ namespace ASMB.ViewModels
                 // var last = account.Messagebs[]
                 var add = SimpleBase.Base58.Bitcoin.Decode(account.Address).ToArray();
                 var aRpcClient = NASMB.Fullapi.FindApiService(add);
-                var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, add, null, account.Messagebs.Last()._Shakey, 10);
-                //    var msglist = new List<Messagebs>() { };
-                // ret=  ;
-                if (ret.Length == 0)
+                var n1 = account.Messagebs.Count;
+                byte[] keys = null;
+                if (n1>0)
                 {
-                    iszhuyeend = true;
+                    keys = account.Messagebs.Last()._Shakey;
                 }
-                foreach (var item in ret)
+            
+                do
                 {
-                    if (item.Msgtype == Msgtype.SignWorks || item.Msgtype == Msgtype.ChanSignWorks)
+                    var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, add, null, keys, 10);
+                    //    var msglist = new List<Messagebs>() { };
+                    if (ret.Length == 0)
                     {
-                        if (account.Messagebs.FirstOrDefault(p => p.Time == item.Time) == null)
-                        {
-                            account.Messagebs.Add(item);
-                            // msglist.Add(item);
-                        }
-                        //account.Messagebs =  account.Messagebs.Append(item);                        
+                        iszhuyeend = true;
+                        return;
                     }
-                    continue;
-                }
+                    foreach (var item in ret)
+                    {
+                        if (item.Msgtype == Msgtype.SignWorks || item.Msgtype == Msgtype.ChanSignWorks)
+                        {
+                            if (account.Messagebs.FirstOrDefault(p => p.Time == item.Time) == null)
+                            {
+                                account.Messagebs.Add(item);
+                                // msglist.Add(item);
+                            }
+                            //account.Messagebs =  account.Messagebs.Append(item);                        
+                        }
+                        continue;
+                    }
+                    keys = ret.Last()._Shakey;
+                } while (account.Messagebs.Count-n1 < 10);
+
                 //   = msglist.Concat( account.Messagebs).ToArray() ;
                 //  Moaccount.Messagebs del.Balance = ret.Balance;
                 //  var ss = Model.Balance / 1;
