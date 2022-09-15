@@ -69,6 +69,7 @@ namespace ASMB.ViewModels
                 var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, null, hash, null, 10);
                 if (ret.Length == 0)
                 {
+                    IsRefreshing = false;
                     return;
                 }
                 var msglist = new List<Messagebs>() { };

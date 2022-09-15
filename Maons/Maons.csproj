@@ -363,6 +363,9 @@
 	  <MauiXaml Update="Views\egg1\egg1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\lianxiren.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Me.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

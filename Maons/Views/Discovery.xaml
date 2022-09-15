@@ -3,48 +3,61 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
              x:Class="ASMB.Discovery"
              IconImageSource="compassdiscoverline.png" 
+             BindingContext="{Binding Source={StaticResource VMlc},Path=ShellVm}"
              Title="探索">
 
     <FlexLayout Wrap="Wrap" AlignContent="Start" HorizontalOptions="Center" Margin="0,20" >
         <!--<FlexLayout.BindingContext>1</FlexLayout.BindingContext>-->
 
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
-            <ImageButton Source="qukuailian.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked"></ImageButton>
+            <ImageButton Source="qukuailian.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked"></ImageButton>
             <Label VerticalOptions="Center" HorizontalOptions="Center">区块链</Label>
         </VerticalStackLayout>
      
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
-            <ImageButton Source="a_zu17613.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="Button_Clicked"></ImageButton>
+            <ImageButton Source="a_zu17613.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="Button_Clicked"></ImageButton>
             <Label VerticalOptions="Center" HorizontalOptions="Center">代币</Label>
         </VerticalStackLayout>
 
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
-            <ImageButton x:Name="producerbtn" Source="shengchanshishi.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="producerbtn_Clicked"></ImageButton>
+            <ImageButton x:Name="producerbtn" Source="shengchanshishi.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="producerbtn_Clicked"></ImageButton>
             <Label VerticalOptions="Center" HorizontalOptions="Center">节点投票</Label>
         </VerticalStackLayout>
+
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
-            <ImageButton Source="faqijiangcheng.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
-            <Label VerticalOptions="Center" HorizontalOptions="Center">发起提案</Label>
+            <ImageButton Source="tiangaishanliucheng.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+                         Command="{Binding FenquCmd}" CommandParameter="{Binding Source={Reference tian}, Path=Text}"></ImageButton>
+            <Label x:Name="tian" VerticalOptions="Center" HorizontalOptions="Center">提案</Label>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton  Source="xuanshangzhaopinicon1x.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
+                         Command="{Binding FenquCmd}" CommandParameter="{Binding Source={Reference xuanshang}, Path=Text}"></ImageButton>
+            <Label x:Name="xuanshang" VerticalOptions="Center" HorizontalOptions="Center">悬赏</Label>
         </VerticalStackLayout>
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
-            <ImageButton Source="dianzihetong.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
+            <ImageButton Source="dianzihetong.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
             <Label VerticalOptions="Center" HorizontalOptions="Center">电子合同</Label>
         </VerticalStackLayout>
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
-            <ImageButton Source="yiliaojilu.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
+            <ImageButton Source="yiliaojilu.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
             <Label VerticalOptions="Center" HorizontalOptions="Center">医疗记录</Label>
         </VerticalStackLayout>
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
-            <ImageButton x:Name="btnegg1" Source="caidan2x.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="btnegg1_Clicked"></ImageButton>
+            <ImageButton x:Name="btnegg1" Source="caidan2x.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="btnegg1_Clicked"></ImageButton>
             <Label VerticalOptions="Center" HorizontalOptions="Center">彩蛋1</Label>
         </VerticalStackLayout>
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
-            <ImageButton Source="caidan2x.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="ImageButton_Clicked_1" ></ImageButton>
+            <ImageButton Source="caidan2x.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="ImageButton_Clicked_1" ></ImageButton>
             <Label VerticalOptions="Center" HorizontalOptions="Center">彩蛋2</Label>
         </VerticalStackLayout>
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
-            <ImageButton Source="caidan2x.png" HeightRequest="55"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
+            <ImageButton Source="caidan2x.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
             <Label VerticalOptions="Center" HorizontalOptions="Center">彩蛋3</Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
+            <ImageButton Source="shuoming.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_2"></ImageButton>
+            <Label VerticalOptions="Center" HorizontalOptions="Center">关于</Label>
         </VerticalStackLayout>
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
             <ImageButton Source="gengduo.png" HeightRequest="70"  WidthRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>

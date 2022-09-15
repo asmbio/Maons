@@ -11,7 +11,7 @@
                     >
         <!--RemainingItemsThresholdReachedCommand="{Binding GetWorkssCmd}"
                              RemainingItemsThresholdReachedCommandParameter="{Binding ZhuyeAccount}"-->
-        <CollectionView   SelectionMode="None" SelectionChanged="CollectionView_SelectionChanged" 
+        <CollectionView   SelectionMode="None"  
                         ItemsSource="{Binding Path=Vm.Account.Messagebs,  Mode=OneWay} "  
                             VerticalScrollBarVisibility="Never"                 
                          Scrolled="CollectionView_Scrolled">

@@ -56,6 +56,7 @@ namespace ASMB.ViewModels
                 var ret = await aRpcClient.SendRequestAsync<NASMB.TYPES.Messagebs[]>("GetReceipts", null, add, null, keys, 10);
                 if (ret.Length == 0)
                 {
+                    IsRefreshing = false;
                     return;
                 }
                 foreach (var item in ret.Reverse())
@@ -101,8 +102,6 @@ namespace ASMB.ViewModels
             {
                 IsRefreshing = false;
             }
-          
-
         }
 
         private RelayCommand apendWorkssCmd;

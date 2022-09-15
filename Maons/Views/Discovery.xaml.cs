@@ -31,4 +31,9 @@ public partial class Discovery : ContentPage
 	{
         await Navigation.PushAsync(new  MauiApp1.producer());
     }
+
+    private async void ImageButton_Clicked_2(object sender, EventArgs e)
+	{
+        await Navigation.PushAsync(new ASMB.MePage());
+    }
 }

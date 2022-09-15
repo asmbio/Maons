@@ -151,14 +151,15 @@
         Route="Discovery" />
      
         <ShellContent
-            Title="钱包"
-            Icon="wallet_line.png"
-        ContentTemplate="{DataTemplate local:wallet}"
+            Title="联系人"            
+       Icon="user_line.png"
+       ContentTemplate="{DataTemplate local:lianxiren}"
         Route="wallet" />
         <ShellContent
             Title="我"
-            Icon="user_line.png"
-        ContentTemplate="{DataTemplate local:MePage}"
+            
+            Icon="wallet_line.png"
+        ContentTemplate="{DataTemplate local:wallet}"
         Route="MePage" />
     </TabBar>
     <FlyoutItem >
