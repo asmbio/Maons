@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maons.Language.en_us"
+                xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="messages">Messages</s:String>
+    <s:String x:Key="explorer">explorer</s:String>
+    <s:String x:Key="share">share</s:String>
+    <s:String x:Key="function">function</s:String>
+    <s:String x:Key="my">my</s:String>
+    <s:String x:Key="switchlan">Switch Language</s:String>
+</ResourceDictionary>
