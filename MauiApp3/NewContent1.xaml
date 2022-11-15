@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:MaonsViewItem xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:controls="clr-namespace:Maons.Controls;assembly=MaonsLayout"
+                        xmlns:local="clr-namespace:Maons"
+                        
+             x:Class="Maons.NewContent1" MinimumWidthRequest="400"  MaximumWidthRequest="600">
+    <controls:MaonsViewItem.RightView>
+        <local:NewContent2></local:NewContent2>
+    </controls:MaonsViewItem.RightView>
+    <Grid>
+       
+        <VerticalStackLayout Margin="20,30,0,0">
+
+            <Label 
+            Text="Welcome to .NET MAUI9你尚未连接Web 因你而不同。让我们帮你重新联机!
+请尝试：
+
+检查网络电缆、调制解调器和路由器
+重新连接到无线网络
+运行 Windows 网络诊断
+ERR_INTERNET_DISCONNECTED
+想在等待时玩游戏吗?!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Button Text="eeeeee" Clicked="Button_Clicked"></Button>
+        </VerticalStackLayout>
+    </Grid>
+    
+</controls:MaonsViewItem>

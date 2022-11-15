@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maons.Explore.Community">
+    <VerticalStackLayout>
+        <Label 
+            Text=""
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <HorizontalStackLayout>
+            <Entry Placeholder="搜索社区"></Entry>
+            <Button Text="搜索"></Button>
+        </HorizontalStackLayout>
+        <!--横排显示的 推荐关键字-->
+        <CollectionView></CollectionView>
+
+        <!-- 竖排卡片式显示好友以及相连用户分享的社区,-->
+        <CollectionView>
+            <CollectionView.Header>
+                <HorizontalStackLayout>
+                    <Button Text="已连接的用户"></Button>
+                    <Label >看看谁和我这么有缘和他们打个招呼吧</Label>
+                    <Button Text="隐藏"></Button>
+                </HorizontalStackLayout>
+            </CollectionView.Header>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentView>
