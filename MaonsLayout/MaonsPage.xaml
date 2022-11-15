@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Maons.Controls"
+             xmlns:converter="clr-namespace:Maons.Converter;assembly=MaonsLayout"
+             x:Class=" Maons.Controls.MaonsPage" >
+    <ContentPage.Resources>
+        <converter:BoolToFontColorConverter x:Key="BoolToFontColorConverter"></converter:BoolToFontColorConverter>
+        <converter:BoolToFontAttributesConverter x:Key="BoolToFontAttributesConverter"></converter:BoolToFontAttributesConverter>
+        <converter:IcoimgMultiConverter x:Key="IcoimgMultiConverter"></converter:IcoimgMultiConverter>
+        <converter:WidthToVisableConverter x:Key="WidthToVisableConverter"></converter:WidthToVisableConverter>
+
+        
+        <!--<Style TargetType="Entry">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="FontSize"
+                                        Value="18" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Focused">
+                            <VisualState.Setters>
+                                <Setter Property="FontSize"
+                                        Value="36" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>-->
+
+        <ControlTemplate x:Key="AppTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <ContentPresenter></ContentPresenter>
+                <CollectionView Grid.Row="1" x:Name="collectionView" 
+                    x:FieldModifier="public"
+                     Margin="0,0,0,0" SelectionMode="Single" ItemsSource="{TemplateBinding Items}"   SelectionChanged="collectionView_SelectionChanged">
+                    <!--<CollectionView.ItemSizingStrategy>
+                <ItemSizingStrategy> d</ItemSizingStrategy>
+            </CollectionView.ItemSizingStrategy>-->
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout  Orientation="Vertical" Span="{Binding Source={x:Reference collectionView}, Path=ItemsSource.Count }"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Stroke="#512BD4" 
+                                StrokeThickness="0"
+                            StrokeShape="RoundRectangle 50,50,50,50"                                                   
+                                >
+                                <!--<Frame>
+                        <Frame.Padding>0</Frame.Padding>
+                        <Frame.BorderColor>White</Frame.BorderColor>-->
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" >
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="White" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="White" />
+                                                <Setter Property="StrokeThickness" Value="0" />
+                                                <!--//<Setter Property="Img1" Value="dotnet_bot.svg"></Setter>-->
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <VerticalStackLayout>
+
+                                    <Image  HeightRequest="30"  WidthRequest="30" Margin="0,0"  >
+                                        <Image.Source>
+                                            <MultiBinding Converter="{StaticResource  IcoimgMultiConverter}">
+                                                <Binding Path="Selected"></Binding>
+                                                <Binding Path="IconSource"></Binding>
+                                            </MultiBinding>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding Title}" Margin="0,0,0,0"   
+                                           TextColor="{Binding Selected,Converter ={StaticResource BoolToFontColorConverter}}"
+                                         >
+                                    </Label>
+
+                                    <!--<Image Source="dotnet_bot.svg" HeightRequest="30"  WidthRequest="30"  ></Image>
+                                    <Label VerticalOptions="Center" HorizontalOptions="Center" Text="testsss" ></Label>-->
+
+                                </VerticalStackLayout>
+                                <!--</Frame>-->
+                            </Border>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="PCTemplate">
+
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" SizeChanged="MaonsPage_SizeChanged" >
+                <CollectionView  x:Name="collectionView" 
+                    x:FieldModifier="public"
+                     Margin="10,0,0,0" SelectionMode="Single" ItemsSource="{TemplateBinding Items}"  SelectionChanged="collectionView_SelectionChanged" 
+                                 MaximumWidthRequest="250" MinimumWidthRequest="60" >
+                    <!--<CollectionView.ItemSizingStrategy>
+                <ItemSizingStrategy> d</ItemSizingStrategy>
+            </CollectionView.ItemSizingStrategy>-->
+                    <!--<CollectionView.ItemsLayout>
+                        <GridItemsLayout  Orientation="Vertical" Span="{Binding Source={x:Reference collectionView}, Path=ItemsSource.Count }"/>
+                    </CollectionView.ItemsLayout>-->
+                    <CollectionView.Header>
+                        <Border Stroke="#512BD4" 
+                                StrokeThickness="0"
+                            StrokeShape="RoundRectangle 0,0,0,0"                                                   
+                                HorizontalOptions="Start" Margin="0" BackgroundColor="White" >
+                            <Border Stroke="#512BD4" 
+                                StrokeThickness="0"
+                            StrokeShape="RoundRectangle 50,50,50,50"                                                   
+                                HorizontalOptions="Start" Margin="0,10,0,20" BackgroundColor="White" >
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" >
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="White" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <!--<VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="#E1E1E1" />
+                                                <Setter Property="StrokeThickness" Value="0.2" />
+                                                </VisualState.Setters>
+                                        </VisualState>-->
+                                        <VisualState Name="PointerOver">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="#72ACF1" />
+                                                <!--<Setter Property="StrokeThickness" Value="0.2" />-->
+
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Frame Margin="2"
+                                   BorderColor="Black"
+                                   CornerRadius="20"
+                                   HeightRequest="42"
+                                   WidthRequest="42"
+                                   IsClippedToBounds="True"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+                                    <Image Source="maons.jpg"
+                                     Margin="-20"
+                                     HeightRequest="42"
+                                     WidthRequest="42" />
+                                </Frame>
+                              
+                                <!--</Frame>-->
+                            </Border>
+                        </Border>
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+                            <Border Stroke="#512BD4" 
+                                StrokeThickness="0"
+                            StrokeShape="RoundRectangle 0,0,0,0"                                                   
+                                HorizontalOptions="Start" Margin="0" BackgroundColor="White" >
+                                <Border Stroke="#512BD4" 
+                                StrokeThickness="0"
+                            StrokeShape="RoundRectangle 50,50,50,50"                                                   
+                                HorizontalOptions="Start" Margin="0" BackgroundColor="White" >
+                                    <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" >
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="White" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <!--<VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="#E1E1E1" />
+                                                <Setter Property="StrokeThickness" Value="0.2" />
+                                                </VisualState.Setters>
+                                        </VisualState>-->
+                                        <VisualState Name="PointerOver">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="#E1E1E1" />
+                                                <!--<Setter Property="StrokeThickness" Value="0.2" />-->
+                                                
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <HorizontalStackLayout HorizontalOptions="Start" Padding="10,10" >
+
+                                    <Image  HeightRequest="30"  WidthRequest="30" Margin="0,0"  >
+                                        <Image.Source>
+                                            <MultiBinding Converter="{StaticResource  IcoimgMultiConverter}">
+                                                <Binding Path="Selected"></Binding>
+                                                <Binding Path="IconSource"></Binding>
+                                            </MultiBinding>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding Title}" Margin="10,0,0,0" FontSize="18"  FontAttributes="{Binding Selected,Converter ={StaticResource BoolToFontAttributesConverter}}"
+                                             IsVisible="{Binding Source={x:Reference collectionView}, Path=Width, Converter= {StaticResource WidthToVisableConverter}}">
+                                    </Label>
+                                    <!--<Image Source="dotnet_bot.svg" HeightRequest="30"  WidthRequest="30"  ></Image>
+                                    <Label VerticalOptions="Center" HorizontalOptions="Center" Text="testsss" ></Label>-->
+                                </HorizontalStackLayout>
+                                <!--</Frame>-->
+                            </Border>
+                            </Border>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Line X1="0" StrokeThickness="0.4"
+                  Y1="0"
+                  X2="0"
+                  Y2="{Binding Source={RelativeSource Mode=TemplatedParent}, Path=Height}"
+                  Stroke="lightgray" />
+                <ContentPresenter></ContentPresenter>
+                <Line X1="0" StrokeThickness="0.4"
+                  Y1="0"
+                  X2="0"
+                  Y2="{Binding Source={RelativeSource Mode=TemplatedParent}, Path=Height}"
+                  Stroke="lightgray" />
+                <ContentView  Content="{Binding Source={RelativeSource Mode=TemplatedParent}, Path=Content.RightView}"></ContentView>
+
+                <!--<ContentView Content="{Binding  SelectedItem.ContentView,Source={x:Reference collectionView}, Mode=OneWay}"></ContentView>-->
+
+                <!--<ContentView Content="{TemplateBinding CurrentView}"></ContentView>-->
+            </HorizontalStackLayout>
+            <!--<Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                
+            </Grid>-->
+        </ControlTemplate>
+
+    </ContentPage.Resources>
+</ContentPage>
