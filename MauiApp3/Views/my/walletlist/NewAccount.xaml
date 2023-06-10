@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASMB.Views.walletlist.NewAccount"
+             BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}" >
+
+    <!--Title="添加"-->
+    <VerticalStackLayout  Margin="20,0,0,0" >
+        <Label 
+            Text="Welcome to ASMB!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <!--<HorizontalStackLayout Margin="0,20,0,0">
+            <Label Text="地址："></Label>
+            <Label  Text="{Binding Path=Model.Address}"></Label>
+        </HorizontalStackLayout>-->
+
+        <Button Margin="0,20,0,0" Text="随机生成秘钥" Clicked="Button_Clicked" Command="{Binding Source= {StaticResource VMlc}, Path=AccountViewModels.InsertCmd}" CommandParameter="{Binding Source= {StaticResource VMlc}, Path=AccountViewModels.Model}"></Button>
+        <Label 
+            Text="随机助记词原理：从2048个单词随机抽取12个作为助记词"
+            VerticalOptions="Center" 
+             />
+        <Label 
+            Text="芯片随机数发生器原理：光子散粒噪声产生随机序列，比随机助记词法，更难暴力碰撞破解"
+            VerticalOptions="Center" 
+             />
+ 
+    </VerticalStackLayout>
+</ContentView>

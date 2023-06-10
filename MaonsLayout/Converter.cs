@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿
+using System.Globalization;
 
 
 namespace Maons.Converter
@@ -32,7 +33,7 @@ namespace Maons.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (bool)value ? Color.Parse("#512BD4") : Colors.Black;
+            return (bool)value ? "#512BD4" : Colors.Black;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

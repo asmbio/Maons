@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace MauiApp3
 {
@@ -8,7 +9,9 @@ namespace MauiApp3
         {
             var builder = MauiApp.CreateBuilder();
             builder
+                //.RegisterBlazorMauiWebView()
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -18,7 +21,8 @@ namespace MauiApp3
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
-
+           ASMB.ViewModels.VMlc.Registrar(builder.Services);
+            //builder.Services.AddBlazorWebView();
             return builder.Build();
         }
     }

@@ -187,7 +187,7 @@ namespace ASMB.ViewModels
                 var rlpb = signTransmsg.Transmsg.RlpEncode();
 
 
-                var istreu= await App.Current.MainPage.DisplayAlert(title: "交易确认", message: $"交易金额:{NASMB.TYPES.Maons.FromNil(signTransmsg.Transmsg.Balance)};\t\n总费用：{Maons.FromNil(new System.Numerics.BigInteger(signTransmsg.Transmsg.Feesrate) * (rlpb.Length+ 69)*2)}","确定","取消");
+                var istreu= await App.Current.MainPage.DisplayAlert(title: "交易确认", message: $"交易金额:{NASMB.TYPES.Maons.FromNil(signTransmsg.Transmsg.Balance)};\t\n总费用：{NASMB.TYPES.Maons.FromNil(new System.Numerics.BigInteger(signTransmsg.Transmsg.Feesrate) * (rlpb.Length+ 69)*2)}","确定","取消");
                 if (!istreu)
                 {
                     return false;
@@ -635,7 +635,7 @@ namespace ASMB.ViewModels
                 var rlpb = signTransmsg.Worksmsg.RlpEncode();
 
 
-                var istreu = await App.Current.MainPage.DisplayAlert(title: "交易确认", message: $"总费用：{Maons.FromNil(new System.Numerics.BigInteger(signTransmsg.Worksmsg.Feesrate) * (rlpb.Length + 69) * 2)}", "确定", "取消");
+                var istreu = await App.Current.MainPage.DisplayAlert(title: "交易确认", message: $"总费用：{NASMB.TYPES.Maons.FromNil(new System.Numerics.BigInteger(signTransmsg.Worksmsg.Feesrate) * (rlpb.Length + 69) * 2)}", "确定", "取消");
                 if (!istreu)
                 {
                     return false;
@@ -705,7 +705,7 @@ namespace ASMB.ViewModels
                 var rlpb = signTransmsg.Workscommentmsg.RlpEncode();
 
 
-                var istreu = await App.Current.MainPage.DisplayAlert(title: "交易确认", message: $"总费用：{Maons.FromNil(new System.Numerics.BigInteger(signTransmsg.Workscommentmsg.Feesrate) * (rlpb.Length + 69) * 2)}", "确定", "取消");
+                var istreu = await App.Current.MainPage.DisplayAlert(title: "交易确认", message: $"总费用：{NASMB.TYPES.Maons.FromNil(new System.Numerics.BigInteger(signTransmsg.Workscommentmsg.Feesrate) * (rlpb.Length + 69) * 2)}", "确定", "取消");
                 if (!istreu)
                 {
                     return null;

@@ -12,7 +12,12 @@
                 <!--<TabbedPage></TabbedPage>-->
                 <!--<NavigationPage></NavigationPage>-->
             
-         
+            <Image Source="wakuang.gif" HeightRequest="100" WidthRequest="100" IsAnimationPlaying="True" ></Image>
+            <WebView WidthRequest="200" HeightRequest="200">
+                <WebView.Source>
+                    runoob-try_nav_useragent.html
+                </WebView.Source>
+            </WebView>
             <Image
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"

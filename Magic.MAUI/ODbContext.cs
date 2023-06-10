@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Magic.MAUI
 {
@@ -147,17 +148,17 @@ namespace Magic.MAUI
             }
         }
         
-        public async virtual void GetList()
+        public  virtual void GetList()
         {
             try
             {
-                var ret = (await provider.GetList(Getquery(), curPage, pageSize, stime, etime, orderby, orderkey, ""));
-                List = new ObservableCollection<T>(ret.list);
+                var ret = ( provider.GetList(Getquery(), curPage, pageSize, stime, etime, orderby, orderkey, ""));
+                List = new ObservableCollection<T>(ret.Result.list);
                 list.CollectionChanged += List_CollectionChanged;
             }
             catch (Exception e)
             { 
-                LogHelper.DefaultLogger.Error(e);
+                LogHelper.DefaultLogger.Error( "正在连接主网",e);
             }
         }
 

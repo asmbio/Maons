@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASMB.Views.Metaverse.maons"
+             Title="微粒">
+    <VerticalStackLayout  WidthRequest="280" HorizontalOptions="Center">
+
+        <VerticalStackLayout   >
+            <Label TextColor="Grey" Margin="0,0,0,0" Text="头像" ></Label>
+            <Label Text="{Binding Body.Transmsg.From}"></Label>
+            <Line  X2="280" Stroke="Gray"></Line>
+        </VerticalStackLayout>
+        <VerticalStackLayout    Margin="0,20,0,0">
+            <Label TextColor="Grey" Margin="0,0,0,0" Text="名字"  ></Label>
+            <Label Text="{Binding Body.Transmsg.To}"></Label>
+            <Line  X2="280" Stroke="Gray"></Line>
+        </VerticalStackLayout>
+        <VerticalStackLayout   Margin="0,20,0,0" >
+            <Label TextColor="Grey"  Margin="0,0,0,0" Text="公钥地址"  ></Label>
+            <Label Text="{Binding  AllRate} "></Label>
+            <Line  X2="280" Stroke="Gray"></Line>
+        </VerticalStackLayout>
+        <VerticalStackLayout   Margin="0,20,0,0">
+            <Label TextColor="Grey"  Margin="0,0,0,0" Text="二维码名片" ></Label>
+            <Label Margin="0,0,0,10" Text="{Binding Body.Transmsg.Marks}" ></Label>
+            <Line  X2="280" Stroke="Gray"></Line>
+        </VerticalStackLayout>
+        <VerticalStackLayout    Margin="0,20,0,0" >
+            <Label TextColor="Grey"  Margin="0,0,0,0" Text="更多信息"  ></Label>
+            <Label Text="{Binding Shakey} "></Label>
+        </VerticalStackLayout>
+ 
+
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                                xmlns:controls=" clr-namespace:Maons.Controls;"
+             x:Class="Maons.Explore.Explore" 
+                        xmlns:converter=" clr-namespace:Maons.Converter;"
+                                xmlns:local="clr-namespace:Maons.Explore" MaximumWidthRequest="620" MinimumWidthRequest="400">
+    <VerticalStackLayout>
+
+        <Label Text="{Binding Source={Reference clview},Path=SelectedItem.TitleDetails}" Margin="30,5" VerticalOptions="Center" HeightRequest="30" >
+            
+        </Label>
+        <!--<Entry></Entry>
+        <Editor></Editor>-->
+        
+        
+        <CollectionView  x:Name="clview"
+                    x:FieldModifier="public"
+                     Margin="30,10,30,10" SelectionMode="Single"   SelectionChanged="v1_SelectionChanged"                               >
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout  Orientation="Vertical" Span="{Binding Source={x:Reference clview}, Path=ItemsSource.Count }"/>
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Border Stroke="#512BD4" 
+                                StrokeThickness="0"
+                            StrokeShape="RoundRectangle 0,0,0,0"                                                   
+                                HorizontalOptions="Start" Margin="0" BackgroundColor="White" >
+                    <Border Stroke="#512BD4" 
+                                StrokeThickness="0"
+                            StrokeShape="RoundRectangle 50,50,50,50"                                                   
+                                HorizontalOptions="Start" Margin="0" BackgroundColor="White" >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal" >
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="White" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="#E1E1E1" />
+                                                <Setter Property="StrokeThickness" Value="0.2" />
+                                                </VisualState.Setters>
+                                        </VisualState>
+                                <VisualState Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="#E1E1E1" />
+                                        <Setter Property="StrokeThickness" Value="0.2" />
+
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                            <HorizontalStackLayout Padding="10,10">
+
+                        <Image  HeightRequest="30"  WidthRequest="30" Margin="0,0"  >
+                            <Image.Source>
+                                <MultiBinding Converter="{StaticResource  IcoimgMultiConverter}">
+                                    <Binding Path="Selected"></Binding>
+                                    <Binding Path="IconSource"></Binding>
+                                </MultiBinding>
+                            </Image.Source>
+                        </Image>
+                        <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding Title}" Margin="0,0,0,0"   
+                                           TextColor="{Binding Selected,Converter ={StaticResource BoolToFontColorConverter}}"
+                                         >
+                        </Label>
+
+                        <!--<Image Source="dotnet_bot.svg" HeightRequest="30"  WidthRequest="30"  ></Image>
+                                    <Label VerticalOptions="Center" HorizontalOptions="Center" Text="testsss" ></Label>-->
+
+                    </HorizontalStackLayout>
+                    <!--</Frame>-->
+                    </Border>
+                </Border>
+                <!--<Border Stroke="#512BD4" 
+                                StrokeThickness="0"
+                            StrokeShape="RoundRectangle 0,0,0,0"                                                   
+                                HorizontalOptions="Start"  Margin="0,10"  >
+                    <Border Stroke="#512BD4" 
+                                StrokeThickness="0"
+                            StrokeShape="RoundRectangle 50,50,50,50"                                                   
+                                HorizontalOptions="Start" Margin="0" >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal" >
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                --><!--<VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="#E1E1E1" />
+                                                <Setter Property="StrokeThickness" Value="0.2" />
+                                                </VisualState.Setters>
+                                        </VisualState>
+                                    <VisualState Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="#E1E1E1" />
+                                            <Setter Property="StrokeThickness" Value="0.2" />
+
+                                        </VisualState.Setters>
+                                    </VisualState>--><!--
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+             
+                        <Grid Padding="10,0" HeightRequest="50" WidthRequest="{Binding Source={x:Reference clview }, Path=Width}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*" ></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0"  HeightRequest="50"  WidthRequest="50" Margin="0,0"  Aspect="AspectFit" BackgroundColor="#C3F2F4" Rotation="10"  >
+                                <Image.Source>
+                                    <MultiBinding Converter="{StaticResource  IcoimgMultiConverter}">
+                                        <Binding Path="Selected"></Binding>
+                                        <Binding Path="IconSource"></Binding>
+                                    </MultiBinding>
+                                </Image.Source>
+                            </Image>
+                            <Label Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" Text="{Binding Title}" Margin="10,8,0,0" FontSize="18"  FontAttributes="{Binding Selected,Converter ={StaticResource BoolToFontAttributesConverter}}">
+                            </Label>
+                            --><!--<Image Source="dotnet_bot.svg" HeightRequest="30"  WidthRequest="30"  ></Image>--><!--
+                            <Label Grid.Column="1" Grid.ColumnSpan="2" VerticalOptizons="End" HorizontalOptions="Start" Text="{Binding TitleDetails}" TextColor="Gray" FontSize="12"  Margin="11,0,0,0"></Label>
+
+                        </Grid>
+                    </Border>
+                </Border>-->
+
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        </CollectionView>
+        <ContentView x:Name="cview"></ContentView>
+    </VerticalStackLayout>
+</ContentView>
+
+    

@@ -8,13 +8,24 @@ namespace ASMB
         public App()
         {
             InitializeComponent();
-
-            // MainPage = new login();
-            ////Microsoft.Maui.Devices.DeviceInfo .Idiom
-            MainPage = new AppShell();
-
+          //  AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+                // MainPage = new login();
+                ////Microsoft.Maui.Devices.DeviceInfo .Idiom
+                MainPage = new MainPage();
+            
 
         }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            LogHelper.DefaultLogger.Error(e.ExceptionObject);
+        }
+
+        //private void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        //{
+        
+        //}
 
         public void ConfigureServices()
         {

@@ -5,7 +5,7 @@ using MauiApp1;
 
 namespace Maons.my;
 
-public partial class Mysetup : ContentView
+public partial class Mysetup : Maons.Controls.MaonsViewItem
 {
     public Languages Languages = new Languages();
 	public Mysetup()

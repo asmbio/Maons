@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:MaonsViewItem xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:controls="clr-namespace:Maons.Controls;assembly=MaonsLayout"
+             x:Class="Maons.Explore.Friends"  MinimumWidthRequest="600" MaximumWidthRequest="1020"   >
+    <!--<WebView Source="lemonui/index.html" x:Name="lemonui"></WebView>-->
+</controls:MaonsViewItem>

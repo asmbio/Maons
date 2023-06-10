@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:MaonsViewItem xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Maons.Controls"
+                    xmlns:local="clr-namespace:Maons.my"
+             x:Class="Maons.Messages.Messages"  MinimumWidthRequest="600" MaximumWidthRequest="1020" 
+             Title="{StaticResource messages}" IconSource="xiaoxi.png">
+
+    <WebView Source="lemonui/index.html" x:Name="lemonui" >
+        
+    </WebView>
+    <!--//<RootComponent Selector="#blazorapp" x:Name="MainWebView" ComponentType="{x:Type local:Index}/>-->
+    <!--<BlazorWebView HostPage="wwwroot/index.html" x:Name="lemonui" >
+        <BlazorWebView.RootComponents>
+            <RootComponent Selector="#app"></RootComponent>
+        </BlazorWebView.RootComponents>
+    </BlazorWebView>-->
+</controls:MaonsViewItem>

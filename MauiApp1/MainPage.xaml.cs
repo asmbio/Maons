@@ -1,4 +1,7 @@
-﻿namespace MauiApp1
+﻿using Maons.Controls;
+using Maons.my;
+
+namespace MauiApp1
 {
     public partial class MainPage : ContentPage
     {
@@ -19,6 +22,8 @@
                 CounterBtn.Text = $"Clicked {count} times";
 
             SemanticScreenReader.Announce(CounterBtn.Text);
+
+            view.Push(new NewContent1());
         }
     }
 }

@@ -15,6 +15,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<RootNamespace>Maons.Controls</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -29,13 +30,28 @@
 	  <Compile Update="MaonsPage.xaml.cs">
 	    <DependentUpon>MaonsPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="MaonsViewItemMessagesBox.xaml.cs">
+	    <DependentUpon>MaonsViewItemMessagesBox.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="MaonsViewItemMessages.xaml.cs">
+	    <DependentUpon>MaonsViewItemMessages.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="MaonsBar.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MaonsNavigation.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="MaonsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="MaonsViewItemLeftRight.xaml">
+	  <MauiXaml Update="MaonsViewItemMessagesBox.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MaonsViewItemMessages.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

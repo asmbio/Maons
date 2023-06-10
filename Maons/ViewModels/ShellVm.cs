@@ -17,7 +17,7 @@ namespace ASMB.ViewModels
         {
             {"最新","htaM6rQvi4ci3bQ5uReAm5XXytv" },
             {"提案","3E4ZuLQW2NAtB8aCvH4CTm2iBVMa" },
-            {"悬赏","4ZFmgxH4KPVzUtPS16CdoKAEw76Z" },
+            {"DAO","4ZFmgxH4KPVzUtPS16CdoKAEw76Z" },
         };
 
         public ShellVm()

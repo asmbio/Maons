@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.MainPage"
+             xmlns:controls="clr-namespace:Maons.Controls;assembly=MaonsLayout"
               xmlns:local="clr-namespace:Maons.my">
 
     <ScrollView>
@@ -9,7 +10,14 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
-            <local:Mysetup></local:Mysetup>
+            <controls:MaonsNavigation>
+                <HorizontalStackLayout>
+                    <local:Mysetup x:Name="view"></local:Mysetup>
+                    <Label Text="tesdddddddddddddddddddd"></Label>
+                </HorizontalStackLayout>
+             
+            </controls:MaonsNavigation>
+            
             <Image
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"

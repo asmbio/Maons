@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
@@ -9,7 +9,10 @@
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
-
+		<!-- 		
+		<WindowsPackageType>None</WindowsPackageType>
+		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained> 
+		 -->
 		<!-- Display name -->
 		<ApplicationTitle>Maons</ApplicationTitle>
 
@@ -31,11 +34,26 @@
 
 	<PropertyGroup>
 	  <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+	  <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+	  <AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
+	  <PackageCertificateThumbprint>449E7A3DC582B3DF04AF689E9B04B74C7A8E02A9</PackageCertificateThumbprint>
+	  <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+	  <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+	  <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+	  <GenerateTestArtifacts>True</GenerateTestArtifacts>
+	  <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+	  <AssemblyName>Maons</AssemblyName>
 	</PropertyGroup>
+
+
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'" />
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'" />
 
 	<ItemGroup>
 	<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\yellowbg.svg" ForegroundFile="Resources\AppIcon\maons.svg" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\maons.svg" />
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\wodedipan.svg" BaseSize="128,128" />
 		<!-- Images -->
@@ -46,41 +64,115 @@
 		<MauiFont Include="Resources\Fonts\*" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="新文件夹\**" />
+	  <Compile Remove="新文件夹\**" />
+	  <EmbeddedResource Remove="新文件夹\**" />
+	  <MauiCss Remove="新文件夹\**" />
+	  <MauiXaml Remove="新文件夹\**" />
+	  <None Remove="新文件夹\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="ViewModels\BlocksViewModels.cs" />
+	  <Compile Remove="ViewModels\PinlunVm.cs" />
+	  <Compile Remove="ViewModels\ShellVm.cs" />
+	  <Compile Remove="ViewModels\WorksVm.cs" />
+	  <Compile Remove="Views\Explore\Explore2.xaml.cs" />
+	  <Compile Remove="Views\Explore\Friends.xaml.cs" />
+	  <Compile Remove="NSMB.GO\Egg.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="Views\Explore\Explore2.xaml" />
+	  <MauiXaml Remove="Views\Explore\Friends.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Platforms\Android\libs\arm64-v8a\libegg1.so" />
+	  <None Remove="Resources\Images\a_tuanduizuzhijiagoushequn_04.png" />
+	  <None Remove="Resources\Images\chuangjianqunliao.png" />
 	  <None Remove="Resources\Images\faxian.png" />
 	  <None Remove="Resources\Images\faxian_selected.png" />
 	  <None Remove="Resources\Images\gongneng.png" />
 	  <None Remove="Resources\Images\gongneng_selected.png" />
+	  <None Remove="Resources\Images\jiedian.png" />
 	  <None Remove="Resources\Images\maons.jpg" />
+	  <None Remove="Resources\Images\p2p.png" />
+	  <None Remove="Resources\Images\profile_light.png" />
+	  <None Remove="Resources\Images\profile_light_selected.png" />
 	  <None Remove="Resources\Images\qianbao.png" />
 	  <None Remove="Resources\Images\qianbao_selected.png" />
+	  <None Remove="Resources\Images\shequ.png" />
 	  <None Remove="Resources\Images\tianjia.png" />
 	  <None Remove="Resources\Images\tianjia_selected.png" />
+	  <None Remove="Resources\Images\weibiaoti.png" />
 	  <None Remove="Resources\Images\xiaoxi.png" />
 	  <None Remove="Resources\Images\xiaoxi_selected.png" />
+	  <None Remove="Resources\Images\youqu.png" />
 	  <None Remove="Resources\Images\zhuye.png" />
 	  <None Remove="Resources\Images\zhuye_selected.png" />
+	  <None Remove="Resources\Raw\avatar\favicon.ico" />
+	  <None Remove="Resources\Raw\favicon.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidLibrary Include="Platforms\Android\libs\arm64-v8a\libegg1.so" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
+		<PackageReference Include="DynaJson" Version="2.2.0" />
+		<PackageReference Include="log4net" Version="2.0.14" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\MaonsLayout\MaonsLayout.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Message\Messages.xaml.cs">
+	  <Compile Update="login.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="MaonsLayout\MaonsBar.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="MaonsLayout\MaonsNavigation.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="MaonsLayout\MaonsPage.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="MaonsLayout\MaonsViewItemLeftRight.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="MaonsLayout\MaonsViewItemMessages.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="MaonsLayout\MaonsViewItemMessagesBox.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pwd.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Message\conversation.xaml.cs">
+	    <DependentUpon>conversation.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Message\Messages.xaml.cs">
 	    <DependentUpon>Messages.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="my\Mysetup.xaml.cs">
+	  <Compile Update="Views\my\Profile.xaml.cs">
+	    <DependentUpon>Profile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\my\MyMaonsNavigation.xaml.cs">
+	    <DependentUpon>MyMaonsNavigation.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\my\Mysetup.xaml.cs">
 	    <DependentUpon>Mysetup.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="my\My.xaml.cs">
+	  <Compile Update="Views\my\My.xaml.cs">
 	    <DependentUpon>My.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="NewContent1.xaml.cs">
@@ -89,46 +181,115 @@
 	  <Compile Update="NewContent2.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
+	  <Compile Update="Platforms\Android\PlatformsClass.cs">
+	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+	  </Compile>
+	  <Compile Update="Platforms\iOS\PlatformsClass.cs">
+	    <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+	  </Compile>
+	  <Compile Update="Platforms\MacCatalyst\PlatformsClass.cs">
+	    <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+	  </Compile>
+	  <Compile Update="Platforms\Tizen\PlatformsClass.cs">
+	    <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+	  </Compile>
+	  <Compile Update="Platforms\Windows\PlatformsClass.cs">
+	    <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+	  </Compile>
 	  <Compile Update="Resources\Language\en-us.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
 	  <Compile Update="Resources\Language\zh-cn.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Tool\useful.xaml.cs">
+	  <Compile Update="Views\my\walletlist\shoukuan.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\my\walletlist\wallet.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\my\walletlist\zhuanzhang.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\my\walletlist\zzDetils.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Tool\useful.xaml.cs">
 	    <DependentUpon>useful.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Share\Share.xaml.cs">
+	  <Compile Update="Views\Share\Share.xaml.cs">
 	    <DependentUpon>Share.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Explore\Community.xaml">
+	  <MauiXaml Update="Pwd.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Explore\Explore.xaml">
+	  <MauiXaml Update="Views\Explore\Community.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Explore\ExploreContent.xaml">
+	  <MauiXaml Update="Views\Explore\Explore.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Explore\Explorercommunity1.xaml">
+	  <MauiXaml Update="Views\Explore\ExploreContent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Explore\Friends.xaml">
+	  <MauiXaml Update="Views\Explore\Explorercommunity1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Explore\peers.xaml">
+	  <MauiXaml Update="Views\Explore\NewCommunity.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Message\Messages.xaml">
+	  <MauiXaml Update="Views\Explore\peers.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="my\Mysetup.xaml">
+	  <MauiXaml Update="login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="my\My.xaml">
+	  <MauiXaml Update="MaonsLayout\MaonsBar.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MaonsLayout\MaonsNavigation.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MaonsLayout\MaonsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MaonsLayout\MaonsViewItemLeftRight.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MaonsLayout\MaonsViewItemMessages.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MaonsLayout\MaonsViewItemMessagesBox.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Explore\userinfo.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Message\conversation.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Message\emptyconversation.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Message\Messages.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\my\Avatar.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\my\Profile.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\my\MyMaonsNavigation.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\my\Mysetup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\my\My.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="NewContent1.xaml">
@@ -143,12 +304,50 @@
 	  <MauiXaml Update="Resources\Language\zh-cn.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Tool\useful.xaml">
+	  <MauiXaml Update="Views\my\walletlist\shoukuan.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Share\Share.xaml">
+	  <MauiXaml Update="Views\my\walletlist\wallet.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\my\walletlist\zhuanzhang.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\my\walletlist\zzDetils.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Tool\useful.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Share\Share.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Update="Resources\Raw\favicon.ico">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Platforms\Windows\libs\win-arm64\" />
+	  <Folder Include="Platforms\Windows\libs\win-x86\" />
+	  <Folder Include="Views\my\profile\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\NASMB\NASMB\NASMB.csproj" />
+	  <ProjectReference Include="..\Magic.MAUI\Magic.MAUI.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Log4net.xml">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Platforms\Windows\libs\win-x64\gasmbapi.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>

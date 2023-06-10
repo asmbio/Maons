@@ -9,4 +9,9 @@
     <s:String x:Key="function">function</s:String>
     <s:String x:Key="my">my</s:String>
     <s:String x:Key="switchlan">Switch Language</s:String>
+    <s:String x:Key="selectamessage">Select a message</s:String>
+    <s:String x:Key="selectamessage_details">Choose from your existing conversations, start a new one, or just keep swimming.</s:String>
+    <s:String x:Key="friends">friends</s:String>
+    <s:String x:Key="community">community</s:String>
+    <s:String x:Key="connectingusernode">connectingusernode</s:String>
 </ResourceDictionary>

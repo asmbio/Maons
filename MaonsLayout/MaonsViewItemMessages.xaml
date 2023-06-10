@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:MaonsViewItem xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Maons.Controls;"    
+                           xmlns:converter="clr-namespace:Maons.Converter;"
+             x:Class="Maons.Controls.MaonsViewItemMessages" x:Name="zhuye"  >
+    <controls:MaonsViewItem.Resources>
+            <converter:BoolToFontColorConverter x:Key="BoolToFontColorConverter"></converter:BoolToFontColorConverter>
+            <converter:BoolToFontAttributesConverter x:Key="BoolToFontAttributesConverter"></converter:BoolToFontAttributesConverter>
+            <converter:IcoimgMultiConverter x:Key="IcoimgMultiConverter"></converter:IcoimgMultiConverter>
+            <converter:WidthToVisableConverter x:Key="WidthToVisableConverter"></converter:WidthToVisableConverter>
+    </controls:MaonsViewItem.Resources>
+    <HorizontalStackLayout>
+        <ContentView x:Name="v1" MinimumWidthRequest="200" MaximumWidthRequest="350">
+        <CollectionView  x:Name="clview"
+                    x:FieldModifier="public"
+                     Margin="10,10,10,10" SelectionMode="Single" ItemsSource="{Binding Items2}"  SelectionChanged="v1_SelectionChanged"                               >
+            <CollectionView.ItemTemplate>
+
+                <DataTemplate>
+                    <Border Stroke="#512BD4" 
+                                StrokeThickness="0"
+                            StrokeShape="RoundRectangle 0,0,0,0"                                                   
+                                HorizontalOptions="Start"  Margin="0,10"  >
+                        <Border Stroke="#512BD4" 
+                                StrokeThickness="0"
+                            StrokeShape="RoundRectangle 50,50,50,50"                                                   
+                                HorizontalOptions="Start" Margin="0" >
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <!--<VisualState Name="Normal" >
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>-->
+                                    <!--<VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="#E1E1E1" />
+                                                <Setter Property="StrokeThickness" Value="0.2" />
+                                                </VisualState.Setters>
+                                        </VisualState>
+                                    <VisualState Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="#E1E1E1" />
+                                            <Setter Property="StrokeThickness" Value="0.2" />
+
+                                        </VisualState.Setters>
+                                    </VisualState>-->
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                                <Grid Padding="10,0" HeightRequest="50" WidthRequest="{Binding Source={x:Reference clview }, Path=Width}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*" ></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Grid.Column="0"  HeightRequest="50"  WidthRequest="50" Margin="0,0"  Aspect="AspectFit" BackgroundColor="#C3F2F4" Rotation="10"  >
+                                            <Image.Source>
+                                                <MultiBinding Converter="{StaticResource  IcoimgMultiConverter}">
+                                                    <Binding Path="Selected"></Binding>
+                                                    <Binding Path="IconSource"></Binding>
+                                                </MultiBinding>
+                                            </Image.Source>
+                                        </Image>
+                                        <Label Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" Text="{Binding Title}" Margin="10,8,0,0" FontSize="18"  FontAttributes="{Binding Selected,Converter ={StaticResource BoolToFontAttributesConverter}}">
+                                        </Label>
+                                        <!--<Image Source="dotnet_bot.svg" HeightRequest="30"  WidthRequest="30"  ></Image>-->
+                                    <Label Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="End" HorizontalOptions="Start" Text="{Binding TitleDetails}" TextColor="Gray" FontSize="12"  Margin="11,0,0,0"></Label>
+                                  
+                                </Grid>
+                        
+                            
+                        </Border>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        </ContentView>
+        <Line X1="0" StrokeThickness="0.4"
+                  Y1="0"
+                  X2="0"
+                  Y2="{Binding Source={x:Reference zhuye }, Path=Height}"
+                  Stroke="lightgray" />
+        <controls:MaonsNavigation x:Name="v2" Content="{Binding RightView}">
+            <controls:MaonsNavigation.Topbar>
+                <ContentView>
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                    </ContentView.GestureRecognizers>
+                    <Border Stroke="#512BD4" HorizontalOptions="Start"
+                                StrokeThickness="0"
+                            StrokeShape="RoundRectangle 20"                                                   
+                                Padding="8">
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal" >
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="White" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="#E1E1E1" />
+                                        <Setter Property="StrokeThickness" Value="0" />
+                                        <!--//<Setter Property="Img1" Value="dotnet_bot.svg"></Setter>-->
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <!--<ImageButton Source="houtui.png" Clicked="ImageButton_Clicked"  HeightRequest="1" IsVisible="false"></ImageButton>-->
+                        <Image Source="houtui.png"  HeightRequest="18"  IsVisible="{TemplateBinding IsBackVisible}" ></Image>
+                    </Border>
+                </ContentView>
+            </controls:MaonsNavigation.Topbar>
+        </controls:MaonsNavigation>
+    </HorizontalStackLayout>
+</controls:MaonsViewItem>

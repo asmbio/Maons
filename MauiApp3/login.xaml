@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASMB.login"
+             Title="login" Shell.FlyoutBehavior="Disabled" BackgroundImageSource="p2p.png">
+
+    <VerticalStackLayout Margin="0,0,0,0" VerticalOptions="Center" >
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Margin="0,20,0,0" Text="密码：" VerticalOptions="Center"></Label>
+            <Entry x:Name="epwd" Margin="0,20,0,0" VerticalOptions="Center" MinimumWidthRequest="200"
+            IsPassword="True" Placeholder="请输入钱包管理密码" ></Entry>
+        </HorizontalStackLayout>
+
+        <Button Text="OK" Margin="0,20,0,0" VerticalOptions="Center"  WidthRequest="80"
+            HorizontalOptions="Center"
+                Clicked="OnOKButtonClicked" />
+        
+    </VerticalStackLayout>
+</ContentPage>
+

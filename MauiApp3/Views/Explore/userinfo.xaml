@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maons.Views.Explore.Userinfo">
+
+
+        <StackLayout BackgroundColor="White" Padding="20">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Frame Padding="0" CornerRadius="100" BackgroundColor="Gray">
+                <Image 
+                    Source="{Binding MetaEx.AvatarUrl}"
+                    HeightRequest="100"
+                    WidthRequest="100"
+                    Aspect="AspectFill"/>
+            </Frame>
+            <StackLayout Padding="10">
+                <Label 
+                    Text="{Binding MetaEx.Name}"
+                    FontSize="Large"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />    
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label 
+                        Text="公钥："
+                        FontSize="Medium"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                    <Label 
+                        Text="{Binding Address}"
+                        FontSize="Medium"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label 
+                        Text="年龄："
+                        FontSize="Medium"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                    <Label 
+                        Text="{Binding MetaEx.Age}"
+                        FontSize="Medium"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label 
+                        Text="性别："
+                        FontSize="Medium"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                    <Label 
+                        Text="{Binding MetaEx.Sex}"
+                        FontSize="Medium"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" />
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label 
+                Text="是否是群组："
+                FontSize="Medium"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Label 
+                Text="{Binding MetaEx.IsGroup}"
+                FontSize="Medium"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        </StackLayout>
+        <Label 
+            Text="{Binding MetaEx.Info}"
+            FontSize="Medium"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+       
+
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+            <Button Text="取消关注" x:Name="FollowButton" Command="{   Binding Source={StaticResource VMlc},Path= AccountViewModels.ExitCommunityCmd}" CommandParameter="{Binding .}" IsVisible="{Binding FrienddRemarks.Tag ,Converter={StaticResource FollowbyteToBoolConverter} }" />
+            <Button Text="关注" x:Name="UnfollowButton" Command="{   Binding Source={StaticResource VMlc},Path= AccountViewModels.JoinCommunityCmd}" CommandParameter="{Binding .}" IsVisible="{Binding FrienddRemarks.Tag ,Converter={StaticResource UnFollowbyteToBoolConverter}}" />
+        </StackLayout>
+
+    </StackLayout>
+
+
+
+</ContentView>
+

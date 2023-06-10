@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:MaonsViewItem xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Maons.Controls"
+                    xmlns:local="clr-namespace:ASMB"
+             x:Class="Maons.my.Profile" Title="{StaticResource  my}" BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}">
+    <!--<RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding GetMetaExCmd}" CommandParameter="{Binding Model}">-->
+    <VerticalStackLayout>
+        <!--<Frame Margin="10"
+       BorderColor="Black"
+       CornerRadius="50"
+       HeightRequest="60"
+       WidthRequest="60"
+       IsClippedToBounds="True"
+       HorizontalOptions="Center"
+       VerticalOptions="Center">
+            <Image Source="maons.jpg"
+         Aspect="AspectFill"
+                   Margin="-50"
+                WidthRequest="100"
+                   HeightRequest="100"
+         />
+        </Frame>-->
+        
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <VerticalStackLayout Margin="150,0,0,0">
+                <Border Stroke="#512BD4" 
+                                StrokeThickness="1"
+                                                                              
+                                HorizontalOptions="Center" Margin="0" BackgroundColor="White" >
+                    <ImageButton x:Name="Avatar" Source="{Binding Path=Model.MetaEx.AvatarUrl, Mode=OneWay}"  Aspect="AspectFit"  Clicked="ImageButton_Clicked" Margin="0"              
+                WidthRequest="160"
+                   HeightRequest="160" />
+                </Border>
+        
+          
+                <Label Text="点击头像更换" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Green"></Label>
+            </VerticalStackLayout>
+            <Button  BorderWidth="0" ImageSource="shuaxin.png" HeightRequest="24"  BackgroundColor="White" Margin="10,0,0,0" Command="{Binding GetMetaExCmd , ConverterParameter={Binding Model}}" VerticalOptions="Center"></Button>
+        </HorizontalStackLayout>
+
+        
+        <Grid VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label VerticalOptions="Center">名字</Label>
+            <Entry Grid.Column="1" Text="{Binding Path=Model.MetaEx.Name, Mode=TwoWay}"></Entry>
+            <Label VerticalOptions="Center" Grid.Row="1">简介</Label>
+            <Editor Grid.Row="1" Grid.Column="1" Text="{Binding Path=Model.MetaEx.Info, Mode=TwoWay}" MaxLength="200"></Editor>
+           <HorizontalStackLayout  Grid.Row="2" Grid.Column="1" HorizontalOptions="End">
+                    
+                    <Button Text="保存" HeightRequest="30" WidthRequest="100" VerticalOptions="Center"  Command="{Binding SaveMetaExCmd ,ConverterParameter={Binding Model}}"></Button>
+            </HorizontalStackLayout>
+        </Grid>
+    
+        <!--<WebView HeightRequest="500"  Source="avatar/index.html" x:Name="avatar"></WebView>-->
+    </VerticalStackLayout>
+    <!--</RefreshView>-->
+</controls:MaonsViewItem>

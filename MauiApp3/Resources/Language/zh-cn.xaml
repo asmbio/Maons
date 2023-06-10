@@ -9,4 +9,16 @@
     <s:String x:Key="function">功能</s:String>
     <s:String x:Key="my">我</s:String>
     <s:String x:Key="switchlan">切换语言</s:String>
+    <s:String x:Key="selectamessage">选择一条消息</s:String>
+    <s:String x:Key="selectamessage_details">从你现有的对话中选择，开始新的对话，或者继续游泳。</s:String>
+    <s:String x:Key="friends">我的好友</s:String>
+    <s:String x:Key="community">我的社区</s:String>
+    <s:String x:Key="connectingusernode">发现用户</s:String>
+    <s:String x:Key="explorercommunity1">发现社区</s:String>
+    <s:String x:Key="explorecontent">发现内容</s:String>
+    
+
+    
+
 </ResourceDictionary>
+    

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:controls="clr-namespace:Maons.Controls"        
+             x:Class="Maons.Controls.MyMaonsNavigation">
+    <controls:MaonsNavigation x:Name="navig">
+        <controls:MaonsNavigation.Topbar >
+            <ContentView>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <!--<ColumnDefinition Width="50"></ColumnDefinition>-->
+                        <ColumnDefinition Width="60"></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <controls:MaonsBar HorizontalOptions="Start"></controls:MaonsBar>
+                    <!--IsVisible="{TemplateBinding IsBackVisible}"-->
+                    <Button BorderWidth="0" HeightRequest="30" BackgroundColor="White" IsVisible="{TemplateBinding IsBackVisible, Converter={StaticResource NegateboolConverter}}"  Grid.Column="1" ImageSource="qiehuan.png" Clicked="Button_Clicked"></Button>
+                    <!--<Image Grid.Column="1" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30" Margin="0,0" x:Name="swich"  >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                        <Image.Source>
+                            <MultiBinding Converter="{StaticResource  IcoimgMultiConverter}"  >
+                                <Binding>
+                                    <Binding.Source>
+                                        <sys:Boolean>true</sys:Boolean>
+                                    </Binding.Source>
+                                </Binding>
+                                <Binding Path="CurContent.IconSource"></Binding>
+                            </MultiBinding>
+                        </Image.Source>
+                    </Image>-->
+                </Grid>
+            </ContentView>
+        </controls:MaonsNavigation.Topbar>
+    </controls:MaonsNavigation>
+</ContentView>

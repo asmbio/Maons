@@ -20,7 +20,11 @@
             <Button Grid.Column="0" ImageSource="yishoukuan.png" Text="收款" HorizontalOptions="Center"  BackgroundColor="White" TextColor="Black" Clicked="shoukuan_Clicked"></Button>
             <Button Grid.Column="1" ImageSource="zhuanzhang.png" Text="转账" HorizontalOptions="Center"  BackgroundColor="White" TextColor="Black" Clicked="zhuanzhang_Clicked"></Button>
         </Grid>
-        
+        <WebView WidthRequest="1900" HeightRequest="200">
+            <WebView.Source>
+                dist/index.html
+            </WebView.Source>
+        </WebView>
         <Label 
             Text="Welcome to asmb！公测网络"
             VerticalOptions="Center" 

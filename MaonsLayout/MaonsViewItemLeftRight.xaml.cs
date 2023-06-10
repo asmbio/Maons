@@ -1,45 +1,118 @@
-using System.Runtime.Serialization.DataContracts;
+
 
 namespace Maons.Controls;
 
 
 public sealed partial  class MaonsViewItemLeftRight : MaonsViewItem
 {
-    public static readonly BindableProperty LogViewProperty = BindableProperty.Create("LogView", typeof(ContentView), typeof(MaonsViewItemLeftRight), new ContentView() { MinimumWidthRequest = 400, MaximumWidthRequest = 600 });
+    public static readonly BindableProperty LeftViewProperty = BindableProperty.Create("LeftView", typeof(ContentView), typeof(MaonsViewItemLeftRight), new ContentView() { MinimumWidthRequest = 400, MaximumWidthRequest = 600 });
 
     public static readonly BindableProperty RightViewProperty = BindableProperty.Create("RightView", typeof(ContentView), typeof(MaonsViewItemLeftRight), new ContentView() { MinimumWidthRequest = 0, MaximumWidthRequest = 0 });
 
-    public ContentView LogView
+    public ContentView LeftView
     {
-        get => (ContentView)GetValue(LogViewProperty);
-        set => SetValue(LogViewProperty, value);
+        get => (ContentView)GetValue(LeftViewProperty);
+        set => SetValue(LeftViewProperty, value);
     }
     public ContentView RightView
     {
         get => (ContentView)GetValue(RightViewProperty);
         set => SetValue(RightViewProperty, value);
     }
-    public static readonly BindableProperty TopViewProperty = BindableProperty.Create("TopView", typeof(ContentView), typeof(MaonsViewItemLeftRight), new ContentView() { MinimumWidthRequest = 400, MaximumWidthRequest = 600 });
 
- 
-    public ContentView TopView
-    {
-        get => (ContentView)GetValue(TopViewProperty);
-        set => SetValue(TopViewProperty, value);
-    }
 
     public MaonsViewItemLeftRight(ContentView left ,ContentView right)
 	{
      
 		InitializeComponent();
         BindingContext = this;
-        //LeftView = left;
+        LeftView = left;
         RightView = right;
         this.MinimumWidthRequest = left.MinimumWidthRequest;
         this.MaximumWidthRequest = right.MaximumWidthRequest+left.MaximumWidthRequest;
         SizeChanged += MaonsViewItemLeftRight_SizeChanged;
         
     }
+    
+    public override Size MyMeasure(double widthConstraint, double heightConstraint)
+    {
+        double w1 = v1.Content.MaximumWidthRequest, w12 = v1.Content.MinimumWidthRequest, w2 = v2.Content.MaximumWidthRequest, w22 = v2.Content.MinimumWidthRequest;
+
+        double a1 = w1 + w2;
+        double a2 = w1 + w22;
+        double a3 = w1;
+        double a4 = w12;
+
+        if (widthConstraint >= a1)
+        {
+            //v1.WidthRequest = w1;
+            //v2.WidthRequest = w2;
+            return new Size(a1, heightConstraint);
+        }
+        else if (widthConstraint >= a2)
+        {
+            //v1.WidthRequest = w1;
+            //v2.WidthRequest = this.Width - w1;
+            return new Size(widthConstraint, heightConstraint);
+        }
+        else if (widthConstraint >= a3)
+        {
+            //this.WidthRequest = w1;
+            //v1.WidthRequest = w1;
+            //v2.WidthRequest = 0;
+            //v2.IsVisible = false;
+
+            return new Size(w1, heightConstraint);
+        }
+        else if (widthConstraint >= a4)
+        {
+            return new Size(widthConstraint, heightConstraint);
+        }
+        else
+        {
+            return new Size(w12, heightConstraint);
+        }
+    }
+    //public override SizeRequest Measure(double widthConstraint, double heightConstraint, MeasureFlags flags = MeasureFlags.None)
+    //{
+    //    double w1 = v1.Content.MaximumWidthRequest, w12 = v1.Content.MinimumWidthRequest, w2 = v2.Content.MaximumWidthRequest, w22 = v2.Content.MinimumWidthRequest;
+
+    //    double a1 = w1 + w2;
+    //    double a2 = w1 + w22;
+    //    double a3 = w1;
+    //    double a4 = w12;
+
+    //    if (widthConstraint >= a1)
+    //    {
+    //        //v1.WidthRequest = w1;
+    //        //v2.WidthRequest = w2;
+    //        return new SizeRequest(new Size(a1,heightConstraint));
+    //    }
+    //    else if (widthConstraint >= a2)
+    //    {
+    //        //v1.WidthRequest = w1;
+    //        //v2.WidthRequest = this.Width - w1;
+    //        return new SizeRequest(new Size(widthConstraint, heightConstraint));
+    //    }
+    //    else if (widthConstraint >= a3)
+    //    {
+    //        //this.WidthRequest = w1;
+    //        //v1.WidthRequest = w1;
+    //        //v2.WidthRequest = 0;
+    //        //v2.IsVisible = false;
+
+    //        return new SizeRequest(new Size(w1, heightConstraint));
+    //    }
+    //    else if (widthConstraint >= a4)
+    //    {
+    //        return new SizeRequest(new Size(widthConstraint, heightConstraint));
+    //    }
+    //    else
+    //    {
+    //        return new SizeRequest(new Size(w12, heightConstraint));
+    //    }
+
+    //}
 
     private void MaonsViewItemLeftRight_SizeChanged(object sender, EventArgs e)
     {
@@ -72,7 +145,7 @@ public sealed partial  class MaonsViewItemLeftRight : MaonsViewItem
         }
         else if (this.Width >= a3)
         {
-            this.WidthRequest = w1;
+           // this.WidthRequest = w1;
             v1.WidthRequest =w1;
             v2.WidthRequest = 0;
             v2.IsVisible = false;

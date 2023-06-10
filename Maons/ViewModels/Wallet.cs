@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-
-namespace ASMB.ViewModels
+﻿namespace ASMB.ViewModels
 {
     internal partial class MyWallet
     {
@@ -19,8 +17,7 @@ namespace ASMB.ViewModels
                 {
 
                     return null;
-                }            
-               
+                }                           
             }
             else
             {

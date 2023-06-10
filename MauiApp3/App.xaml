@@ -2,7 +2,9 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Maons"
-             x:Class="MauiApp3.App">
+                        xmlns:alocal="clr-namespace:ASMB"
+             xmlns:localvm="clr-namespace:ASMB.ViewModels"
+             x:Class="MauiApp3.App"           xmlns:converter="clr-namespace:Maons.Converter">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,9 +16,28 @@
                 <ResourceDictionary  Source="Resources/Language/zh-cn.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
-         
+            <localvm:VMlc x:Key="VMlc"></localvm:VMlc>
+            <alocal:FollowbyteToBoolConverter x:Key="FollowbyteToBoolConverter"></alocal:FollowbyteToBoolConverter>
+            <alocal:UnFollowbyteToBoolConverter x:Key="UnFollowbyteToBoolConverter"></alocal:UnFollowbyteToBoolConverter>
+            <alocal:MaonsConverter x:Key="MaonsConverter"></alocal:MaonsConverter>
+            <alocal:MaonstoUintConverter x:Key="MaonstoUintConverter"></alocal:MaonstoUintConverter>
+            <alocal:AddressConverter x:Key="AddressConverter"></alocal:AddressConverter>
+            <alocal:AddressstatezanConverter x:Key="AddressstatezanConverter"></alocal:AddressstatezanConverter>
+            <alocal:AddressstatecaiConverter x:Key="AddressstatecaiConverter"></alocal:AddressstatecaiConverter>
+            <alocal:AddressstateopciyzanConverter x:Key="AddressstateopciyzanConverter"></alocal:AddressstateopciyzanConverter>
+            <alocal:AddressstateopciycaiConverter x:Key="AddressstateopciycaiConverter"></alocal:AddressstateopciycaiConverter>
+            <alocal:NegateboolConverter x:Key="NegateboolConverter"></alocal:NegateboolConverter>
+            <converter:BoolToFontColorConverter x:Key="BoolToFontColorConverter"></converter:BoolToFontColorConverter>
+            <converter:BoolToFontAttributesConverter x:Key="BoolToFontAttributesConverter"></converter:BoolToFontAttributesConverter>
+            <converter:IcoimgMultiConverter x:Key="IcoimgMultiConverter"></converter:IcoimgMultiConverter>
+            <converter:WidthToVisableConverter x:Key="WidthToVisableConverter"></converter:WidthToVisableConverter>
+
+            
+            <!--<WebView x:Key="lemonview" >
+                <WebView.Source>lemonui/index.html</WebView.Source>
+            </WebView>-->
         </ResourceDictionary>
 
-        
+     
     </Application.Resources>
 </Application>

@@ -9,7 +9,7 @@ namespace ASMB
         {
             {"想法","htaM6rQvi4ci3bQ5uReAm5XXytv" },
             {"提案","3E4ZuLQW2NAtB8aCvH4CTm2iBVMa" },
-            {"悬赏","4ZFmgxH4KPVzUtPS16CdoKAEw76Z" },
+            {"DAO","4ZFmgxH4KPVzUtPS16CdoKAEw76Z" },
         };
 
         string curguangchang = "想法";
@@ -144,9 +144,9 @@ namespace ASMB
             }
             else
             {
-                if (curguangchang == "悬赏" && VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>().Model.Address != _data[curguangchang])
+                if (curguangchang == "DAO" && VMlc.ServiceProvider.GetService<ASMB.ViewModels.AccountViewModels>().Model.Address != _data[curguangchang])
                 {
-                    await DisplayAlert("提示", "非管理员不能发布悬赏", "确定");
+                    await DisplayAlert("提示", "非管理员不能发布DAO", "确定");
                     return;
                 }
                 ASMB.Tianjia pwd = new ASMB.Tianjia(_data[curguangchang]);

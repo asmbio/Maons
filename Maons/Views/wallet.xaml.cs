@@ -18,7 +18,7 @@ public partial class wallet : ContentPage
         {
             Task.Run(() =>
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
 
                 this.Dispatcher.Dispatch(async () =>
                 {

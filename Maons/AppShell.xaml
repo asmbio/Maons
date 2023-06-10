@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ASMB"   
     BindingContext="{Binding Source={StaticResource VMlc},Path=ShellVm}"
-    Shell.FlyoutBehavior="Disabled"  >
+    Shell.FlyoutBehavior="Flyout"  >
     <Shell.Resources>
 
         <DataTemplate x:Key="defaultTemplate">
@@ -62,7 +62,11 @@
     
     <TabBar x:Name="flyout" >
         <ShellContent
-            
+            Title="我"            
+            Icon="wallet_line.png"
+        ContentTemplate="{DataTemplate local:wallet}"
+        Route="MePage" />
+        <ShellContent            
             Title="广场"
             Icon="zhuye.png"
             ContentTemplate="{DataTemplate local:Zuixin}"            
@@ -140,7 +144,7 @@
         </Tab>
 -->
         <!--<ShellContent IsVisible="False"
-            Title="悬赏"
+            Title="DAO"
             Icon="compassdiscoverline.png"
         ContentTemplate="{DataTemplate local:Discovery}"
         Route="Discovery" />-->
@@ -149,18 +153,12 @@
             Icon="compassdiscoverline.png"
         ContentTemplate="{DataTemplate local:Discovery}"
         Route="Discovery" />
-     
+
         <ShellContent
             Title="联系人"            
        Icon="user_line.png"
        ContentTemplate="{DataTemplate local:lianxiren}"
         Route="wallet" />
-        <ShellContent
-            Title="我"
-            
-            Icon="wallet_line.png"
-        ContentTemplate="{DataTemplate local:wallet}"
-        Route="MePage" />
     </TabBar>
     <FlyoutItem >
         <Shell.TabBarIsVisible> False</Shell.TabBarIsVisible>

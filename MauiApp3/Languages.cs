@@ -56,7 +56,7 @@ namespace Maons
             string requestedCulture = Lans[lang];
             ResourceDictionary resourceDictionary = App.Current.Resources.MergedDictionaries.FirstOrDefault(d => d.Source.OriginalString.Contains(requestedCulture));
 
-            App.Current.Resources.MergedDictionaries.Remove(resourceDictionary);
+          //  App.Current.Resources.MergedDictionaries.Remove(resourceDictionary);
 
 
              App.Current.Resources.MergedDictionaries.Add(resourceDictionary);

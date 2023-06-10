@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <controls:MaonsViewItem xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:controls="clr-namespace:Maons.Controls;assembly=MaonsLayout"
+            xmlns:controls="clr-namespace:Maons.Controls"
                         xmlns:local="clr-namespace:Maons"
                         
              x:Class="Maons.NewContent1" MinimumWidthRequest="400"  MaximumWidthRequest="600">
-    <controls:MaonsViewItem.RightView>
+    <!--<controls:MaonsViewItem.RightView>
         <local:NewContent2></local:NewContent2>
-    </controls:MaonsViewItem.RightView>
+    </controls:MaonsViewItem.RightView>-->
     <Grid>
        
         <VerticalStackLayout Margin="20,30,0,0">

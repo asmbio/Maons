@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Microsoft.Maui.ApplicationModel.Communication;
+using System.Collections.ObjectModel;
 
 namespace Maons.Controls
 {
@@ -12,6 +13,8 @@ namespace Maons.Controls
 
         public static readonly BindableProperty CurrentViewProperty = BindableProperty.Create("CurrentView", typeof(MaonsViewItem), typeof(MaonsPage), null);
 
+
+        public static bool IsPc =true;
        
         public string HeaderText
         {
@@ -35,6 +38,8 @@ namespace Maons.Controls
             InitializeComponent();
 #if IOS || ANDROID
             ControlTemplate = (ControlTemplate)Resources["AppTemplate"];
+            IsPc= false;    
+            
 #else
             ControlTemplate = (ControlTemplate)Resources["PCTemplate"];
             //SizeChanged += MaonsPage_SizeChanged;
@@ -44,7 +49,7 @@ namespace Maons.Controls
 
         }
 
-        protected async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        protected  void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             
             foreach (MaonsViewItem item in Items)
@@ -66,25 +71,37 @@ namespace Maons.Controls
         {                       
             var Content1 =  sender as HorizontalStackLayout;
             var v1 = Content1.Children[0] as CollectionView;
-            var v2 = (Content1.Children[2] as ContentPresenter).Content as MaonsViewItem;
-            var v3 = ((Content1.Children[4] as ContentView) as ContentView).Content as ContentView;
-            if (v2 == null || v3==null)
+            // var v2 = ((Content1.Children[2] as ContentPresenter).Content as ContentPresenter).Content as MaonsViewItem;
+            var v2 = ((Content1.Children[2] as ContentPresenter)).Content as MaonsViewItem;
+            //var v3 = ((Content1.Children[4] as ContentView) as ContentView).Content as ContentView;
+
+            //if ((v2 as MaonsViewItem ).HideLeft)
+            //{
+            //    var vt = v2;
+            //    v2 = v3;
+            //    v3= vt;
+            //}
+
+            if (v2 == null )
             {
                 return;
             }
 
-            double w1 = v1.MaximumWidthRequest, w12 = v1.MinimumWidthRequest, w2 = v2.MaximumWidthRequest, w22 = v2.MinimumWidthRequest;
 
-            double w3 = v3.MaximumWidthRequest,w32 =  v3.MinimumWidthRequest; 
+            double w1 = v1.MaximumWidthRequest, w12 = v1.MinimumWidthRequest;
+
+            double w2 = v2.MaximumWidthRequest, w22 = v2.MinimumWidthRequest;
+
+          //  double w3 = v3.MaximumWidthRequest,w32 =  v3.MinimumWidthRequest; 
 
 
-            double a1 = w1 + w2 +w3;
-            double a2 = w12 + w2  +w3;
-            double a3 = w12 + w2 +w32;
+            double a1 = w1 + w2 ;
+            double a2 = w12 + w2  ;
+            double a3 = w12 + w22 ;
 
-            double a4 = w12 + w2;
+            //double a4 = w12 + w2;
 
-            double a5 = w12 + w22;
+            //double a5 = w12 + w22;
 
 
            
@@ -94,45 +111,29 @@ namespace Maons.Controls
             {
                 v1.WidthRequest = w1;
                 v2.WidthRequest = w2;
-                v3.WidthRequest = w3;
-                v3.IsVisible = true;
+             
             }
             else if (this.Width >= a2)
             {
-                v1.WidthRequest = ((Content1.Width - w2-w3)-w12)/2 + w12;
+                v1.WidthRequest = ((this.Width - w2)-w12)/10 + w12;
                 v2.WidthRequest = w2;
-                v3.WidthRequest = w3;
-                v3.IsVisible = true;
+               
             }
             else if (this.Width >= a3)
             {
-                v1.WidthRequest = w12;
-                v2.WidthRequest = w2;
-                v3.WidthRequest = this.Width - w12-w2;
-                v3.IsVisible = true;
-            }
-            else if (this.Width >= a4)
-            {
-                v1.WidthRequest = w12;
+                //  v1.WidthRequest = w12;
+                var size = v2.MyMeasure(this.Width - w12, this.Height);
 
-                v2.WidthRequest = w2;
-                v3.WidthRequest = 0;
-                v3.IsVisible= false;
-            }
-            else if (this.Width >= a5)
-            {
-                v1.WidthRequest = w12;
+                v2.WidthRequest = size.Width;
 
-                v2.WidthRequest = this.Width - w12;
-                v3.WidthRequest = 0;
-                v3.IsVisible = false;
-            }
+                v1.WidthRequest = ((this.Width - size.Width) - w12) / 10 + w12;
+
+            }   
             else
             {
                 v1.WidthRequest = w12;
                 v2.WidthRequest = w22;
-                v3.WidthRequest = 0;
-                v3.IsVisible = false;
+             
 
             }
 
@@ -152,12 +153,13 @@ namespace Maons.Controls
 
 
                 var view = (MaonsViewItem)e.CurrentSelection[0];
-
-                view.Selected = true;
+                //contacts
+                view.Changemenu("contacts");
+                Content = null;
 
                 Content = view;
 
-                var Content1 = collview.Parent as HorizontalStackLayout;
+            //    var Content1 = collview.Parent as HorizontalStackLayout;
 
           //      (Content1.Children[4] as ContentView).Content = view.RightView;
 

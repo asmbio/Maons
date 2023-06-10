@@ -1,8 +1,13 @@
-﻿namespace Maons.Controls;
+﻿
+
+namespace Maons.Controls;
 
 public class MaonsViewItem : ContentView
 {
     public static readonly BindableProperty TitleProperty = BindableProperty.Create("Title", typeof(string), typeof(MaonsViewItem), null);
+
+
+    public static readonly BindableProperty TitleDetailsProperty = BindableProperty.Create("TitleDetails", typeof(string), typeof(MaonsViewItem), null);
 
     public static readonly BindableProperty IconSourceProperty = BindableProperty.Create("IconSource", typeof(string), typeof(MaonsViewItem), null);
 
@@ -11,29 +16,12 @@ public class MaonsViewItem : ContentView
     public static readonly BindableProperty SelectedProperty = BindableProperty.Create("Selected", typeof(bool), typeof(MaonsViewItem), false);
 
 
-    public static readonly BindableProperty LogViewProperty = BindableProperty.Create("LogView", typeof(ContentView), typeof(MaonsViewItemLeftRight), new ContentView() { MinimumWidthRequest = 400, MaximumWidthRequest = 600 });
-
-    public static readonly BindableProperty RightViewProperty = BindableProperty.Create("RightView", typeof(ContentView), typeof(MaonsViewItemLeftRight), new ContentView() { MinimumWidthRequest = 0, MaximumWidthRequest = 0 });
-
-    // 忘记干啥用的了
-    public ContentView LogView
+    public string TitleDetails
     {
-        get => (ContentView)GetValue(LogViewProperty);
-        set => SetValue(LogViewProperty, value);
+        get => (string)GetValue(TitleDetailsProperty);
+        set => SetValue(TitleDetailsProperty, value);
     }
-    public ContentView RightView
-    {
-        get => (ContentView)GetValue(RightViewProperty);
-        set => SetValue(RightViewProperty, value);
-    }
-    public static readonly BindableProperty TopViewProperty = BindableProperty.Create("TopView", typeof(ContentView), typeof(MaonsViewItemLeftRight), new ContentView() { MinimumWidthRequest = 400, MaximumWidthRequest = 600 });
 
-
-    public ContentView TopView
-    {
-        get => (ContentView)GetValue(TopViewProperty);
-        set => SetValue(TopViewProperty, value);
-    }
 
     public string Title
     {
@@ -51,6 +39,7 @@ public class MaonsViewItem : ContentView
         set => SetValue(SelectedProperty, value);
     }
 
+
     //public ContentView ContentView
     //{
     //    get => (ContentView)GetValue(ContentViewProperty);
@@ -60,6 +49,20 @@ public class MaonsViewItem : ContentView
     {
         MinimumWidthRequest = 400;
         MaximumWidthRequest = 600;
+        
     }
+
+    public virtual Size MyMeasure(double widthConstraint, double heightConstraint)
+    {
+
+        return new Size(widthConstraint, heightConstraint);
+    }
+    public virtual void Changemenu(string menu)
+    {
+
+        Selected= true;
+    }
+
+
 
 }

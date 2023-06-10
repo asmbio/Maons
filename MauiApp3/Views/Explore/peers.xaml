@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maons.Explore.peers"
+              xmlns:local="clr-namespace:Maons.Views.Explore"
+                BindingContext="{Binding Source={StaticResource VMlc},Path= AccountViewModels}">
+    <VerticalStackLayout>
+        <VerticalStackLayout>
+            <Entry x:Name="suser" Placeholder="搜索用户id"></Entry>
+            <Button Text="搜索" Command="{Binding SearchUserCmd}" CommandParameter="{Binding Source={x:Reference Name=suser}, Path=Text}"></Button>
+        </VerticalStackLayout>
+
+
+        <Label 
+            Text=" 有缘千里来相会!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <!-- <Label 
+            Text="与你相连的用户列表!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <HorizontalStackLayout>
+            <Label>500 ms</Label>
+            <Button Text="查看介绍"></Button>
+            <Button Text="打招呼"></Button>
+            <Button Text="加好友"></Button>
+            <Button Text="断开连接"></Button>
+            
+        </HorizontalStackLayout> -->
+ 
+        <CollectionView ItemsSource="{Binding SearchUsers}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Frame BackgroundColor="#F5F5F5" Padding="10" Margin="10">
+                            <local:Userinfo></local:Userinfo>
+                            <!--<StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding Avatar}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill" />
+                                <StackLayout Margin="10,0,0,0">
+                                    <Label Text="{Binding Name}" FontSize="Large" />
+                                    <Label Text="{Binding Age}" FontSize="Medium" />
+                                    <Label Text="{Binding Gender}" FontSize="Medium" />
+                                </StackLayout>
+                            </StackLayout>-->
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+        
+    </VerticalStackLayout>
+</ContentView>

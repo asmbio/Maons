@@ -33,7 +33,7 @@
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
             <ImageButton  Source="xuanshangzhaopinicon1x.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
                          Command="{Binding FenquCmd}" CommandParameter="{Binding Source={Reference xuanshang}, Path=Text}"></ImageButton>
-            <Label x:Name="xuanshang" VerticalOptions="Center" HorizontalOptions="Center">悬赏</Label>
+            <Label x:Name="xuanshang" VerticalOptions="Center" HorizontalOptions="Center">DAO</Label>
         </VerticalStackLayout>
         <VerticalStackLayout HeightRequest="80"  WidthRequest="60" Margin="6">
             <ImageButton Source="dianzihetong.png" HeightRequest="30"  WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Clicked="ImageButton_Clicked_1"></ImageButton>
